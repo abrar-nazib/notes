@@ -95,3 +95,4 @@ def add(num1, num2):
 :grinning:
 :smile:
 :grin:
+[Emoji cheat sheet here](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
