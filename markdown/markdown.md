@@ -56,7 +56,7 @@ ___
 
 <!-- Images -->
 
-![Markdown Logo](https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg)
+![Markdown Logo](https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg | width=100)
 
 <!-- Github Markdowns -->
 
