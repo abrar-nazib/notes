@@ -52,6 +52,8 @@ list.append(object)
 
 * Map method in futures object?
 
+* For I/O bound jobs (not CPU bound)
+
 ```Python
 import concurrent.futures
 with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -72,7 +74,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
         #
     iterate = [1,2,3,4,5]
     results = executor.map(function, iterate)
-        # here executor.map will return result objects
+        # here executor.map will return result objects(in invoketion sequence)
         # .submit() returned a future object
         # map will run function with all the values of iterate as arg
 
