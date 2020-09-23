@@ -128,4 +128,4 @@ with concurrent.futures.ProcessPoolExecutor() as executor:
         brute_result += pp.result()
 t2 = time.perf_counter()
 print(Back.RESET + Fore.LIGHTBLUE_EX + "\n[!] Password: " + brute_result)
-print(Back.GREEN_EX+"[#] Took "+t2-t1+" seconds to complete")
+print(Back.GREEN + "[#] Took "+t2-t1+" seconds to complete")
