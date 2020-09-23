@@ -34,7 +34,8 @@ def make_request(params):
         res = req.post(url, headers=headers, data=data, timeout=5)
     except req.exceptions.Timeout:
         print(Fore.LIGHTRED_EX +
-              "\n[!] Timeout, Continueing again" + Fore.WHITE)
+              "\n[!] Timeout Ocurred! , Continueing again" + Fore.WHITE)
+        req.post(url, data=data, headers=headers)
     fancy = ["-", "\\", "|", "/", ]
     sys.stdout.write(
         Fore.LIGHTGREEN_EX + "["+fancy[ord(params["i"]) % 4]+"] " + str(r) + " -- " + params["i"] + "  ==> " + "".join(password) + Fore.GREEN + "\r" + Fore.WHITE)
