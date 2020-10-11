@@ -176,3 +176,27 @@ list1 = [1,2,3]
 list2 = [4,5,6]
 list = list1+list2
 ```
+
+## HEX encoding
+
+### codecs.encode()
+
+```Python
+import codecs
+codecs.encode(b"string_to_convert", "hex")
+    #returns hex encoded string
+codecs.encode(b"string_to_convert", "hex").decode("utf-8")
+```
+
+## Converting string to byte object
+
+```Python
+bytes(string, "string-type:utf-8")
+```
+
+## Checking a dictionary key's existance
+
+```Python
+dict.has_key(keyname)
+    #returns bool
+```
