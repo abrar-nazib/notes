@@ -2,6 +2,24 @@
 
 ---
 
+## Visual Studio Settings
+
+### Keyboard Shortcuts
+
+* ctrl f7 -> Individual file compilation
+* 
+
+### Configuration settings
+
+* All configurations <-> All platforms
+    * Output directory : $(SolutionDir)\bin\$(Platform)\$(Configuration)\
+    * Intermediate directory: $(SolutionDir)\bin\intermediates\$(Platform)\$(Configuration)\
+
+
+## Compilation Process
+
+every translation unit gets compiled into an object file.
+
 ## Important Commands for linux
 
 ```bash
