@@ -14,11 +14,12 @@
 * All configurations <-> All platforms
     * Output directory : $(SolutionDir)\bin\$(Platform)\$(Configuration)\
     * Intermediate directory: $(SolutionDir)\bin\intermediates\$(Platform)\$(Configuration)\
-
+* C++ -> Optimization -> maximize speed
 
 ## Compilation Process
 
 every translation unit gets compiled into an object file.
+
 
 ## Important Commands for linux
 
