@@ -8,6 +8,7 @@
 
 * ctrl f7 -> Individual file compilation
 * f5 -> Build and run Project
+* f9 -> creates a breakpoint on the line(cursor's line)
 
 ### Configuration settings
 
@@ -15,6 +16,7 @@
     * Output directory : $(SolutionDir)\bin\$(Platform)\$(Configuration)\
     * Intermediate directory: $(SolutionDir)\bin\intermediates\$(Platform)\$(Configuration)\
 * C++ -> Optimization -> maximize speed
+* 
 
 ## Compilation Process
 
@@ -23,6 +25,15 @@ every translation unit gets compiled into an object file.
 ## Linking Process
 
 
+## Debugging
+
+* Breakpoints
+    * f9 puts a breakpoint in the cursor's line in VS.
+    * step into button lets lookup into function code upon call
+    * continue button runs the program until it hits the next break point
+
+* Memory Lookup
+    * Debug > Windows > Memory for memory view ```&variablename``` shows the variable in the memory 
 
 ## Important Commands for linux
 
