@@ -7,7 +7,7 @@
 ### Keyboard Shortcuts
 
 * ctrl f7 -> Individual file compilation
-* 
+* f5 -> Build and run Project
 
 ### Configuration settings
 
@@ -19,6 +19,9 @@
 ## Compilation Process
 
 every translation unit gets compiled into an object file.
+
+## Linking Process
+
 
 
 ## Important Commands for linux
