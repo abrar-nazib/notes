@@ -29,6 +29,7 @@ every translation unit gets compiled into an object file.
 
 * Breakpoints
   * f9 puts a breakpoint in the cursor's line in VS.
+    * Step over button(f10) lets go over another line.
     * step into button lets lookup into function code upon call
     * continue button runs the program until it hits the next break point
 
@@ -90,8 +91,26 @@ enum Enumeration : unsigned int{
 
 ## Arrays
 
+An array is really just a pointer to a memory address\
 Can create some serius problem if tried to access index out of the scope of the array length
+Array indexing in memory -> 0 index: don't add anything with the memory address\
+                         -> n index: add (n * size_of_variable_type) with the memory address
+Basic syntax:\
+```c++
+int arr[n]; //stack array -> gets destroyed with the scope(when hits the curly brace)
+int* arr = new int[n]; //heap array -> have to destroy with delete[] arr keyword
+#include <array> //for c++ 11 arrays
+std::array<int, 5> array_name; //another.size() makes life good :)
+
+```
+array element retreival technique ``` sizeof(array) / sizeof(data_type) ``` sizeof() returns memory allocation of the variable\
+but can only be retreived from stack arrays. not heap arrays are available in this method
+
+## Strings
 
 ```c++
-int arr_name[arr_length];
-```
+const char* string_name = "staring";
+char* srting_name = "string"; //doesn't work in my pc :|
+``` 
+const is used because strings are basically fixed allocated memory like arrays 
+Null Termination character : determines where the string ends 0x00 for 1 or multiple bytes (ascii value 0)
