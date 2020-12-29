@@ -111,6 +111,42 @@ but can only be retreived from stack arrays. not heap arrays are available in th
 ```c++
 const char* string_name = "staring";
 char* srting_name = "string"; //doesn't work in my pc :|
+#include <string> //for c++ standard library -> will be using this one
+std::string string_name = "string value "; //creates a const char pointer
 ``` 
 const is used because strings are basically fixed allocated memory like arrays 
 Null Termination character : determines where the string ends 0x00 for 1 or multiple bytes (ascii value 0)
+
+### About std::string s
+
+by calling std::string string_name I might be calling instanciating an object from a string class\
+iostream header file does have a definition for strings though it can no cout strings if string header is not included(reason not clear yet)\
+using string class -> some methods can be accessed as well\
+Appending strings: ```std::string string = "nazib" + "abrar";``` doesn't work cz can not add const char arrays. cannot glue two pointers together\
+not sure what is happening here(class overloading) 
+```c++
+ std::string string_name;
+ string_name += "string_extension";
+ std::string string_name = std::string("prefix") + "const char";
+ ```
+copying an array means dynamically allocating memory to heap to store that same string
+passing strings in functions:
+```c++
+void function(const std::string& string){
+  //did this because don't want to copy the string in the memory again cz string copy is quite slow
+  // the & represents that got referenced (we are sending the reference of that string)
+}
+```
+
+## String Literals
+
+Bug of strlen() function: it counts till the \0(null termination character)
+String literals are stored in read only areas of memory
+
+```c++
+const char* name = u8"Abrar";
+const wchar_t* name = L"Abrar";
+const char16_t name = u"Abrar";
+const char32_t name = U"Abrar";
+
+```
