@@ -96,6 +96,7 @@ Can create some serius problem if tried to access index out of the scope of the 
 Array indexing in memory -> 0 index: don't add anything with the memory address\
                          -> n index: add (n * size_of_variable_type) with the memory address
 Basic syntax:\
+
 ```c++
 int arr[n]; //stack array -> gets destroyed with the scope(when hits the curly brace)
 int* arr = new int[n]; //heap array -> have to destroy with delete[] arr keyword
@@ -103,6 +104,7 @@ int* arr = new int[n]; //heap array -> have to destroy with delete[] arr keyword
 std::array<int, 5> array_name; //another.size() makes life good :)
 
 ```
+
 array element retreival technique ``` sizeof(array) / sizeof(data_type) ``` sizeof() returns memory allocation of the variable\
 but can only be retreived from stack arrays. not heap arrays are available in this method
 
@@ -113,7 +115,8 @@ const char* string_name = "staring";
 char* srting_name = "string"; //doesn't work in my pc :|
 #include <string> //for c++ standard library -> will be using this one
 std::string string_name = "string value "; //creates a const char pointer
-``` 
+```
+
 const is used because strings are basically fixed allocated memory like arrays 
 Null Termination character : determines where the string ends 0x00 for 1 or multiple bytes (ascii value 0)
 
@@ -124,13 +127,16 @@ iostream header file does have a definition for strings though it can no cout st
 using string class -> some methods can be accessed as well\
 Appending strings: ```std::string string = "nazib" + "abrar";``` doesn't work cz can not add const char arrays. cannot glue two pointers together\
 not sure what is happening here(class overloading) 
+
 ```c++
  std::string string_name;
  string_name += "string_extension";
  std::string string_name = std::string("prefix") + "const char";
  ```
+
 copying an array means dynamically allocating memory to heap to store that same string
 passing strings in functions:
+
 ```c++
 void function(const std::string& string){
   //did this because don't want to copy the string in the memory again cz string copy is quite slow
