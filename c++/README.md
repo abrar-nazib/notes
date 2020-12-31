@@ -150,3 +150,16 @@ const char16_t name = u"Abrar";
 const char32_t name = U"Abrar";
 
 ```
+
+## Const keyword
+
+```c++
+const int* a = 00; //or
+int const* a = 00; //here the contents of the variable can not be changed but could be referenced to some other pointer
+          //like int* aa = 22;
+          //     a = (int*) &aa; is a valid operation
+          // but *a = 22; is not a valid operation
+int* const a = 00; //here the pointer cannot be reassigned
+const int* const a = 11; //none of them can be modified
+
+```
