@@ -13,9 +13,9 @@
 ### Configuration settings
 
 * All configurations <-> All platforms
-  * Output directory : $(SolutionDir)\bin\$(Platform)\$(Configuration)\
-    * Intermediate directory: $(SolutionDir)\bin\intermediates\$(Platform)\$(Configuration)\
-* C++ -> Optimization -> maximize speed
+  * Output directory : $(SolutionDir)bin\$(Platform)\$(Configuration)\
+    * Intermediate directory: $(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\
+* C++ -> Optimization -> maximize speed //not necessary
 
 *
 
