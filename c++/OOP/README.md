@@ -58,7 +58,9 @@ Basically a method which is called whenever an instance is made from a class
 constructor method has to have the name of the class
 could have multiple constructor functions
 if constructor function is kept inside private it means you can not instantiate the class
-    you have to access the properties with ```class_name::function_name()``` type of syntax
+you have to access the properties with ```class_name::function_name()``` type of syntax
+```class_name::function_name()``syntax could be used for accessing the class constructor from outside the class\
+initiatialization\
 
 Deleting the default constructor: ```class_name() = delete``` inside the class
 

@@ -13,9 +13,9 @@
 ### Configuration settings
 
 * All configurations <-> All platforms
-  * Output directory : $(SolutionDir)\bin\$(Platform)\$(Configuration)\
-    * Intermediate directory: $(SolutionDir)\bin\intermediates\$(Platform)\$(Configuration)\
-* C++ -> Optimization -> maximize speed
+  * Output directory : $(SolutionDir)bin\$(Platform)\$(Configuration)\
+    * Intermediate directory: $(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\
+* C++ -> Optimization -> maximize speed //not necessary
 
 *
 
@@ -89,20 +89,27 @@ enum Enumeration : unsigned int{
 };
 ```
 
-## Arrays
+## Arrays and Multi Dimensional Arrays
 
 An array is really just a pointer to a memory address\
 Can create some serius problem if tried to access index out of the scope of the array length
 Array indexing in memory -> 0 index: don't add anything with the memory address\
                          -> n index: add (n * size_of_variable_type) with the memory address
+Multi dimensional arrays are arrays of arrays\
 Basic syntax:\
 
 ```c++
+
 int arr[n]; //stack array -> gets destroyed with the scope(when hits the curly brace)
 int* arr = new int[n]; //heap array -> have to destroy with delete[] arr keyword
 #include <array> //for c++ 11 arrays
-std::array<int, 5> array_name; //another.size() makes life good :)
-
+std::array<int, 5> array_name; //array.size() makes life good :)
+//two dimentional arrays
+int arr[m][n]; //creating m 1 dimentional arrays having n elements
+               // arr returns a pointer for 1 dimentional array having n elements 
+int arr[0];    // is an array having n elements
+int *(ptr)[3] = arr; //ptr points to a one dimentional array of three elements
+                    // pointer type is array of three elements 
 ```
 
 array element retreival technique ``` sizeof(array) / sizeof(data_type) ``` sizeof() returns memory allocation of the variable\
@@ -110,11 +117,14 @@ but can only be retreived from stack arrays. not heap arrays are available in th
 
 ## Strings
 
+string declaration returns a char pointer.
+
 ```c++
 const char* string_name = "staring";
-char* srting_name = "string"; //doesn't work in my pc :|
+char* srting_name = "string"; //doesn't work in my pc :| -> gets stored as constant cannot change any character
+char string_name[] = "string"; 
 #include <string> //for c++ standard library -> will be using this one
-std::string string_name = "string value "; //creates a const char pointer
+std::string string_name = "string value "; //creates a const char pointer. can change elements
 ```
 
 const is used because strings are basically fixed allocated memory like arrays 
@@ -167,5 +177,45 @@ int const* a = 00; //here the contents of the variable can not be changed but co
           // but *a = 22; is not a valid operation
 int* const a = 00; //here the pointer cannot be reassigned
 const int* const a = 11; //none of them can be modified
+
+```
+
+* Const keyword in Class methods
+
+```c++
+
+int GetX() const
+{
+  //this class method can not modify any class variables
+  //getter methods should be implemented with such syntaxes
+}
+//something interesting here
+const int* const function() const{
+  //if the varialbles were pointers -> safety measures
+}
+
+```
+
+## Dynamic memory allocations
+
+These functions allocate memory in heap
+c functions : malloc, calloc, realloc, free
+
+```c++
+void* malloc(size_t size); //definition of malloc -> size_t is byte size and takes unsigned integer
+//returns a void pointer -> address of the first byte of the memory block allocated
+//need to typecast a void pointer to store data
+int* p = (int*) malloc(3 * sizeof(int));
+
+void* calloc(size_t num, size_t size); // eases the use of malloc -> do not need to multiply
+//malloc does not assign any value to the memory blocks but calloc fills all the blocks with 0;
+int* p = (int*) calloc(3, sizeof(int));
+
+void* realloc(void* ptr, size_t size); //reallocates the memory previously allocated by malloc
+
+free(memory_address); // fills the memory block with garbage values
+
+int* b = (int*) realloc(memory_address, new_size); //extends the memory block with new_size -> if available, extends
+//if not available, copies all the values in new address and removes the previous block
 
 ```
