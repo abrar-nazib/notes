@@ -219,3 +219,26 @@ int* b = (int*) realloc(memory_address, new_size); //extends the memory block wi
 //if not available, copies all the values in new address and removes the previous block
 
 ```
+
+## Function Pointers
+
+General pointers that can store address of functions. Could be used to dereference and execute a function\
+Instructions are stored in code section of the memory allocated to the program\
+Function pointers point to the memory address of the first instruction of the function. Assembly jump equivalent thing\
+
+```c++
+int Add(int a, int b){}
+
+int (*p)(int, int); //declaration of a function pointer having two parameters
+p = &Add; // or p = Add would also be fine
+int c = (*p)(1,2); //function pointers need to have (parentheses) around them (*p) like this
+                   // could use p(1,2) like this as well
+//----------------------------------------------------------------------//
+
+int *p(int, int) // this syntax means that it will return an int*
+
+```
+
+## Function callbacks
+
+When address of a function is passed to another function, that task is called callback function\
