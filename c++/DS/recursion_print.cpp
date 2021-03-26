@@ -1,30 +1,66 @@
 #include <iostream>
 
-void Insert(int data, int position);
-void Print();
-void Reverse();
 struct Node
 {
     int data;
     Node *next;
 };
 
+void Insert(int data, int position);
+void Print();
+void Reverse();
+void CreateList();
+void RecursivePrint(Node *head);
+void RecursiveReversePrint(Node *head);
+
 Node *head = new Node();
 
 int main()
 {
     head = NULL;
+    CreateList();
+    Print();
+    RecursivePrint(head);
+    //3RecursiveReversePrint(head);
+    return 0;
+}
+
+void RecursivePrint(Node *start)
+{
+    if (start == NULL)
+    {
+        std::cout << "\n"
+                  << std::endl;
+        return;
+    }
+    std::cout << start->data << "-"
+              << (long)start->next
+              << std::endl;
+
+    RecursivePrint(start->next);
+}
+
+void RecursiveReversePrint(Node *start)
+{
+
+    if (start == NULL)
+    {
+        std::cout << "\n"
+                  << std::endl;
+        return;
+    }
+    RecursiveReversePrint(start->next);
+    std::cout << start->data << "-"
+              << (long)start->next
+              << std::endl;
+}
+
+void CreateList()
+{
     for (size_t i = 1; i < 10; i++)
     {
         Insert(i, i);
     }
-
-    Print();
-    Reverse();
-    Print();
-    Reverse();
-    Print();
-    return 0;
 }
 
 void Reverse()
