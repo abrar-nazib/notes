@@ -49,7 +49,7 @@ int calculate_cost(int *A, int array_size)
         cost = cost + (j - i + 1);
         reverse(i, j, temp_arr);
     }
-    std::cout << cost << std::endl;
+    //std::cout << cost << std::endl;
     return cost;
 }
 
@@ -62,16 +62,41 @@ void display(int a[], int n)
     std::cout << calculate_cost(a, n) << std::endl;
 }
 
-void findPermutations(int a[], int n)
-{ // Sort the given array
+void findPermutations(int a[], int n, int given_cost)
+{
+    int cost;
+    // Sort the given array
     std::sort(a, a + n);
     // Find all possible permutations
     // std::cout << "Possible permutations are:\n";
     do
     {
-        //display(a, n);
-        calculate_cost(a, n);
+        cost = calculate_cost(a, n);
+        // std::cout << cost << " " << given_cost << std::endl;
+        if (cost == given_cost)
+        {
+            //std::cout << given_cost << " " << cost << std::endl;
+
+            break;
+        }
     } while (std::next_permutation(a, a + n));
+}
+bool possibility_judgement(int arr_size, int given_cost)
+{
+    int highest_value = 0;
+    int lowest_value = arr_size - 1;
+    for (int i = arr_size; i > 1; i--)
+    {
+        highest_value += i;
+    }
+    if (given_cost > highest_value || given_cost < lowest_value)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 
 int main()
@@ -79,9 +104,28 @@ int main()
     int arr_size, given_cost;
     int comb_array[100];
     int cost = 0;
-    scanf("%d, %d", &arr_size, &given_cost);
-    create_array(comb_array, arr_size, given_cost);
-    findPermutations(comb_array, arr_size);
+    int T;
+    scanf("%d", &T);
+
+    for (int t = 0; t < T; t++)
+    {
+        scanf("%d %d", &arr_size, &given_cost);
+        if (possibility_judgement(arr_size, given_cost))
+        {
+            create_array(comb_array, arr_size, given_cost);
+            findPermutations(comb_array, arr_size, given_cost);
+            printf("Case #%d: ", t + 1);
+            for (int xx = 0; xx < arr_size; xx++)
+            {
+                printf("%d ", comb_array[xx]);
+            }
+            printf("\n");
+        }
+        else
+        {
+            printf("Case #%d: IMPOSSIBLE", t + 1);
+        }
+    }
     // int T = 0;
     // scanf("%d", &T);
     // int N;
