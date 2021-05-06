@@ -43,6 +43,7 @@ g++ file.cpp #compiles the file.cpp and creates a *.out file -> executable
 g++ file1.cpp file2.cpp #compiles the files to a single *.out file
 g++ -c file1.cpp file2.cpp #creates  object files file1.o file2.o
 g++ file1.o file2.o #compiles the object files
+g++ -std=c++11 -02 -Wall test.cpp -o test #follows c++ 11 standards -02 optimizes the code -Wall shows the errors
 
 ```
 
@@ -242,3 +243,22 @@ int *p(int, int) // this syntax means that it will return an int*
 ## Function callbacks
 
 When address of a function is passed to another function, that task is called callback function\
+
+## Competitive notes
+
+```c
+ios::sync_with_stdio(0);
+cin.tie(0);
+```
+
+newline "\n" works faster than std::endl cz endl causes a flush operation
+
+```getline(cin, s);``` takes a full line inside the string s
+
+If the amount of data is unknown, the following loop is useful:
+
+```c
+while (cin >> x) {
+// code
+}
+```
