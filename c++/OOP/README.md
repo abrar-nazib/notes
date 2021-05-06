@@ -62,6 +62,20 @@ you have to access the properties with ```class_name::function_name()``` type of
 ```class_name::function_name()``syntax could be used for accessing the class constructor from outside the class\
 initiatialization\
 
+```c++
+class Car {        // The class
+  public:          // Access specifier
+    string brand;  // Attribute
+    string model;  // Attribute
+    int year;      // Attribute
+    Car(string x, string y, int z) { // Constructor with parameters
+      brand = x;
+      model = y;
+      year = z;
+    }
+};
+```
+
 Deleting the default constructor: ```class_name() = delete``` inside the class
 
 ```C++
