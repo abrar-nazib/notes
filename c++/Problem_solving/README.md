@@ -7,6 +7,7 @@ swap(a,b); //swaps the values of a and b
 min(a,b); //returns the lowest value between a and b
 min({a,b,c,d,e,f,g}); //if more than two values to be compared, array should be passed as parameter
                     // but this one is a fucked up function, can't take pre declared array
+array.size(); //returns array size
 min_element(array, array+array_size); // does the job of comparing array and returns memory index
 find(array, array+array_size, value_searching_for); //returns the pointer of the value, (- arr) returns the index, if returns array size, it's a fail case
 binary_search(sorted_array, sorted_array+size, value_searching_for); // returns a boolean value
@@ -47,6 +48,31 @@ vect_data.insert(vect_data.end()-1, value); //inserts value at the [end-1] posit
 
 ### Vector read/print
 
+basic array printing style
+
+```c++
+vect_data[index];//returns the data in the index
+vect_data.front(); //returns the first data
+vect_data.back(); //returns the last data
+
+for(int dd:vect_data){
+    cout << dd;         //prints all elements in the vector
+}
+vect_data.data(); //returns the pointer of the first element of the vector
+```
+
 ### Vector update
 
+```c++
+vect_data[x]=y //updated the data on the x index
+
+vect_data.swap(vect_data2); //swaps vect data full vector with vector data 2
+```
+
 ### Vector delete
+
+```c++
+vect_data.pop_back();//deletes the last element of the vector
+vect_data.clear(); //deletes all the elements of the vector, makes the vector empty
+vect_data.erase(vect_data.begin()+2, vect_data.begin()+3); //deletes the element at index 2
+```
