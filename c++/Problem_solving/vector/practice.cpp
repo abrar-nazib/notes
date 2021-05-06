@@ -9,15 +9,39 @@ void print(vector<int> data)
     cout << "\n\n";
 }
 
+vector<int> input()
+{
+    vector<int> inputted_array;
+    int data_size;
+    int n;
+    cin >> data_size;
+    while (data_size)
+    {
+        cin >> n;
+        inputted_array.push_back(n);
+        data_size--;
+    }
+    return inputted_array;
+}
+
+vector<int> reverse(vector<int> inputted_data)
+{
+    vector<int> reversed_vect;
+    while (!inputted_data.empty())
+    {
+        reversed_vect.push_back(inputted_data.back());
+        inputted_data.pop_back();
+    }
+    return reversed_vect;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-
-    vector<int> vect_data({1, 2, 3, 4, 5});
-    //cout << vect_data[3];
-    int x[5] = {1, 2, 3, 4, 5};
-    for (int l : x)
-        cout << l;
+    vector<int> inputted_data = input();
+    print(inputted_data);
+    inputted_data = reverse(inputted_data);
+    print(inputted_data);
     return 0;
 }
