@@ -134,3 +134,24 @@ Protected -> Less visible than Public but more visible than Private.\
 Protected properties could be accessed by main class and all the sub classes in the heirarchy\
 Can not accessed from outside of the class heirarchy\
 Protected properties could be accessed from constructors may b? otherwise shows errors
+
+## Error Handling
+
+```c++
+try
+    {
+        cout << Server::compute(A, B) << "\n";
+    }
+    catch(std::bad_alloc &memory)
+    {
+        cout << "Not enough memory\n";
+    }
+    catch (const std::exception &message)
+    {
+        cout << "Exception: " << message.what() << "\n";
+    }
+    catch (...)
+    {
+        cout << "Other Exception\n";
+    }
+```
