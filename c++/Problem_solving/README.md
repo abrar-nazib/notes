@@ -16,7 +16,7 @@ sort(array, array+array_size); //sorts the array
              
 ```
 
-## Vector
+## Vector[1D]
 
 Vector could be called a dynamic array, memory doesn't need to be pre defined
 
@@ -52,6 +52,7 @@ basic array printing style
 
 ```c++
 vect_data[index];//returns the data in the index
+vect_data.at(index); //returns the data in the index
 vect_data.front(); //returns the first data
 vect_data.back(); //returns the last data
 
@@ -75,4 +76,38 @@ vect_data.swap(vect_data2); //swaps vect data full vector with vector data 2
 vect_data.pop_back();//deletes the last element of the vector
 vect_data.clear(); //deletes all the elements of the vector, makes the vector empty
 vect_data.erase(vect_data.begin()+2, vect_data.begin()+3); //deletes the element at index 2
+```
+
+## Vector[2D]
+
+```c++
+vector<type> name; //is the base syntax
+vector<int> data // data is an integer type vector -> vector containing integer type data
+vector<vector <int>> data // data is a VECTOR type vector where VECTOR contains integer type data and vector contains vector type data 
+```
+
+### Data Accessing in 2D vector
+
+```c++
+var[row][column];// scheme
+```
+
+### 2D vector creation
+
+```c++
+vector<vector<int>> data(row); //creates a vector with n(rows)
+vector<vector<int>> data(row, vector<int>(column)); //creates a vector with n(rows) and each row will have a vector having n(column)
+vector<vector<int>> data(row, vector<int>(column,default_value))//creates a vector with n(rows) and each row will have a vector having n(column) and each element's default value is default_value
+vector<vector<int>> vect({{1,2},{2,3},{3,4}}) //base vector declaration
+
+```
+
+### Data Addition in 2D Vector
+
+```c++
+    vector<vector<int>> vect;
+    vector<int> row;
+    row.push_back(2);
+    row.push_back(3);
+    vect.push_back(row);//inserts 2, 3 in the first row
 ```
