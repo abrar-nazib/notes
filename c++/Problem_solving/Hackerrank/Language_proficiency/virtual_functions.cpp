@@ -27,7 +27,12 @@ class Professor : public Person
 {
 public:
     int publications;
-    int cur_id = 1;
+    static int pr_cid;
+    int cur_id = pr_cid;
+    Professor()
+    {
+        pr_cid++;
+    }
     void getdata()
     {
         cin >> name >> age >> publications;
@@ -42,7 +47,12 @@ class Student : public Person
 public:
     int marks = 0;
     int xx;
-    int cur_id = 2;
+    static int st_cid;
+    int cur_id = st_cid;
+    Student()
+    {
+        st_cid++;
+    }
     void getdata()
     {
         cin >> name >> age;
@@ -57,6 +67,8 @@ public:
         cout << name << " " << age << " " << marks << " " << cur_id << "\n";
     }
 };
+int Student::st_cid = 1;
+int Professor::pr_cid = 1;
 //----------------------------------------------------------------------------------------
 int main()
 {
