@@ -155,3 +155,15 @@ try
         cout << "Other Exception\n";
     }
 ```
+
+## Template
+
+```c++
+template <typename T> //typename or class -> exactly same
+void Print(){
+    cout << value <<endl;
+}
+
+Print<int>(5);
+Print<float>(5.00ff);
+```
