@@ -1,169 +1,236 @@
-# Object Oriented Programming with c++
+# Organized OOP Notes
 
----
+Learning OOP in the finest way is the top priority. Must understand every topic.
 
-## Basics
+## Classes and Objects
 
-writing classess is like writing a new data type\
-
-## Classes VS Structs
-
-Property visibility is set to private in classes\
-Classes are private by default where Structs are public by default\
-But both are like new data types
-
-## Static keyword
-
-Static means the variable or method will be available for only this translation unit
-
-## Extern keyword
-
-Extern keyword will look for the variable or method in other translation units\
-Will look for static variables or methods actually
-
-## Static in classes and structs
-
-static variable inside a class: there will be only one instance of that variable accross all the instances of the classs\
-it's a little bit messy idea. Suppose I have some objects derived from a certain class. and they all have a static variable\
-named __bal. If you change this variable in any of the objects, it will be changed in all other objects(instances) as well\
-static means that there is only one instance of that variable\
-Static method can not access a non-static variable
-
-### Local Statics
-
-variable will be local -> could be accessed from that perticular scope only but the lifetime of the variable \
-will be the lifetime of the program\
-Handy when you don't want to make a global variable but don't want the local variable be re-initialized again and again.
-difference with global -> globals are accessible in global scope, local statics are not.
-
-## Struct
-
-```C++
-struct Name{
-    //properties
-    int x, y;
-};
-```
-
-struct initializer syntax
-
-```C++
-Name variable;
-Name variable2 = {4, 5}
-```
-
-## Constructors
-
-Basically a method which is called whenever an instance is made from a class
-constructor method has to have the name of the class
-could have multiple constructor functions
-if constructor function is kept inside private it means you can not instantiate the class
-you have to access the properties with ```class_name::function_name()``` type of syntax
-```class_name::function_name()``syntax could be used for accessing the class constructor from outside the class\
-initiatialization\
+Classes are user defined data types which works like a blueprint to create more and more objects from it\
+Naming conventions:```CamelCase```\
+Syntax:
 
 ```c++
-class Car {        // The class
-  public:          // Access specifier
-    string brand;  // Attribute
-    string model;  // Attribute
-    int year;      // Attribute
-    Car(string x, string y, int z) { // Constructor with parameters
-      brand = x;
-      model = y;
-      year = z;
-    }
-};
-```
-
-Deleting the default constructor: ```class_name() = delete``` inside the class
-
-```C++
-class Entity{
+class ClassName{
 public:
-    Entity(){
-    // code here
-    }
-
+    //public properties and methods
+private:
+    //private properties and methods
 };
 ```
 
-## Destructors
+Objects are created according to the blueprint of the class\
+Syntax:
 
-Function to run when you destroy an instance of that class\
-general syntax is: ```~class_name(){}```\
-Stack allocated ( will discuss about it later)\
-Important: If some memory is allocated in heap manually, you have to clean it manually. It is where destructor comes\
+```c++
+//Object creation
+ClassName object;   //will be allocated in the stack
+Classname *object = new ClassName(); //will be allocated in the heap and will be dynamic memory{NB: new keyword returns a pointer}
+
+//accessing and modifying properties
+variable = object.variable; //for stack allocated classes
+variable = object->variable; //for heap allocated classes
+
+// accessing methods
+returned_value = object.method(parameters); // for stack allocated classes
+returned_value = object->method(parameters); // for heap allocated classes
+```
+
+## Access Specifiers
+
+**Public**:\
+Property or method accessible to anyone(need detailed review)\
+**Private**:\
+Property or method *directly* accessible to only class(inside class definition) even not to sub classes\
+Have to write public methods which can access the properties. Main objective is to keep "Properties" a secret.\
+Properties will be considered private if no access specifier is defined(default access specifier of c++)\
+**Protected**:\
+Properties accessible inside class definition and to the subclasses
+
+## "::" The scope resolution operator and Methods outside classes
+
+Properties and methods could be defined inside or outside of the class definition\
+Class Methods outside the class definition{in the global scope} could be defined using a scope resolution operator\
+Syntax:
+
+```c++
+class ClassName{
+public:
+    int property1;
+    int property2;
+    string property3 = "default value";
+    void method_name(int parameters); //medhod declaration 
+};
+void ClassName::method_name(){ //void could be replaced with any return data type
+    //accessing class properties using scope resolution operator
+    cout << property1 << endl; //works but not the best practice (will be cleared in private section)
+    cout << ClassName::property2 << endl; //best practice
+    ClassName::property3 = "modified value";
+}
+```
+
+## Class Constructors
+
+Constructor should have the same name as the class name and should not have any return type\
+Constructors are called autometically whenever an object is created, can't call them manually\
+Class constructors must be public, otherwise will throw an error because private methods cannot be accessed from anywhere but the class itself\
+Syntax:
+
+```c++
+class ClassName{
+    ClassName(parameters){
+        //things to do when an object is created
+    }
+
+};
+ClassName object(parameters); //used to create an object from class
+```
+
+Classes have a default constructor, if no constructor is defined, default constructor is kicked. This constructor does not take any parameters
+
+## Class Destructors
+
+Invoked whenever an object is gone out of scope or terminated using delete operation as the memory gets freed\
+Important thing to remember for destructors: Must free the heap allocated memories using ```delete``` keyword while terminating. Otherwise it's gonna create some real nasty bugs\
+Syntax:
+
+```c++
+class ClassName{
+    ClassName(parameters){
+        //constructor operations
+    }
+    ~ClassName(){
+        //destructor operations as the memory gets freed
+        //most likely can't take any parameters
+    }
+};
+
+delete object; //invokes the destructor as the memory gets de allocated
+```
+
+## All about Overloading
+
+Overloading is the basic idea of multiple variable type compatibility in functions(methods in classes)\
+
+### Overloading Constructors
+
+Constructors are also functions themselves and so they can be overloaded as well\
+Syntax:
+
+```c++
+ClassName{
+    private:
+    int property1;
+    string property2;
+    ClassName(){
+        property1 = 0;
+        property2 = "default_value";
+    }
+   ClassName(int in_property1){
+        property1 = in_property1;
+        property2 = "default_value";
+    }
+    ClassName(string in_property2){
+        property1 = 0;
+        property2 = in_property2;
+    }
+    ClassName(int in_property1, string in_property2){
+        property1 = in_property1;
+        property2 = in_property2;
+    }
+    ClassName(int in_property1 = 0, string in_property2 = "default_value"){
+        //other constructor definitions 
+    }
+};
+```
+
+## Static Keyword in C++
+
+### Static Properties
+
+The property or variables declared with static keyword will be stored in the heap and that line of code will be executed just once\
+The concept gets clear in the usage in classes. A static class property has only one instance of that property no matter how many instances(objects) are made from the class. *The value of a static property can not be set inside a class. It has to be set somewhere outside of the class definition*\
+Syntax:
+
+```c++
+void count(){
+    static int times = 0;
+    cout << ++times << endl;
+}
+class Clock{
+public:
+    static int id;  //property declaration
+};
+int Clock::id = 1;  //property definition
+
+int main(){
+    count();    //count = 1
+    count();    //count = 2
+    cout << Clock::id <<endl;
+}
+```
+
+### Static Methods
+
+Static methods will have class scope. Means the method will be shared by all the objects.\
+Can use only static properties in the static method. Have to call them using scope resolution operators\
+Syntax:
+
+```c++
+class ClassName{
+    static int objectCount;
+    static int objects(){
+        return objectCount;
+    }
+    ClassName(){
+        objectCount++;
+    }
+};
+int ClassName::objectCount = 0;
+int main(){
+    ClassName object1;
+    ClassName object2;
+    ClassName object3;
+    cout << ClassName::objects() << endl;
+    return 0;
+    }
+```
+
+## Friend functions
+
+Friend methods can access private properties of a class\
+Syntax:
+
+```c++
+class ClassName{
+private:
+//properties
+public:
+//constructors
+friend friendFunction(ClassName object); //declaration that a friend function exists
+
+};
+
+void freindFunction(ClassName object){
+    cout << object.property; //accessing object's private properties
+}
+
+```
+
+## Friend Classes
+
+Will be discussed later
 
 ## Inheritance
 
-hierarchy of classes: Main class(parent) and subclass(branch classes) idea.\
-important for avoiding code duplication\
+A process of getting the features of other class. Could be called child(sub) class inheriting parent's(base's) properties and methods\
+Child(sub) classes inherit all non-private methods and properties. It's not gonna inherit constructors, destructors, friend functions\
+Inheritance syntax:
 
 ```c++
-class class1{
-    //some code
-    };
-class class2 : public class1{
-    //class2 extends class1
-    //class2 has all the properties that class1 has
+class ParentClass{
+    // Parent properties and methods
 };
-```
-
-## Virtual functions
-
-Allows to override methods in subclasses\
-```virtual vfunction(){//function_definetion}``` creates a vTable for this specific function\
-Which allows to overide the methods of parent class
-```function_type function_name(parameters) override {function definition}```
-override keyword is optional. but a good practice\
-need extra memory for vtables
-
-## Interfaces
-
-Specific type of virtual function(pure virtual function)*Abstract method may b*\
-No implementation in the base class. Subclasses are forced to implement this virtual function\
-```virtual function_type function_name() = 0``` says you have to implement this this function in all the subclasses
-
-## Visibility  
-
-3 types of visibility are there -> Private, Protected, Public
-visibility of Properties in classes are set to private\
-Private properties in classes can be accessed only from within that class and 'friends'. Not even subclasses of that class can access these properties.\
-Protected -> Less visible than Public but more visible than Private.\
-Protected properties could be accessed by main class and all the sub classes in the heirarchy\
-Can not accessed from outside of the class heirarchy\
-Protected properties could be accessed from constructors may b? otherwise shows errors
-
-## Error Handling
-
-```c++
-try
-    {
-        cout << Server::compute(A, B) << "\n";
-    }
-    catch(std::bad_alloc &memory)
-    {
-        cout << "Not enough memory\n";
-    }
-    catch (const std::exception &message)
-    {
-        cout << "Exception: " << message.what() << "\n";
-    }
-    catch (...)
-    {
-        cout << "Other Exception\n";
-    }
-```
-
-## Template
-
-```c++
-template <typename T> //typename or class -> exactly same
-void Print(){
-    cout << value <<endl;
-}
-
-Print<int>(5);
-Print<float>(5.00ff);
+class ChildClass : public Parentclass
+{
+    // extra properties and methods
+};
 ```
