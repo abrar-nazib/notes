@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "PC_Virus.C": "cpp"
-    }
+    },
+    "liveServer.settings.port": 5501
 }

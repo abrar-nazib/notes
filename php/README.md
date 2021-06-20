@@ -67,3 +67,22 @@ The ```require_once()``` expression is identical to require except PHP will chec
 
 * [```strtolower ( string $string ) : string```](https://www.php.net/manual/en/function.strtolower)\
     Makes a string all lower case.
+
+## Session Functions
+
+* [```session_start ( array $options = [] ) : bool```](https://www.php.net/manual/en/function.session-start.php)\
+    Starts a new session or resumes the existing session.
+* [```unset ( mixed $var , mixed ...$vars ) : void```](https://www.php.net/manual/en/function.unset.php)\
+    Used to unset a variable. Specially used in unsetting Session variables;
+
+## HTTP Header functions
+
+* [```header ( string $header , bool $replace = true , int $response_code = 0 ) : void```](https://www.php.net/manual/en/function.header.php)\
+    Used to send a raw http header. ```header('Location: index.php')``` is used to redirect.
+
+## Security functions
+
+* [```trim ( string $string , string $characters = " \n\r\t\v\0" ) : string```](https://www.php.net/manual/en/function.trim.php)\
+    Removes the specified characters from a string. If the second parameter is not set then whitespaces are removed.
+* [```htmlentities( string $string, int $flags = ENT_COMPAT, string|null $encoding = null, bool $double_encode = true): string```](https://www.php.net/manual/en/function.htmlentities.php)\
+    Converts all applicable characters to html entities.
