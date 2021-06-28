@@ -8,6 +8,7 @@ Memory is devided into three sections:
 | Heap(actually Stack) |
 | Stack(actually Heap) |
 | Code                 |
+
 Programs can directly access code and stack portion of the memory. Can't access heap portion of the memory.
 
 ## Arrays
