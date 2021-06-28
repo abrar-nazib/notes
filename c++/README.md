@@ -127,4 +127,5 @@ void swap(int& x, int& y){  //call by reference function design
 swap(a,b) //call by reference
 // Reference is nothing but alias to a variable. Here the main function is calling the variables as a,b but the swap function
 // is calling them as  x,y. Nothing so complicated
+// may be it could be defined as &x = a, &y = b
 ```
