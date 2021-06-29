@@ -29,14 +29,23 @@ Assembly language reduces the process of compiling which makes itself faster
 
 ## Registers
 
+Registers:Record or collection of information.\
 What are registers?
 
 1. Registers are memory cells built inside CPU.
+2. Fastest storage area/location
+3. Quickly accessible by CPU as these guys are built inside CPU
 
-**Diagram:**\
+**Diagram:**
 
 |           |     |       | CPU      |
 | --------- | --- | ----- | -------- |
 | Hard Disk | RAM | Cache | Register |
 
 Closeness to the cpu decides the file transfer speed. Assembly language lets us to access the cpu registers.
+ 
+### Types of registers
+
+There are 14 types registers inside a CPU:
+
+![Types of Registers](types_of_registers.jpg | width=100)
