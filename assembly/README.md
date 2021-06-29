@@ -48,4 +48,4 @@ Closeness to the cpu decides the file transfer speed. Assembly language lets us 
 
 There are 14 types registers inside a CPU:
 
-![Types of Registers](types_of_registers.jpg | width=100)
+![Types of Registers](types_of_registers.png)
