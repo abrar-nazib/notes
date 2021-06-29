@@ -1,40 +1,40 @@
-# Notes on assembly language
+# Notes on Assembly language
 
-## Structure of a computer memory
+This language was designed by David John Wheeler
+What is assembly language?\
 
----
+1. A computer programming language
+2. Low level language(close to the hardware)
 
-## CPU workflow
+Why learn Assembly?\
 
----
+1. Better understanding of software and hardware interaction.
+2. Optimization of processing time.
+3. Embedded programming
 
-Works in fetch-execute-cycle\
-Contains:
+## High level language convertion process
 
-1. Program counter
-1. Instruction decoder
-1. Data bus
-1. General Purlpose Registers
-1. Arithmatic and logic units
+|                                       |           |
+| ------------------------------------- | --------- |
+| High Level Language (.c)              |           |
+|                                       | Compiler  |
+| Assemlby Code (.asm)                  |           |
+|                                       | Assembler |
+| Object File(.o){contains source code} |           |
+|                                       | Linker    |
+| Machine code                          |           |
 
-Program counter holds the memory address of the next instruction.\
-Instruction decoder decodes the instruction.\
-Data bus is a connection between CPU and memory.\
-General purpose registers are High speed memories of the CPU. Used for main action purposes\
+Linker links the object files together and links the libraries(if necessary) and then converts itself to binary code.\
+Assembly language reduces the process of compiling which makes itself faster
 
-## Data Accessing Methods
+## Registers
 
-## Important Commands
+What are registers?\
+Registers are memory cells built inside CPU.\
+**Diagram:**\
 
-```bash
-as file.s -o file.o # puts the assembled output(object file) in file.o
-ld file.o -o file # linker to output the new program in file
+|           |     |       | CPU      |
+| --------- | --- | ----- | -------- |
+| Hard Disk | RAM | Cache | Register |
 
-```
-
-## Sections
-
-.section .data\
-Section for memory storage management\
-.section .text\
-Section for program instructions -> CPU will do\
+Closeness to the cpu decides the file transfer speed. Assembly language lets us to access the cpu registers.
