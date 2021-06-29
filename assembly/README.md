@@ -29,8 +29,10 @@ Assembly language reduces the process of compiling which makes itself faster
 
 ## Registers
 
-What are registers?\
-Registers are memory cells built inside CPU.\
+What are registers?
+
+1. Registers are memory cells built inside CPU.
+
 **Diagram:**\
 
 |           |     |       | CPU      |
