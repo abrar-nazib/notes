@@ -1,4 +1,4 @@
-;Program to Subtract integer numbers
+;Program to get two numbers from user and outputting the addition
 ;Author: Nazib Abrar
 ;Date: 20 Jun, 2021
 dosseg
@@ -7,15 +7,22 @@ dosseg
 .data
 .code
 main proc
-    mov bl,9
-    mov cl,1
-    sub bl,cl
+    mov ah,1
+    int 21h
     
-    add bl,48
+    mov bl,al
+    sub bl,48
+    
+    mov ah,1
+    int 21h
+    
+    add bl,al
+
     mov dl,bl
 
     mov ah,2
     int 21h
+
     mov ah,4ch
     int 21h
 main endp
