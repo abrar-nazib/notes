@@ -43,9 +43,57 @@ What are registers?
 | Hard Disk | RAM | Cache | Register |
 
 Closeness to the cpu decides the file transfer speed. Assembly language lets us to access the cpu registers.
- 
+
 ### Types of registers
 
 There are 14 types registers inside a CPU:
 
 ![Types of Registers](types_of_registers.png)
+
+## Addressing Modes, MOV instruction, Service routine, ASCII code, Interrupt
+
+![instruction_interrupt](instruction_interrupt.png)
+**Correction**\
+a=97 and b=98\
+INT 10H is for graphics
+
+## Program structure, Syntax, Program to print a single character on screen
+
+![understanding program structure](understanding_program_structure.png)
+
+## Dosbox commands
+
+1. Edit filename.asm
+2. MASM filename.asm; => semicolon for not showing the log in the screen
+3. LINK filename.obj;
+4. filename.exe
+
+## Character input
+
+```assembly
+    mov ah,1    ;moving 1 in accumulator means input will be saved in al portion of the register
+    int 21h
+
+    mov dl,al   ;register addressing -> moving the inputted value inside data register
+```
+
+## ADD operation
+
+```assembly
+    mov bl,2    ;moving values to a general purpose registers
+    mov cl,3    
+
+    add bl,cl   ;here, bl is the destination register and cl is the source register
+                ;cl won't change its value, but bl will hold the result of addition of the bl,cl
+    add bl,48   ;ASCII 0=48, bl+48 will generate the ascii value of the result and put it into bl
+
+    mov dl,bl   ;moving the answer to data register
+```
+
+## SUB operation
+
+```assembly
+    mov bl,9    ;moving values to a general purpose registers
+    mov cl,1
+    sub bl,cl   ;here, bl is the destination register and cl is the source register
+```
