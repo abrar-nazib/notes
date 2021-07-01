@@ -97,3 +97,12 @@ INT 10H is for graphics
     mov cl,1
     sub bl,cl   ;here, bl is the destination register and cl is the source register
 ```
+
+## Variables
+
+![variables](variables.png)
+
+## Strings
+
+```assembly
+```

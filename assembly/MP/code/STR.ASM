@@ -22,7 +22,7 @@ main proc
     mov ah,2
     int 21h
 
-    mov dx,13
+    mov dx,13               ;carriage return
     mov ah,2
     int 21h
 
