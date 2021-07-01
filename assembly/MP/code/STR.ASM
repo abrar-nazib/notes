@@ -13,7 +13,7 @@ main proc
     mov ax,@data            ;moving address of data segment in accumulator ax(16 bit)
     mov ds,ax               ;moving ax inside data segment register => initiallizes a heap memory
 
-    ;mov dx,offset msg1      ;moving string address into dx(16 bit){addresses are in 16 bit}
+    ;mov dx,offset msg1     ;moving string address into dx(16 bit){addresses are in 16 bit}
     lea dx,msg1             ;load effective address dx to msg1
     mov ah,9
     int 21h

@@ -105,4 +105,33 @@ INT 10H is for graphics
 ## Strings
 
 ```assembly
+    mov ax,@data            ;moving address of data segment in accumulator ax(16 bit)
+    mov ds,ax               ;moving ax inside data segment register => initiallizes a heap memory
+
+    ;mov dx,offset msg1      ;moving string address into dx(16 bit){addresses are in 16 bit}
+    lea dx,msg1             ;load effective address dx to msg1
 ```
+
+## Loop, Label, Counter Register, Inc, Program to print 0 to 1
+
+![loops](loop.png)
+
+```assembly
+    mov cx,26       ;Setting the counter register
+    mov dx,65       
+    loopingLabel:
+        mov ah,2
+        int 21h 
+        
+        add dx,1    ;incrementing the dx register value
+        ;inc dx     ;increments dx by 1
+    loop loopingLabel
+```
+
+## Flag Register Carry parity Auxiliary zero sign trap interrupt direction and overflow flag
+
+![flag registers](flag_registers.png)
+
+## Jump
+
+![jump](jump.png)
