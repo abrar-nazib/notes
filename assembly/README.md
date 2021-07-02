@@ -144,3 +144,6 @@ Carriage return is the code of "Enter Key"
 ## Push and Pop, Stack
 
 ![stack](stack.png)
+
+## Nested loops
+
