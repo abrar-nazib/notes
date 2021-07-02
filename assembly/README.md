@@ -147,3 +147,17 @@ Carriage return is the code of "Enter Key"
 
 ## Nested loops
 
+![nested_loop](nested_loop.png)
+
+## Procedure
+
+![process](process.png)
+
+## Macro
+
+Macro has to be defined before the main code\
+![macro](macro.png)
+
+## Signed and unsigned number
+
+![signed_unsigned](signed_unsigned.png)
