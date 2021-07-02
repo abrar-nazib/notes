@@ -55,7 +55,8 @@ There are 14 types registers inside a CPU:
 ![instruction_interrupt](instruction_interrupt.png)
 **Correction**\
 a=97 and b=98\
-INT 10H is for graphics
+INT 10H is for graphics\
+Carriage return is the code of "Enter Key"
 
 ## Program structure, Syntax, Program to print a single character on screen
 
@@ -135,3 +136,11 @@ INT 10H is for graphics
 ## Jump
 
 ![jump](jump.png)
+
+## Array
+
+![array](array.png)
+
+## Push and Pop, Stack
+
+![stack](stack.png)
