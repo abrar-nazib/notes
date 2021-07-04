@@ -161,3 +161,18 @@ Macro has to be defined before the main code\
 ## Signed and unsigned number
 
 ![signed_unsigned](signed_unsigned.png)
+
+## Signed Division
+
+![signed_division](signed_division.png)
+**Correction:**\
+Quotient goes inside al and remainder goes inside ah
+
+## Multiplication
+
+![multiplication](multiplication.png)
+
+## Graphics in assembly
+
+![graphics](graphics.png)
+![graphics](graphics2.png)
