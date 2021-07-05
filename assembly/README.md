@@ -82,7 +82,7 @@ Carriage return is the code of "Enter Key"
 
 ```assembly
     mov bl,2    ;moving values to a general purpose registers
-    mov cl,3    
+    mov cl,3
 
     add bl,cl   ;here, bl is the destination register and cl is the source register
                 ;cl won't change its value, but bl will hold the result of addition of the bl,cl
@@ -119,11 +119,11 @@ Carriage return is the code of "Enter Key"
 
 ```assembly
     mov cx,26       ;Setting the counter register
-    mov dx,65       
+    mov dx,65
     loopingLabel:
         mov ah,2
-        int 21h 
-        
+        int 21h
+
         add dx,1    ;incrementing the dx register value
         ;inc dx     ;increments dx by 1
     loop loopingLabel
@@ -176,3 +176,14 @@ Quotient goes inside al and remainder goes inside ah
 
 ![graphics](graphics.png)
 ![graphics](graphics2.png)
+
+## Commands
+
+```bash
+nasm -fwin32 file.asm #inside windows to make object files
+gcc file.obj # will link the object file with all standard libraries
+gcc file.obj main.c -o main # will make an executable named main from file.obj and main.c
+gcc main.c -o main.asm -S   # S flag means no executable, just assembly code
+gcc main.c -o main.asm -S -O0  # O0 flag means no optimization in the assembly code
+
+```
