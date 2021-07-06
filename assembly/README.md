@@ -187,3 +187,9 @@ gcc main.c -o main.asm -S   # S flag means no executable, just assembly code
 gcc main.c -o main.asm -S -O0  # O0 flag means no optimization in the assembly code
 
 ```
+
+# Handling structs
+
+C normally expects the struct's integer/dword variables to be returned inside eax register and char variables inside ebx registers.\
+As long as they're less than 16 byte in size, it follows the normal process of returning them inside registers.\
+Ebx register is 32 bit long. It can handle 4 bytes or 4 characters
