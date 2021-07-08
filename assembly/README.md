@@ -218,14 +218,13 @@ Quotient goes inside al and remainder goes inside ah
 ![graphics](graphics.png)
 ![graphics](graphics2.png)
 
-<<<<<<< HEAD
 ## Talking with hardware
 
 ```assembly
 out port, data_register
 in data_register, port
 ```
-=======
+
 ## Commands
 
 ```bash
@@ -246,4 +245,3 @@ If the structure's big enough to return inside registers, it's gonna push a memo
 That memory address could be used to store the variables inside that memory.
 
 ## Handling pointers
->>>>>>> 41d5a5be60c07b3929d7903f639658d8474bb0ae

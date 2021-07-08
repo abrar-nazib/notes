@@ -10,10 +10,11 @@
 2. **word:** 16bit  -> 2^16-1
 3. **dword:** 32bit (doubleword)    -> 2^32-1
 4. **qword:** 64bit (quadword)  -> 2^64-1
-   
+
 **Variable declaration type:**\
 (+/-) digits radix\
 **Different Type of Radix:**
+
 1. H->Hexadecimal
 2. r->Encoded Real
 3. q/o->Octal
@@ -40,6 +41,7 @@ Addresses are dword/16 bit values
 
 4GB linear address space is available\
 Program segments:
+
 1. code (CS references to the code-segment descriptor table)
 2. data (DS references to the data-segment descriptor table)
 3. stack (SS references to the stack-segment descriptor table)
@@ -52,7 +54,7 @@ Protected addressing mode uses flat segmentation model
 1. Protected Mode
 2. Real-Address Mode
 3. System Management Mode
-   
+
 ## x86 Registers
 
 A register is a storage inside a processor core which could be accessed at much higher speed than conventional memory\
@@ -69,6 +71,7 @@ The index registers of 16 bit old registers are called Specalized registers here
 Directives are not a part of instruction sets. They are there only to assist the assembly process\
 They change the way how code is assembled.\
 **Some Directives:**\
+
 1. .CODE - Indecates the start of the code segment
 2. .DATA - Indecates the start of the data segment
 3. .STACK - Indecates the start of the stack segment
@@ -101,8 +104,8 @@ Least significant byte is stored in the first address and Most significant byte 
 For 12345678h will be saved in the memory like:\
 
 | Offset | Value |
-| --     | -- |
-| 0000   | 78 |
-| 0001  | 56 |
-| 0002  | 34 |
-| 0003 | 12 |
+| ------ | ----- |
+| 0000   | 78    |
+| 0001   | 56    |
+| 0002   | 34    |
+| 0003   | 12    |
