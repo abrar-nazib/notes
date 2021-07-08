@@ -11,6 +11,17 @@
 3. **dword:** 32bit (doubleword)    -> 2^32-1
 4. **qword:** 64bit (quadword)  -> 2^64-1
    
+**Variable declaration type:**\
+(+/-) digits radix\
+**Different Type of Radix:**
+1. H->Hexadecimal
+2. r->Encoded Real
+3. q/o->Octal
+4. t->Decimal
+5. d->Decimal
+6. y->Binary
+7. b->Binary
+
 ## Memory models
 
 ![memory models](memory_models.jpg)
@@ -48,3 +59,50 @@ A register is a storage inside a processor core which could be accessed at much 
 Registers in x86 processors:\
 ![x86 registers](x86_registers.jpg)
 The index registers of 16 bit old registers are called Specalized registers here
+
+## x86 Flags
+
+![Flags in x86 processors](flags.png)
+
+## Directives or Pseudo-ops
+
+Directives are not a part of instruction sets. They are there only to assist the assembly process\
+They change the way how code is assembled.\
+**Some Directives:**\
+1. .CODE - Indecates the start of the code segment
+2. .DATA - Indecates the start of the data segment
+3. .STACK - Indecates the start of the stack segment
+4. .END - Marks the end of a module
+5. .DD - Allocate a double word(4bytes) storage
+6. .DWORD - Allocate a double word(4bytes)
+
+## Instructions
+
+A statement that becomes executable when a program is assembled\
+**Syntax:** ```mnemonic operand1, operand2, operand3,...```
+
+## Lables
+
+Used as a place marker for instructions and data
+
+## Variables
+
+![variables](variables.jpg)
+
+```assembly
+;strings
+hello Byte "Hello World", 0
+;the 0 at the last represents null terminator
+```
+
+## Endianness
+
+Least significant byte is stored in the first address and Most significant byte is stored in the second address.\
+For 12345678h will be saved in the memory like:\
+
+| Offset | Value |
+| --     | -- |
+| 0000   | 78 |
+| 0001  | 56 |
+| 0002  | 34 |
+| 0003 | 12 |
