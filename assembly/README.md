@@ -96,7 +96,7 @@ Carriage return is the code of "Enter Key"
 
 ```assembly
     mov bl,2    ;moving values to a general purpose registers
-    mov cl,3    
+    mov cl,3
 
     add bl,cl   ;here, bl is the destination register and cl is the source register
                 ;cl won't change its value, but bl will hold the result of addition of the bl,cl
@@ -143,11 +143,11 @@ lodsb
 
 ```assembly
     mov cx,26       ;Setting the counter register
-    mov dx,65       
+    mov dx,65
     loopingLabel:
         mov ah,2
-        int 21h 
-        
+        int 21h
+
         add dx,1    ;incrementing the dx register value
         ;inc dx     ;increments dx by 1
     loop loopingLabel
@@ -218,9 +218,32 @@ Quotient goes inside al and remainder goes inside ah
 ![graphics](graphics.png)
 ![graphics](graphics2.png)
 
+<<<<<<< HEAD
 ## Talking with hardware
 
 ```assembly
 out port, data_register
 in data_register, port
 ```
+=======
+## Commands
+
+```bash
+nasm -fwin32 file.asm #inside windows to make object files
+gcc file.obj # will link the object file with all standard libraries
+gcc file.obj main.c -o main # will make an executable named main from file.obj and main.c
+gcc main.c -o main.asm -S   # S flag means no executable, just assembly code
+gcc main.c -o main.asm -S -O0  # O0 flag means no optimization in the assembly code
+
+```
+
+## Handling structs
+
+C normally expects the struct's integer/dword variables to be returned inside eax register and char variables inside ebx registers.\
+As long as they're less than 16 byte in size, it follows the normal process of returning them inside registers.\
+Ebx register is 32 bit long. It can handle 4 bytes or 4 characters.\
+If the structure's big enough to return inside registers, it's gonna push a memory address in the stack.\
+That memory address could be used to store the variables inside that memory.
+
+## Handling pointers
+>>>>>>> 41d5a5be60c07b3929d7903f639658d8474bb0ae
