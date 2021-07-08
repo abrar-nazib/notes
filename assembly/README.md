@@ -12,6 +12,9 @@ Why learn Assembly?\
 2. Optimization of processing time.
 3. Embedded programming
 
+**Useful Links:**\
+[Complete 8086 instruction set](https://www.gabrielececchetti.it/Teaching/CalcolatoriElettronici/Docs/i8086_instruction_set.pdf)
+
 ## High level language convertion process
 
 |                                       |           |
@@ -50,8 +53,19 @@ There are 14 types registers inside a CPU:
 
 ![Types of Registers](types_of_registers.png)
 
+## Segmentation
+
+```assembly
+mov [0xff], 0x30
+;this instruction moves hex 30 to address hex ff but based on data segment 
+```
+
+**Finding Physical value:** Multiply the data segment value with 16 and then add the offset value
+
 ## Addressing Modes, MOV instruction, Service routine, ASCII code, Interrupt
 
+**Mov:**\
+Mov instructions can't copy immediate values inside segment registers
 ![instruction_interrupt](instruction_interrupt.png)
 **Correction**\
 a=97 and b=98\
@@ -113,6 +127,16 @@ Carriage return is the code of "Enter Key"
     lea dx,msg1             ;load effective address dx to msg1
 ```
 
+Printing strings in 8086 processors has another syntax
+
+```assembly
+message: db, 'An innocent string', 0
+mov si, message
+lodsb
+```
+
+```lodsb``` stores the value of the first byte the ```si``` register pointing to inside al. Then it increments the value of the si
+
 ## Loop, Label, Counter Register, Inc, Program to print 0 to 1
 
 ![loops](loop.png)
@@ -132,9 +156,26 @@ Carriage return is the code of "Enter Key"
 ## Flag Register Carry parity Auxiliary zero sign trap interrupt direction and overflow flag
 
 ![flag registers](flag_registers.png)
+**How Interrupts work:**\
+When we call an interrupt, the CPU is gonna stop running the program, run some code(usually bios code) and then will get back to the main program.\
+There are 256 interrupts. Locate memory viewer to 0x00:0x00 to look up the binary data into them. The first two bytes are segment, second two bytes are the offset.\
+These are the memory addresses where certain codes are located. While interrupt is called CPU goes to that certain address and executes that code and then comes back to the program.\
+8086 processors allow interrupt modification, but modern processors will eventually yell at you if you attempted to do so.\
+Specially in the protected mode.\
+**Important Flags:**\
+JE/JZ(jump if zero/equal) checks whether the ZF or zero flag is set to 1\
+JNE(jump if not equal) checks whether the ZF or zero flag is set to 0 or not\
+JA(jump if above) checks whether the CF=0 and ZF=0\
+JB(jump if below) checks whether the CF=1
+JAE(jump if above or equal)
+JBE(jump if below or equal)
 
 ## Jump
 
+Unconditional Jump. Transfers control to another part of the program.\
+Sets the value of IP register which controls the program execution flow.\
+In detail, IP register will normally increment from the beginning address of the program while holding the current line number.\
+JMP instruction just changes the line number to be executed.\
 ![jump](jump.png)
 
 ## Array
@@ -176,3 +217,10 @@ Quotient goes inside al and remainder goes inside ah
 
 ![graphics](graphics.png)
 ![graphics](graphics2.png)
+
+## Talking with hardware
+
+```assembly
+out port, data_register
+in data_register, port
+```
