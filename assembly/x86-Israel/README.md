@@ -31,6 +31,7 @@
 
 Memory is divided into segments and offsets\
 Program has three segments:
+
 1. code (CS register holds the address of the code segment)
 2. data (DS register holds the address of the data segment)
 3. stack (SS register holds the address of the stack segment)
