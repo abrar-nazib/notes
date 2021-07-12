@@ -62,7 +62,8 @@ A register is a storage inside a processor core which could be accessed at much 
 Registers in x86 processors:\
 ![x86 registers](x86_registers.jpg)
 ![register types](register_types.jpg)
-The index registers of 16 bit old registers are called Specalized registers here
+The index registers of 16 bit old registers are called Specalized registers here\
+**Non Volatile Registers:** ```ebx, ebp, esi, edi```*{These registers must not be changed in a function call}*
 
 ## x86 Flags
 
@@ -145,3 +146,6 @@ movzx ebx, ax ;is used
 ## Loop
 
 ```loop label``` substracts 1 from the ecx register until ecx register's value is 0
+
+## Signed Operations
+
