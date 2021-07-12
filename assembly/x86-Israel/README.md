@@ -61,6 +61,7 @@ Protected addressing mode uses flat segmentation model
 A register is a storage inside a processor core which could be accessed at much higher speed than conventional memory\
 Registers in x86 processors:\
 ![x86 registers](x86_registers.jpg)
+![register types](register_types.jpg)
 The index registers of 16 bit old registers are called Specalized registers here
 
 ## x86 Flags
@@ -99,7 +100,7 @@ hello Byte "Hello World", 0
 ;the 0 at the last represents null terminator
 ```
 
-## Endianness
+## Endianness (Little Endian Method)
 
 Least significant byte is stored in the first address and Most significant byte is stored in the second address.\
 For 12345678h will be saved in the memory like:\
@@ -110,3 +111,27 @@ For 12345678h will be saved in the memory like:\
 | 0001   | 56    |
 | 0002   | 34    |
 | 0003   | 12    |
+
+## Mov instruction & MOVZX/MOVSX instruction
+
+```movzx``` is used to mov data of lower size into the higher byte sized registers
+
+```assembly
+;it's something like
+mov ax, 44h
+mov ebx, ax ;doesn't work perfectly because ebx is 32bit and the higher bits are not always zeros
+;to make the higher bits zero,
+movzx ebx, ax ;is used
+```
+
+```movsx``` uses in the similar way but it fills the upper bits with 1 instead of zero
+
+## Data Operators and directives
+
+1. **OFFSET:** Returns offset of a data label. Distance of the data label from the beginning of the data label
+2. **PTR:** Overrides the operand's default size
+3. **TYPE:** Returns size of operand or array element size
+4. **LENGTHOF:** Returns the number of elements inside an array
+5. **SIZEOF:** Returns the numbers of bytes used by an array initializer
+6. **LABEL:** Redefines the same variable with different size attributes
+7. **ALIGN:** Aligns a variable on a boundary
