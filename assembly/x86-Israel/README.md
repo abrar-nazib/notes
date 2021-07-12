@@ -135,3 +135,13 @@ movzx ebx, ax ;is used
 5. **SIZEOF:** Returns the numbers of bytes used by an array initializer
 6. **LABEL:** Redefines the same variable with different size attributes
 7. **ALIGN:** Aligns a variable on a boundary
+
+## Jump and comparison
+
+![jump](jump.jpg)
+```jcxz label```\
+```jecxz label``` jump when the cx/ecx register is holding zero
+
+## Loop
+
+```loop label``` substracts 1 from the ecx register until ecx register's value is 0
