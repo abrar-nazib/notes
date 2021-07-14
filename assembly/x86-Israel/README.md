@@ -81,6 +81,7 @@ They change the way how code is assembled.\
 4. .END - Marks the end of a module
 5. .DD - Allocate a double word(4bytes) storage
 6. .DWORD - Allocate a double word(4bytes)
+7. .CONST - Stores read-only data
 
 ## Instructions
 
@@ -147,5 +148,10 @@ movzx ebx, ax ;is used
 
 ```loop label``` substracts 1 from the ecx register until ecx register's value is 0
 
-## Signed Operations
+## Symbols
 
+```$``` returns the current value of the location counter or offset from the beginning of the current memory block
+
+## Binary Shifting
+
+```shl register, n``` shift left
