@@ -69,7 +69,7 @@ Terminate:
 	;epilog
 	pop edi
 	pop esi
-	pop ebx
+ 	pop ebx
 	pop ebp
 	ret
 MemoryAddressing ENDP
