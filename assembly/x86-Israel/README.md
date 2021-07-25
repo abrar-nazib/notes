@@ -184,3 +184,8 @@ div and idiv operations are not understood quite well
 ## Arrays and 2D arrays
 
 C++ uses row major organization strategy to store 2 dimensional arrays -> first by row then by columns
+
+## Other Special Instructions
+
+```stosd``` Store EAX's value inside the address EDS:(E)DI is pointing to\
+```rep``` Repeat string-operation until certain condition is met\ repeats according to the value stored in ecx register
