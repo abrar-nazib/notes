@@ -128,6 +128,14 @@ movzx ebx, ax ;is used
 
 ```movsx``` uses in the similar way but it fills the upper bits with 1 instead of zero
 
+```assembly
+cmp eax, ecx
+cmovg eax, ecx      ;this instruction moves the content of ecx into eax if eax is greater than ecx
+cmova eax, ecx      ;same instruction but used for unsigned operation
+cmovl eax, ecx      ;this instruction moves the content of ecx into eax if eax is less than ecx
+cmovb eax, ecx      ;same instruction but used for unsigned operation
+```
+
 ## Data Operators and directives
 
 1. **OFFSET:** Returns offset of a data label. Distance of the data label from the beginning of the data label
@@ -152,7 +160,33 @@ movzx ebx, ax ;is used
 
 ```$``` returns the current value of the location counter or offset from the beginning of the current memory block
 ```$$``` returns the address of the start of the current section
+```@F``` Jump to the nearest ```@@``` label in forward
+```@B``` Jump to the nearest ```@@``` label in the backward
 
 ## Binary Shifting
 
 ```shl register, n``` shift left
+
+## Multiplication and Devide operators
+
+```assembly
+mov eax, 2
+mov ebx, 3
+mul ebx     ;multiplies ebx with eax and stores the result inside eax and edx -> this one is used for unsigned multiplication
+imul ebx    ;same instruction but used for signed multiplications
+mov edx, 44
+mov ebx, 23
+imul edx. ebx   ;edx*ebx is stored inside edx
+
+```
+
+div and idiv operations are not understood quite well
+
+## Arrays and 2D arrays
+
+C++ uses row major organization strategy to store 2 dimensional arrays -> first by row then by columns
+
+## Other Special Instructions
+
+```stosd``` Store EAX's value inside the address EDS:(E)DI is pointing to\
+```rep``` Repeat string-operation until certain condition is met\ repeats according to the value stored in ecx register
