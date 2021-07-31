@@ -1,6 +1,8 @@
 # abrarOS Learnings for future use
 
-**Important link:** [Robert Brown's Interrupt list](http://ctyme.com/rbrown.htm)
+**Important link:** \
+[Robert Brown's Interrupt list](http://ctyme.com/rbrown.htm)\
+[Exception Handling](https://wiki.osdev.org/Exceptions)
 
 ## The BIOS
 
@@ -65,3 +67,27 @@ disassembles a binary file
 
 **Calculation of actual memory from segmentation model:** Multiply te segment by 16 and then add the offset with it
 
+## Disk Access
+
+Disk itself has no concept of files. It's the responsibility of the kernel to read the files from the data structure of them.\
+**Data Sectors:** Data is typically written in sectors typically of 512 byte blocks
+
+### LBA & CHS
+
+CHS is the old system of loading data. Will be using LBA for the most time.\
+**LBA:** Logical Block Address. This method allows us to read disk from the number zero. EX: LBA0, LBA1, LBAn is the nth sector of the disk.\
+**Calculating LBA:** LBA = (Byte Address / 512) ---------- Offset = (Byte Address % 512)\
+For real mode, BIOS has interrupt 0x13 for disk operations.\
+But for 32 bit protected mode, We have to create owr own disk driver
+
+## Protected Mode in Detail
+
+Protected mode is a processor state in x86 architecture which gives access to memory protection, 4GB address space and much more.\
+
+1. Protected mode can provide hardware and memory protection
+2. It's got different memory schemes
+3. 4GB of memory is directly addressable
+
+**Memory protection:**\
+![Memory Protection Scheme](RefImages/protection.png)
+Protected mode allows memory from being accessed, Protected mode can prevent user program talking with hardware

@@ -151,6 +151,7 @@ movzx ebx, ax ;is used
 ## Symbols
 
 ```$``` returns the current value of the location counter or offset from the beginning of the current memory block
+```$$``` returns the address of the start of the current section
 
 ## Binary Shifting
 

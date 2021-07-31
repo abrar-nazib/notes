@@ -11,7 +11,7 @@ start:
     ; AL = number of sectors to read (must be nonzero)
     ; CH = low eight bits of cylinder number
     ; CL = sector number 1-63 (bits 0-5)
-    ; high two bits of cylinder (bits 6-7, hard disk only)
+    ; high two bits of cylinder (bits 6-7, hard cd disk only)
     ; DH = head number
     ; DL = drive number (bit 7 set for hard disk)
     ; ES:BX -> data buffer

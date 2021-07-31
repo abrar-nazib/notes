@@ -4,25 +4,17 @@ _start:
     jmp short start
     nop                  ;bios expects these three lises of code
 times 33 db 0           ;will fill the 33 bytes of memory with zeros for safety purpose
+
 start:
     jmp 0x7C0:step2     ;
 
-    ; AH = 02h
-    ; AL = number of sectors to read (must be nonzero)
-    ; CH = low eight bits of cylinder number
-    ; CL = sector number 1-63 (bits 0-5)
-    ; high two bits of cylinder (bits 6-7, hard disk only)
-    ; DH = head number
-    ; DL = drive number (bit 7 set for hard disk)
-    ; ES:BX -> data buffer
+handle_zero:            ;will be used for handling interrupt zero
+    mov ah, 0eh
+    mov al, 'A'
+    mov bx, 0x00
+    int 0x10
+    iret
 
-    ; Return:
-    ; CF set on error
-    ; if AH = 11h (corrected ECC error), AL = burst length
-    ; CF clear if successful
-    ; AH = status (see #00234)
-    ; AL = number of sectors transferred (only valid if CF set for some
-    ; BIOSes)
 
 step2:    
     cli                 ;clears all the hardware interrupts for setting up the segment registers because it's a very critical job to do
@@ -38,25 +30,13 @@ step2:
     mov sp, 0x7C00      ;giving the program 0x7C00 sized stack
     
     sti                 ;Enables Interrupts
+    
+    mov word[ss:0x00], handle_zero      ;if we don't specify stack segment, it would use the data segment
+    mov word[ss:0x02], 0x7c0               ;little endian effect for storing the offset in the second two bytes
+    int 0
 
-    mov ah, 02h         ;Read Sector command
-    mov al, 1           ;Read one sector
-    mov ch, 0           ;Cylinder low eight bits
-    mov cl, 2           ;read sector 2
-    mov dh, 0           ;head number will be zero
-    mov bx, buffer
-    int 0x13
-
-    mov si, buffer
-    call print
-
-    jc error            ;if you found anything in carry, write error
-    jmp $
-
-error:
-    mov si, error_message
-    call print
-
+    mov si, message     ;storing the address of the message label inside the si register
+    call print   
     jmp $               ;jump to current line of code again and again
 
 print:
@@ -76,9 +56,9 @@ print_char:
     int 10h             ;video/teletype output which prints the character in al register
     ret
 
-error_message: db 'Failed to load Sector', 0
+message: db 'Hello World!', 0
     ;the next section won't execute in this code cz we don't have any bootloader yet
     times 510-($ - $$) db 0  ;fill the rest of the memory with zeros
     dw 0xAA55           ;the actual thing is 0x55AA. It's written like this because intel processors follow little endian method
                         ;dw means dword in assembly
-buffer:
+    
