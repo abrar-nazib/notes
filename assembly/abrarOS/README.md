@@ -90,4 +90,12 @@ Protected mode is a processor state in x86 architecture which gives access to me
 
 **Memory protection:**\
 ![Memory Protection Scheme](RefImages/protection.png)
-Protected mode allows memory from being accessed, Protected mode can prevent user program talking with hardware
+Protected mode allows memory from being accessed, Protected mode can prevent user program talking with hardware\
+Processor is put in ring 3 when user code is run. It's the least privilaged ring.\
+**Memory Scheme:**\
+
+1. Selector Memory scheme
+   * Segment Registers become selector registers
+   * Selectors point to data structures that describe memory ranges and the permissions required to access a given range.  
+2. Paging Memory scheme
+   * Memory is virtual and what user program addresses, that pooints to somewhere entirely different. 

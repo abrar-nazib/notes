@@ -11,7 +11,9 @@ vagrant up [VM]             #will start the VM specified, if none specified, wil
 vagrant status [VM]         #will check the status of the specified virtual machine
 vagrant halt [VM]           #will stop the VM specified, if none specified, will stop all of the vms listed in the config. 
                             #No data will be lost in this process
-vagrant reload [VM]         #will restart the virtual machine reading the vagrantfile
+vagrant reload [VM]         
+                     # will restart the virtual machine reading the vagrantfile and make necessary changes
+
 vagrant suspend [VM]        #will suspend the VM specified, if none specified, will suspend all of the vms listed in the config.
 vagrant resume [VM]         #will resume the VM specified, if none specified, will resume all of the vms listed in the config
 vagrant destroy [VM]        #will destroy the VM specified, if none specified, will destroy all of the vms listed in the config

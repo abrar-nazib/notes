@@ -10,6 +10,7 @@ Go to [this link](https://tmuxcheatsheet.com/) if something is missing here\
 **Split Vertically:** --------------- ```ctrl+b %```\
 **Split Horizontally** -------------- ```ctrl+b "```\
 **Creating a new Session:** --------- ```tmux new -s session_name```\
-**List Running Sessions:** ---------- ```tmux list-sessions```\
+**List Running Session:** ----------- ```tmux list-sessions```\
 **Detaching from a Session:** ------- ```ctrl+b d```\
-**Reattach to an existing session**:  ```tmux attach -t session_name```\
+**Reattach to an existing session:**  ```tmux attach -t session_name```\
+**Scroll:** ------------------------- ```ctrl+b [``` {and then use arrow keys. ```q``` for quitting the scrolling mode}
