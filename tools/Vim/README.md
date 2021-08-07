@@ -23,6 +23,7 @@ operation\
 * **```!```** Using bang after any command means to force that command{used to toggle in some other commnds}\
 * **```.```** Repeat previous commnad\
 * **```:f[ile]```** Shows informations about the file. Similar to ```ctrl+g```
+* **```:reg[isters] [registername]```** Displays type and content of all registers
 
 ## Navigation
 
@@ -88,4 +89,29 @@ d {other command} -> delete according to the other command.
   It actually searches the pattern before the ```ctrl+d``` keybinding.\
   Same thing can be done by pressing ```tab``` key after the pattern with the wildmenu. ```shift+tab``` for selecting backwards.\
   ```wildmenu``` could be set and unset
-* ```:h ^<key>``` In help menu, ```ctrl+<key>``` keybinding is searched replacing ctrl with  ```^``` 
+* ```:h ^<key>``` In help menu, ```ctrl+<key>``` keybinding is searched replacing ctrl with  ```^```
+
+## Cut, Copy, Paste, Undo
+
+* Cut a line ```dd``` {dd saves the line inside the default register}
+* Copy a line ```yy```
+* Cut or copy a line inside blackHole register ```"_dd/yy```
+* Undo last action ```u```
+* Redo the last undoed action ```ctrl+r```
+* Paste after the cursor position ```p```{p is for put/paste}
+* Paste before the cursor position ```P```
+* Paste from register n ```"np/P```
+  
+## Registers
+
+```:reg[isters] [registerName]``` shows all the registers and their contents
+
+* **Unnamed=**""\
+  "" holds text form d, c, s, x and any y operation
+* **Numbered=**"0 "1 ... "9\
+  "0 Holds last text yanked(```y```)\
+  "1 Holds last text deleted(```d```) or changed (```c```)\
+  Numbered registers shift with each d or c
+* **Named=**"a ... "z\
+  To put inside the specified register: ```"ayy```\
+  To append inside the specified register: ```"Ayy```\
