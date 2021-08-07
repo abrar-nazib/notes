@@ -15,11 +15,12 @@ Script files should be given 755 Permission(rwx for owner, rx for group, rx for 
 2. w=2
 3. r=4
 
-## Location of binaries
+## Location of executables
 
-```type -a binary``` returns the location of the binary file\
-Also returns whether the binary/program is shell builtin or not.\
-Shell builtin program helps are acquaired by ```help program_name```
+* ```type -a executable``` returns the location of the executable file\
+  Also returns whether the binary/program is shell builtin or not.\
+  Shell builtin program helps are acquaired by ```help program_name```
+* ```which [-a] executable``` returns locations where executables with the specified name is located
 
 ## Variables
 
@@ -49,7 +50,8 @@ command --flag "${VAR}" # If var is expected to contain any spaces
 ```bash
 $UID        # Stores the user id. Root user's id is 0
 $HOSTNAME   # Stores the hostname of the machine
-$RANDOM     # Stores the 
+$RANDOM     # When printed, prints each time a random number
+$PATH       # Stores the command search path
 ```
 
 ## Manpage
@@ -201,4 +203,48 @@ fold -w1 "mairala"
 # a
 # l
 # a
+```
+
+**```basename path```**\
+Returns the base/executable file of a path{actually a dumb regExp command which treats the rightmost thing as base name}\
+**```dirname path```**\
+Similar to the ```base``` command but returns everything except the base name of a path
+
+## Positional parameters and Special parameters
+
+Positional parameters are the variables which contain contents of the command line.\
+**Parameter:** Parameter is a variable which is being used inside a shell script.\
+**Argument:** The data passed into the shell script.\
+```$0``` stores the name of the script itself\
+```$1``` stores the first argument passed to the command line.\
+```$#``` stores how many parameters were passed to the command line.
+```$@``` stores all the command line arguments {behaves like an array, starts from $1. Usually used in for loops}
+```$*``` similar to the ```$@``` but treats all the cl arguments as a single argument 
+
+## For Loop
+
+```bash
+for NAME [in WORDS ... ] ; do COMMANDS; done
+    # Executes commands for each member in a list.
+```
+
+## While Loops
+
+```bash
+while COMMANDS; do COMMANDS; done # Execute commands as long as a test succeeds
+```
+
+**```shift```**
+
+```bash
+
+````
+
+## Sleep
+
+```bash
+sleep - delay for a specified amount of time
+
+sleep NUMBER[SUFFIX]...
+sleep OPTION
 ```
