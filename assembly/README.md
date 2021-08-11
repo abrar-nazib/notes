@@ -51,7 +51,7 @@ Closeness to the cpu decides the file transfer speed. Assembly language lets us 
 
 There are 14 types registers inside a CPU:
 
-![Types of Registers](types_of_registers.png)
+![Types of Registers](images/types_of_registers.png)
 
 ## Segmentation
 
@@ -66,7 +66,7 @@ mov [0xff], 0x30
 
 **Mov:**\
 Mov instructions can't copy immediate values inside segment registers
-![instruction_interrupt](instruction_interrupt.png)
+![instruction_interrupt](images/instruction_interrupt.png)
 **Correction**\
 a=97 and b=98\
 INT 10H is for graphics\
@@ -74,7 +74,7 @@ Carriage return is the code of "Enter Key"
 
 ## Program structure, Syntax, Program to print a single character on screen
 
-![understanding program structure](understanding_program_structure.png)
+![understanding program structure](images/understanding_program_structure.png)
 
 ## Dosbox commands
 
@@ -115,7 +115,7 @@ Carriage return is the code of "Enter Key"
 
 ## Variables
 
-![variables](variables.png)
+![variables](images/variables.png)
 
 ## Strings
 
@@ -139,7 +139,7 @@ lodsb
 
 ## Loop, Label, Counter Register, Inc, Program to print 0 to 1
 
-![loops](loop.png)
+![loops](images/loop.png)
 
 ```assembly
     mov cx,26       ;Setting the counter register
@@ -155,7 +155,7 @@ lodsb
 
 ## Flag Register Carry parity Auxiliary zero sign trap interrupt direction and overflow flag
 
-![flag registers](flag_registers.png)
+![flag registers](images/flag_registers.png)
 **How Interrupts work:**\
 When we call an interrupt, the CPU is gonna stop running the program, run some code(usually bios code) and then will get back to the main program.\
 There are 256 interrupts. Locate memory viewer to 0x00:0x00 to look up the binary data into them. The first two bytes are segment, second two bytes are the offset.\
@@ -176,47 +176,47 @@ Unconditional Jump. Transfers control to another part of the program.\
 Sets the value of IP register which controls the program execution flow.\
 In detail, IP register will normally increment from the beginning address of the program while holding the current line number.\
 JMP instruction just changes the line number to be executed.\
-![jump](jump.png)
+![jump](images/jump.png)
 
 ## Array
 
-![array](array.png)
+![array](images/array.png)
 
 ## Push and Pop, Stack
 
-![stack](stack.png)
+![stack](images/stack.png)
 
 ## Nested loops
 
-![nested_loop](nested_loop.png)
+![nested_loop](images/nested_loop.png)
 
 ## Procedure
 
-![process](process.png)
+![process](images/process.png)
 
 ## Macro
 
 Macro has to be defined before the main code\
-![macro](macro.png)
+![macro](images/macro.png)
 
 ## Signed and unsigned number
 
-![signed_unsigned](signed_unsigned.png)
+![signed_unsigned](images/signed_unsigned.png)
 
 ## Signed Division
 
-![signed_division](signed_division.png)
+![signed_division](images/signed_division.png)
 **Correction:**\
 Quotient goes inside al and remainder goes inside ah
 
 ## Multiplication
 
-![multiplication](multiplication.png)
+![multiplication](images/multiplication.png)
 
 ## Graphics in assembly
 
-![graphics](graphics.png)
-![graphics](graphics2.png)
+![graphics](images/graphics.png)
+![graphics](images/graphics2.png)
 
 ## Talking with hardware
 

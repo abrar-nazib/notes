@@ -94,7 +94,12 @@ sudo su - username          # Here - or -l will create a new login shell
 ### ```passwd```
 
 ```bash
-passwd --stdin $USER_NAME        # Normally passwd takes input from a prompt but in this case it will be taking from standard input
+passwd $USERNAME            # Creates a prompt to change a user's password
+
+command | passwd --stdin $USERNAME
+passwd --stdin $USERNAME < ${FILE}
+                            # Normally passwd takes input from a prompt but in this case it will be taking from standard input
+passwd -e $USERNAME        # Expires the password and forces to change in first login   
 ```
 
 ### Password Generation
@@ -137,10 +142,50 @@ exit 1      # stops the execution of the program and returns 1 to the std and ex
 
 ## Standard Inputs, Output, Error
 
+**FileDescriptors:** FD 0=STDIN, FD 1=STDOUT, FD 2=STDERR, FD &=bothSTDOUT&STDERR\
 **```read:```**
 
 ```bash
+# Reads a line from the standart input
+
 read -p 'Type something: ' INPUT_CONTAINER_VAR    # Show a prompt on the terminal and store the input inside a variable
+read LINE < ${FILE}                               # Reads a line from the FILE. A newline character stops the execution
+```
+
+**```|```**\
+**Pipe** converts the output from the previous command as standard input for the next command
+
+```bash
+command1 | command2         # The output of command1 works as stdInput of command2
+# Pipes by default doesn't come with anything that could help to redirect stderr
+# So to redirect stderr this method is used
+command1 2>&1 | command2
+# Here, the stderr of command1 also gets redirected to stdout and the stdout gets redirected through pipe
+# In the new version, there is a simpler syntax
+command1 |& command2
+```
+
+**```[fileDescriptor]> and [fileDescriptor]<```**\
+**Redirection** redirects the stdout inside the file specified
+
+```bash
+command > file          # Writes stdout of command into file
+                        # Whatever the command would have written into the terminal will go inside file
+command > file 2>&1     # The stdout of command is getting inside file and stderr is being redirected inside stdin.
+command &> file         # Both stdout and stderr is getting redirected into file.
+command 2> file2        # If command faces any error, the error will go to file
+command 2> /dev/null    #/dev/null is used for dumping something                
+command < file          # Contents of file is used as stdin of the command
+```
+
+**```[fileDescriptor]>> and <<[fileDescriptor]**\
+**Append or add**
+
+```bash
+command >> file         # Appends the stdout of the command into the file
+command >> file 2>>&1   # The errors are also being redirected to stdin
+command &>> file        # Appends both stdout and stderr inside file.
+command 2>> file2       # Appends the stderr fo the command into the file2 
 ```
 
 ## Process
@@ -166,10 +211,6 @@ ps -ef      # Shows every process on the process table
 sha1sum file        # returns the sha1sum value of the file
 sha256sum file      # returns the sha256sum value of the file
 ```
-
-## Piping
-
-Pipe converts the output from the previous command as standard input for the next command
 
 ## String Operations
 
@@ -217,9 +258,9 @@ Positional parameters are the variables which contain contents of the command li
 **Argument:** The data passed into the shell script.\
 ```$0``` stores the name of the script itself\
 ```$1``` stores the first argument passed to the command line.\
-```$#``` stores how many parameters were passed to the command line.
-```$@``` stores all the command line arguments {behaves like an array, starts from $1. Usually used in for loops}
-```$*``` similar to the ```$@``` but treats all the cl arguments as a single argument 
+```$#``` stores how many parameters were passed to the command line.\
+```$@``` stores all the command line arguments. Behaves like an array, starts from ```$1``` Usually used in for loops\
+```$*``` similar to the ```$@``` but treats all the cl arguments as a single argument
 
 ## For Loop
 
