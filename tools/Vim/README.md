@@ -162,6 +162,7 @@ d {other command} -> delete according to the other command.
 * ```n``` is used for jumping to the next found item.
 * ```N``` is used for jumping to the previous found item.
 * ```*``` finds the next occurance of the word the cursor is on.
+* ```#``` finds the previous occurance of the word the cursor is on.
   
 **Substitute and others**\
 

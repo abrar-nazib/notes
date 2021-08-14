@@ -109,14 +109,17 @@ passwd -e $USERNAME        # Expires the password and forces to change in first 
 ```bash
 date +%s        # Returns the time in seconds from January 1, 1970
 date +%N        # Returns the nanoseconds
+date +%F        # Returns the full date
 ```
 
 ## If Statement
 
-If in bash works with freakin opposite style of other programs.\
-Here 0=true, 1=false.\
-```[[]]``` is a shell builtin which works like a not gate which swaps 0 and 1\
-Comparison operators: ```-eq, -ne,-lt, -le, -gt, or -ge```
+* If in bash works with freakin opposite style of other programs.
+* Here 0=true, 1=false.
+* ```[[]]``` is a shell builtin which works like a not gate which swaps 0 and 1
+* Comparison operators: ```-eq, -ne,-lt, -le, -gt, or -ge```
+* ```=```  replaces the ```==``` operator in bash.
+* ```-f filename``` returns 0(true) if file exists on that path
 
 ```bash
 if COMMANDS; then COMMANDS; [ elif COMMANDS; then COMMANDS; ]... [ else COMMANDS; ] fi
@@ -142,8 +145,9 @@ exit 1      # stops the execution of the program and returns 1 to the std and ex
 
 ## Standard Inputs, Output, Error
 
+[Code Example of STDIN, STDOUT, STDERR](Code/stdInOutErr.sh)
 **FileDescriptors:** FD 0=STDIN, FD 1=STDOUT, FD 2=STDERR, FD &=bothSTDOUT&STDERR\
-**```read:```**
+**```read:```**\
 
 ```bash
 # Reads a line from the standart input
@@ -251,18 +255,27 @@ Returns the base/executable file of a path{actually a dumb regExp command which 
 **```dirname path```**\
 Similar to the ```base``` command but returns everything except the base name of a path
 
-## Positional parameters and Special parameters
+## Parsing CLI inputs with or without Positional Parameters
 
-Positional parameters are the variables which contain contents of the command line.\
-**Parameter:** Parameter is a variable which is being used inside a shell script.\
-**Argument:** The data passed into the shell script.\
-```$0``` stores the name of the script itself\
-```$1``` stores the first argument passed to the command line.\
-```$#``` stores how many parameters were passed to the command line.\
-```$@``` stores all the command line arguments. Behaves like an array, starts from ```$1``` Usually used in for loops\
-```$*``` similar to the ```$@``` but treats all the cl arguments as a single argument
+* Positional parameters are the variables which contain contents of the command line.\
+* **Parameter:** Parameter is a variable which is being used inside a shell script.\
+* **Argument:** The data passed into the shell script.\
+* ```$0``` stores the name of the script itself\
+* ```$1``` stores the first argument passed to the command line.\
+* ```$#``` stores how many parameters were passed to the command line.\
+* ```$@``` stores all the command line arguments. Behaves like an array, starts from ```$1``` Usually used in for loops\
+* ```$*``` similar to the ```$@``` but treats all the cl arguments as a single argument
+* ```getopts``` [Example code](Code/inputparse.sh)
+  
+   ```bash
+    getopts vl:s        # Here, l has a mandatory value. Thats why it's followed by the colon.
+    OPTARG              # when an option requires an argument, getopts stores the argument inside OPTARG variable
+    ```
+
 
 ## For Loop
+
+[For Loop example code](Code/for_loop.sh)
 
 ```bash
 for NAME [in WORDS ... ] ; do COMMANDS; done
@@ -271,6 +284,8 @@ for NAME [in WORDS ... ] ; do COMMANDS; done
 
 ## While Loops
 
+[Code example of while loop](Code/while_loop.sh)
+
 ```bash
 while COMMANDS; do COMMANDS; done # Execute commands as long as a test succeeds
 ```
@@ -278,8 +293,35 @@ while COMMANDS; do COMMANDS; done # Execute commands as long as a test succeeds
 **```shift```**
 
 ```bash
+sift    # pops the $1 variable and left shifts all the other ones
+```
 
-````
+## Case Statements
+
+[Case statement example](Code/case.sh)
+
+```bash
+case WORD in [PATTERN [| PATTERN]...) COMMANDS ;;]... esac
+    Execute commands based on pattern matching.
+
+```
+
+## Functions
+
+```bash
+function: function name { COMMANDS ; } or name () { COMMANDS ; }
+    Define shell function.
+function functionName{
+local VARIABLE  # For local variable declaration inside function
+}
+```
+
+## Pattern and RegExp
+
+* ```*``` Matches any string including null string
+* ```?``` Matches any single character
+* ```[...]``` Matches any characters contained within the brackets
+* ```|``` Is treated as or symbol in pattern matching
 
 ## Sleep
 
@@ -288,4 +330,40 @@ sleep - delay for a specified amount of time
 
 sleep NUMBER[SUFFIX]...
 sleep OPTION
+```
+
+## Processes
+
+The process with an ID of 0 is a process that is started when the system boots.
+
+## CronJobs
+
+[Crontab Generator](https://crontab-generator.org/)\
+[Cron Guru](https://crontab.guru/)\
+
+| Value | Description                               |
+| ----- | ----------------------------------------- |
+| MIN   | What minute to execute at                 |
+| HOUR  | What hour to execute at                   |
+| DOM   | What day of the month to execute at       |
+| MON   | What month of the year to execute at      |
+| DOW   | What day of the week to execute at        |
+| CMD   | The actual command that will be executed. |
+
+```bash
+crontab [-u user] file
+crontab [ -u user ] [ -i ] { -e | -l | -r }
+
+0 *12 * * * cp -R /home/cmnatic/Documents /var/backups/ # backs up Documents in every 12 hours
+# If we do not wish to provide a value for that specific field, we simply just place an asterisk(*)
+```
+
+## Logging
+
+Linux logfiles are stored in /var/logs
+
+```bash
+logger [options] [message]      # Will store the log message inside /var/log/messages
+                                # /var/log/messages needs root permission to read
+logger -t program-name message  # Writes the program name instead of the user name in the log file                                
 ```
