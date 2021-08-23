@@ -22,8 +22,9 @@ operation\
 * **```:q[uit]```** Quits the vim editor\
 * **```!```** Using bang after any command means to force that command{used to toggle in some other commnds}\
 * **```.```** Repeat previous commnad\
-* **```:f[ile]```** Shows informations about the file. Similar to ```ctrl+g```
+* **```:f[ile]```** Shows informations about the file. Similar to ```ctrl+g``` ```1ctrl+g``` shows the full path  
 * **```:reg[isters] [registername]```** Displays type and content of all registers
+* **```:e[dit] filePath```** Opens the file from specified path to edit in vim
 
 ## Navigation
 
@@ -50,10 +51,43 @@ operation\
   Go to the top of the file ```:$```
 * Display information about the file(file location, line numbers and current line number) ```ctrl+g```
   
-## Vim options
+## Vim options and Customizations
 
-```set [option]``` Sets the option on
-```set [option]!``` Bang at the end of the option toggles the option
+```:set [option]``` Sets the option on
+```:set [option]!``` Bang at the end of the option toggles the option
+```:set [option]?``` for checking whether the option is set or not
+```set [option]&``` set the value of the command to default value
+
+```bash
+set is        # Sets incremental search on
+set incsearch # Sets incrementsal search on
+
+set hls[earch]    # Sets highlighting search results on
+    # :nohls removes the highlights from the previous search   
+set nu[mber]  # Sets the line number
+set shiftwidth=4  # sets shiftwidth
+set tabstop=4     # sets tabstop
+set list          # Shows the actual characters used in the text file e.g. ^I instead of tab
+set expandtab     # does not utilize tab
+set history=500   # remembers 500 histories
+set ruler         # sets a ruler at the cursor position
+set showcmd       # Shows the incomplete commands in the bottom right
+set scrolloff=5   # keeps 5 lines at top/bottom while using z+Enter
+```
+
+### Colorscheme
+
+* ```color+ctrl+d``` for showing all the available color schemes
+
+### For vimrc
+
+* rc means run command
+* ```:h option-list``` lists all the options available to put inside vimrc
+* ```:options``` opens a list of all options with a breif description
+
+### Remapping
+
+![remapping keys](images/mapping.png)
 
 ## Deleting
 
@@ -86,6 +120,7 @@ d {other command} -> delete according to the other command.
 * ```ctrl+]``` on any word of the help documentation emulates ```:help word``` program
 * ```ctrl+ww``` allows to edit the file while keeping the help documentation on. Toggles the cursor between the files.
 * ```:h :q<ctrl+d>``` for command completion. Lists all the commands starting with q.\
+* ```:h option-list``` lists all the options to set/unset in vim
   It actually searches the pattern before the ```ctrl+d``` keybinding.\
   Same thing can be done by pressing ```tab``` key after the pattern with the wildmenu. ```shift+tab``` for selecting backwards.\
   ```wildmenu``` could be set and unset
@@ -175,13 +210,61 @@ d {other command} -> delete according to the other command.
   * ```:1,5s/old/new/[flags]...``` here, range is separated by comma.
   * ```:.,$s/old/new``` replaces all old with new from current line to the last line. ```.``` current and ```$``` last line.
   * ```%``` range is used for entire line.
-  * ```:/pattern1/,/pattern2/s/old/new/g``` will change everything inside the pattern range.
+  * ```:/pattern1/,/pattern2/s/old/new/g``` will change everything inside the pattern range
 
-## Customizations
 
-```bash
-set is        # Sets incremental search on
-set hls       # Sets highlighting search results on
-    # :nohls removes the highlights from the previous search   
-set nu[mber]  # Sets the line number
-```
+## Text objects and macros
+
+**Basic Syntax:** {operator}{a}{object} or {operator}{i}{object}
+
+* ```[d/c]aw``` on a word, deletes/changes a word under the cursor and deletes following whitespace as well.
+* ```[d/c]iw``` on a word, deletes/changes a word under the cursor but does not delete the whitespaces.
+* ```[d/c]as``` on a sentence, deletes/changes a sentence under the cursor and deletes the following whitespace as well.
+* ```[d/c]is``` on a sentence, deletes/changes a sentence under the cursor but does not delete the following whitespace.
+* ```[d/c]ap``` on a paragraph, deletes/changes a paragraph under the cursor and deletes following new line as well.
+* ```[d/c]ip``` on a paragraph, deletes/changes a paragraph under the cursor but does not delete following new line.
+* ```[d/c]i[ {/}/(/)/[/]/</> ]``` on a line, does the following:
+  * ```colors=[ (/{/[/< ]'red', 'green', 'blue'[ >/]/}/) ]```\
+    giving the command while cursor inside the brackets, deletes/changes everything between the braces
+* ```[d/c]a[ {/}/(/)/[/]/</> ]``` on a line, does the following:
+  * ```colors=[ (/{/[/< ]'red', 'green', 'blue'[ ]/}/)/> ]```\
+    giving the command while cursor inside the brackets, deletes/changes everything and the bracket as well
+* ```[c/d/y]it``` is for working with html tags which copy/change/deletes everything inside of the tags
+* ```[c/d/y]at``` is for working with html tags which copy/change/deletes everything inside including the tags
+
+## Macros
+
+Macros are recorded keystrokes. They are recorded inside registers.
+
+* ```q[register]``` command in normal mode starts recording a macro inside specified register
+* ```@[register]``` command in normal mode replays the keystrokes from the specified register
+* ```@@``` command replays the keystrokes from the most recent macro
+* ```[beginningOftheRange, endingOftheRange]normal @[register]``` applys the keystrokes saved inside specified register on the range
+* ```"ay@``` to save a keystroke sequence inside register as macro
+
+**Pre Recorded Macros in .vimrc:**
+
+* ```let @[register] = '[key sequence]'```
+* ```ctrl+v [character]``` for inserting literal characters
+
+## Visual Mode
+
+There are three versions of visual mode.
+
+* ```v``` for characterwise visual mode {```v``` for returning to the normal mode again}
+  * ```o``` moves the cursor to the opposite end while keeping the highlight
+  * ```u``` lowercase whole selection
+  * ```U``` uppercase whole selection
+  * ```~``` toggle whole selection
+  * ```>``` to shift selected text
+* ```V``` for linewise visual mode
+  * ```<``` SE
+* ```ctrl+v``` for blockwise visual mode
+  * ```O``` in visual mode jumps back and forth in a line
+  * ```$``` for reaching the selection to the end of every line of the motion.
+  * ```A``` Append after each selected line. ```a``` does not work in visual mode
+  * ```I``` Insert before each selected line. ```i``` does not work in visual mode
+* ```gv``` reselect the last visual mode selection
+* ```:``` to enter command mode from visual mode
+  * ```ce[nter]``` centeres all the text
+  * ```le[ft]5``` lefts all the selected text with 5 spaces on the left
