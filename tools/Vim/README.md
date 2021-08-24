@@ -268,3 +268,5 @@ There are three versions of visual mode.
 * ```:``` to enter command mode from visual mode
   * ```ce[nter]``` centeres all the text
   * ```le[ft]5``` lefts all the selected text with 5 spaces on the left
+
+  Say hello from kubuntu
