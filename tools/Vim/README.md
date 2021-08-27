@@ -18,6 +18,8 @@ operation\
 
 ## Commands
 
+* **```:E[xplore]```** shows the files in the current directory to be explored
+* **```command1 | command2```** works as a command seperator for vim
 * **```:w[rite]```** Writes the file\
 * **```:q[uit]```** Quits the vim editor\
 * **```!```** Using bang after any command means to force that command{used to toggle in some other commnds}\
@@ -269,4 +271,33 @@ There are three versions of visual mode.
   * ```ce[nter]``` centeres all the text
   * ```le[ft]5``` lefts all the selected text with 5 spaces on the left
 
-  Say hello from kubuntu
+## Vim Buffers
+
+* ```:buffers``` shows all open buffers
+* ```:ls``` does the same thing
+* ```:b [buffer number]/[buffer name]``` to show the specified buffer on the current window
+* ```:b <tab>/<ctrl+d>``` opens a options tab to choose from the buffers
+* ```:bn/bnext``` opens the next buffer
+* ```:bp/bprevious``` opens the previous buffer in the current screen
+* ```:bl/blast :bf/bfirst``` opens the last buffer of the list
+* ```<ctrl+^>``` works as ctrl+tab in buffers
+* ```:set hidden``` solves the problem while switching through buffers by enabling hidden mode
+* ```:wall``` save changes of all buffers
+* ```:badd fill.ext``` adds the specified file to the buffer list
+* ```:bd file.ext``` deletes the specified buffer from the list
+* ```:1,3bd``` deletes the buffers from the specified range
+* ```:%bd```  Deletes all the buffers from the buffer list
+* ```:bufdo <command>``` execute command on all buffers
+
+## Vim Windows
+
+* ```:h c-w``` shows the help documentation of colon 
+* ```ctrl+ww``` cycles through the open windows
+* ```ctrl+w[jkhl]``` for cycling through windows using navigation keys 
+* ```:sp/split``` split the screen horizontally
+* ```ctrl+w s``` splits the screen horizontally
+* ```:vs``` splits the screen vartically
+* ```:vs file.txt``` splits the screen vertically and opens the specified file in the new window
+* ```:on / ctrl+w o``` removes all the other windows except the current window 
+* ```ctrl+w [+-><=_|]``` for resizing the windows 
+* ```ctrl+w [rR]``` rotates the position of the windows 

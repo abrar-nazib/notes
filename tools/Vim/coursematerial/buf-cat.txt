@@ -1,0 +1,10 @@
+Cat
+ @@@@@      @     @@@@@@@
+@     @    @ @       @
+@         @   @      @
+@        @     @     @
+@        @@@@@@@     @
+@     @  @     @     @
+ @@@@@   @     @     @
+
+This training is provided by LinuxTrainingAcademy.com.

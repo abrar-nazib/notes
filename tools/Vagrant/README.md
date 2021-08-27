@@ -3,6 +3,7 @@
 Box = Operating System Image
 
 ```bash
+vagrant box shortenedURL    #will download the necessary files for vagrant
 vagrant                     #will list options available
 vagrant init USER/BOX       #will create the vagrant file
 vagrant ssh [VM]            #Will ssh into the virtual machine --------exit-------- will terminate the ssh session
