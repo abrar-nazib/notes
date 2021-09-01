@@ -8,4 +8,5 @@ hashid -m <hash>    # returns the hash type of the given hash
 
 Windows hash type : NTLM\
 Unix hashes used to have identifiers for understanding the hash type.\
-```$6$``` Refers to sha512crypt
+
+## Salting

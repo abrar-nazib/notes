@@ -65,8 +65,8 @@ set is        # Sets incremental search on
 set incsearch # Sets incrementsal search on
 
 set hls[earch]    # Sets highlighting search results on
-    # :nohls removes the highlights from the previous search   
-set nu[mber]  # Sets the line number
+                  # :nohls removes the highlights from the previous search   
+set nu[mber]      # Sets the line number
 set shiftwidth=4  # sets shiftwidth
 set tabstop=4     # sets tabstop
 set list          # Shows the actual characters used in the text file e.g. ^I instead of tab
@@ -200,7 +200,7 @@ d {other command} -> delete according to the other command.
 * ```N``` is used for jumping to the previous found item.
 * ```*``` finds the next occurance of the word the cursor is on.
 * ```#``` finds the previous occurance of the word the cursor is on.
-  
+  @
 **Substitute and others**\
 
 * ```:[range]s/old/new/[flags]...``` searches the old and replaces with new.
@@ -301,3 +301,4 @@ There are three versions of visual mode.
 * ```:on / ctrl+w o``` removes all the other windows except the current window 
 * ```ctrl+w [+-><=_|]``` for resizing the windows 
 * ```ctrl+w [rR]``` rotates the position of the windows 
+@@@@@@@@@@@@@@@@@@

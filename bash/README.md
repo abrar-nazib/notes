@@ -554,10 +554,48 @@ awk -F ':' '{print $1 "," $2}' /etc/passwd
 awk -F ':' '{print "UserName: " $1 ", UserID: " $3}' /etc/passwd
 awk -F ':' '{print "UserName: " $1 ", SHELL: " $NF}' /etc/passwd
 awk -F ':' '{print $(NF - 1) }' /etc/passwd
-# $OFS stands for output feild seperator
-# $NF stnds for number of fields
+	# $OFS stands for output feild seperator
+	# $NF stnds for number of fields
 awk -f ':' -v OFS=',' '{print $1, $2}' /etc/passwd
         # -v is used for setting up a variable
+```
+
+### **```sort```** 
+
+```bash
+sort <filename> 	# Sorts the lines of the files in alphabetical order
+-r					# sorts in reverse order
+-n					# sort according to numeric order
+-h					# sort disk size according to human readable format
+-u					# removes the duplicates while sorting
+```
+
+### **```uniq```**
+
+```bash
+uniq <sortedInput>		# removes the duplicates {Works only with sorted data}
+-c						# Shows the occurances of duplicates in the file and which string was duplicate
+```
+
+### **```wc```**
+
+```bash
+wc <filename>			# shows the word count
+						# first column is for number of lines
+						# Second column is for number of words
+						the third command is for number of characters in the word
+```
+
+## Disks and Partitioning
+
+### **```du```**
+
+Shows how much disk is used
+
+```bash
+du <DirectoryPath>		# Shows the disk usage of the specified path
+
+-h						# Shows the data in human readable form
 ```
 
 ## Networking
