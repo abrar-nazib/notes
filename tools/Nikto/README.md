@@ -9,3 +9,4 @@
 * ```-id``` to authenticate, format is ```-id "id:password"```
 * ```-Plugins``` to specify the plugins to be used while scanning ```-list-plugins``` for listing the available plugins
   * ```apacheusers``` plugin tries to enumerates usernames from the web server
+* ```-dbcheck``` to check for syntax errors and stuffs in database

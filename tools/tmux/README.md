@@ -2,6 +2,7 @@
 
 Go to [this link](https://tmuxcheatsheet.com/) if something is missing here\
 \
+![tmux cheat sheet](tmux.png)
 **Base Command syntax:** ------------ ```ctrl+b <command>```\
 **Creating a new window:** ---------- ```ctrl+b c```\
 **Renaming current window:** -------- ```ctrl+b ,```\

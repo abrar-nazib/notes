@@ -20,19 +20,6 @@ process.argv
     # the first two elements of the array is node and app's location
 ```
 
-### Command Line arguments
-
-
-## File system
-
-```javascript
-const fs=require('fs');
-fs.writeFileSync('file_path', 'Buffer to be written on the file');
-        # Creates a file and writes to it in synchronus way.
-fs.appendFileSync('file_path', 'Buffer to append');
-        # Appends the buffer in the specified file in synchronus way.
-```
-
 ## Exporting
 
 * Files loaded with ```require()``` does not share it's variable.
@@ -48,6 +35,15 @@ module.exports = variable/function
 
 ```json
 json string
+```
+
+## Basic Javascript builtin functions
+
+### JSON
+
+```javascript
+JSON.stringify(object); // converts the object into json string
+JSON.parse(JSONstring); // converts json string into JS object
 ```
 
 ## NPM and NPM modules
@@ -69,6 +65,19 @@ npm i[nstall] package_name  # installs the latest version of the package
                     # creates a package-lock.json for security purposes
 npm i package_name@version # installs the specific package
 sudo npm -g i package_name       # installs the package in global scope
+```
+
+### fs
+
+```javascript
+const fs=require('fs');
+fs.writeFileSync('file_path', 'Buffer to be written on the file');
+        # Creates a file and writes to it in synchronus way.
+fs.appendFileSync('file_path', 'Buffer to append');
+        # Appends the buffer in the specified file in synchronus way.
+const dataBuffer = fs.readFileSync('file_path');
+        # returns binary data from file
+const fileContent = fs.readFileSync('file_path').toString();
 ```
 
 ### validator
@@ -124,8 +133,8 @@ yargs.command({
                         type: 'expected input type', //string, array, etc
                     }
             },
-        handler: function(){
-                //handlerCode
+        handler: function(argv){
+                //handlerCode with passed arguments
             }
     })
 ```
