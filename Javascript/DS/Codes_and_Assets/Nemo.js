@@ -15,4 +15,28 @@ function findNemo(array){
   console.log("Call to find Nemo took " + (t1-t0) + " milliseconds");
 }
 
-findNemo(large);
+//findNemo(large);
+
+
+////--------- ES6 Syntax -----------------------------
+
+const findNemo2 = (arr) => {
+  arr.forEach((fish) => {
+    if(fish === 'nemo'){
+      console.log('Found Nemo');
+    }
+  });
+}
+
+findNemo2(everyone);
+
+
+const findNemo3 = (arr) => {
+  for(let fish of arr){
+  if(fish === 'nemo'){
+      console.log('Found Nemo');
+    }
+  }
+}
+
+findNemo3(everyone);
