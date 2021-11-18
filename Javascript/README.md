@@ -1,5 +1,12 @@
 # Javascript Notes
 
+## Strings and String functions
+
+```javascript
+const string = 'value'
+string.charCodeAt(0); //returns v's ASCII/UTF-16 code in decimal
+```
+
 ## Classes and Objects
 
 1. Reference type object

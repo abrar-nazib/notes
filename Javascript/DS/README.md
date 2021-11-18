@@ -155,6 +155,7 @@ Variables are stored in RAM.\
 
 **Codes:** 
 1. [Array_1.js](Codes_and_Assets/Array_1.js)
+2. [stringreverse.js](Codes_and_Assets/stringreverse.js)
 
 **Classifications:**
 1. Static   {Fixed in size. Need to specify the size while declared}
@@ -168,9 +169,12 @@ Variables are stored in RAM.\
 3. Insert -> O(n) -> Linear time
 4. Delete -> O(n) -> Linear time
 
+![Array's Pros and cons](Codes_and_Assets/arrayproscons.png)
+
 ### Methods
 
 ```javascript
+const arr = new Array(size)      // Uncommon style of instantiating an array
 array[2]             // O(1)
 array.push('value'); //adds 'value' to the end of array
                      // O(1) operation
@@ -191,3 +195,34 @@ array.splice(2, 0, 'value')
 * Contiguous memory: Sequencial memory addresses.
 * Arrays are actually objects with integer based keys.
 * Strings are actually array of characters.
+
+## Hash Tables
+
+**Useful Links amd codes:**
+1. [MD5 Hash generator](http://www.miraclesalad.com/webtools/md5.php)
+2. [hashTable.js](Codes_and_Assets/hashTables.js)
+2. [hashTable2 .js](Codes_and_Assets/hashTables2.js)
+
+Data with key-value pair. Difference with arrays: arrays use numbers as index.\
+Keys in hash table stores{actually got by hashing} a memory address where the value could be found.
+
+**Time Complexity:**
+1. Hashing -> converting key to index -> O(1) time complexity
+2. Insert -> O(1)
+3. lookup -> O(1)
+4. delete -> O(1)
+5. search -> O(1) 
+
+**Issues with hash functions:**
+* Hash collition {Because of memory shortage, same memory is allocated for multiple value}
+* ![Hash Collition](Codes_and_Assets/hashCollition.png)
+* While having collition, time complexity slows down to O(n/k) {K=size of hash table} -> O(n){removing constants}
+  
+**Javascript's Implementation of hash Table:**
+1. ```Map()```
+   1. In javascript object's key-value pair, keys are supposed to be strings. If number or function is passed as keys,\
+      it gets stringified.
+   2. ```const a = new Map()``` allows any data type as a key.
+   3. It maintains insertion order. Objects do not maintain insertion order in the memory.
+2. ```Set()```
+   1. ```const a = new Set()``` Similar to ```Map()``` but only stores keys, no values.
