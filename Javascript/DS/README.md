@@ -85,7 +85,7 @@ Companies are looking for:
 
 ![Data Structure and Algorithms needed](Codes_and_Assets/ds&algo.png)
 
-### Step By Step through a problem:
+### **Step By Step through a problem:**
 
 1. When the interviewer says the question, write down the key points at the top (i.e. sorted
 array). Make sure you have all the details. Show how organized you are.
@@ -132,6 +132,36 @@ This is a common follow-up question at Google, where they care a lot about scale
 is usually a divide-and-conquer approach — perform distributed processing of the data and only
 read certain chunks of the input from disk into memory, write the output back to disk and
 combine them later.
+
+### **Good code checklist:**
+
+- [x] It works
+- [x] Good use of data structures
+- [x] Code Re-use/ Do Not Repeat Yourself
+- [x] Modular - makes code more readable, maintainable and testable
+- [x] Less than O(N^2). We want to avoid nested loops if we can since they are expensive. Two
+separate loops are better than 2 nested loops
+- [x] Low Space Complexity --> Recursion can cause stack overflow, copying of large arrays may
+exceed memory of machine
+
+### **Heurestics to ace the question:**
+
+- [x] Hash Maps are usually the answer to improve Time Complexity
+- [x] If it's a sorted array, use Binary tree to achieve O(log N). Divide and Conquer - Divide a data set
+into smaller chunks and then repeating a process with a subset of data. Binary search is a great
+example of this
+- [x] Try Sorting your input
+- [x] Hash tables and precomputed information (i.e. sorted) are some of the best ways to optimize your
+code
+- [x] Look at the Time vs Space tradeoff. Sometimes storing extra state in memory can help the time.
+(Runtime)
+- [x] If the interviewer is giving you advice/tips/hints. Follow them
+- [x] Space time tradeoffs: Hastables usually solve this a lot of the times. You use more space, but you
+can get a time optimization to the process. In programming, you often times can use up a little bit
+more space to get faster time
+
+**And always remember:** Communicate your thought process as much as possible. Don’t worry about
+finishing it fast. Every part of the interview matters.
 
 ## Data Structures intro
 
@@ -204,7 +234,8 @@ array.splice(2, 0, 'value')
 2. [hashTable2 .js](Codes_and_Assets/hashTables2.js)
 
 Data with key-value pair. Difference with arrays: arrays use numbers as index.\
-Keys in hash table stores{actually got by hashing} a memory address where the value could be found.
+Keys in hash table stores{actually got by hashing} a memory address where the value could be found.\
+*Hash tables are asked in interviews to improve time complexity*
 
 **Time Complexity:**
 1. Hashing -> converting key to index -> O(1) time complexity
@@ -226,3 +257,25 @@ Keys in hash table stores{actually got by hashing} a memory address where the va
    3. It maintains insertion order. Objects do not maintain insertion order in the memory.
 2. ```Set()```
    1. ```const a = new Set()``` Similar to ```Map()``` but only stores keys, no values.
+
+**Overall Hash Pros & Cons:**\
+![Hash Pros And Cons](Codes_and_Assets/hashProsCons.png)
+
+## **Linked List**
+
+**Useful Links and Codes:**
+1. [linkedList.js](Codes_and_Assets/linkedList1.js)
+2. [visualalgo.net](https://visualgo.net/en/list)
+
+![Linked List](Codes_and_Assets/linkedList.png)\
+Each element of the linked list is called a node. A node has two parts of it, the value, the pointer to the next node.\
+The first node is called Head and the last node is called tail. Link list is null terminated.\
+The node pointing to null is called the tail.\
+**Time Complexity of Linked Lists:**\
+1. prepend{add node to the beginning of the list} -> O(1)
+2. append{add node to the end of the list} -> O(1)
+3. lookup{travarsal} -> O(n)
+4. insert -> O(n)
+5. delete -> O(n)
+
+**Pointers:** Pointers are reference to a specific place in the memory.
