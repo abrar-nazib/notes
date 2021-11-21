@@ -278,4 +278,11 @@ The node pointing to null is called the tail.\
 4. insert -> O(n)
 5. delete -> O(n)
 
-**Pointers:** Pointers are reference to a specific place in the memory.
+**Pointers:** Pointers are reference to a specific place in the memory.\
+
+### **Doubly Linked List:**
+
+A Doubly linked list has three parts.\
+One holds value, other one holds reference to the next node, and the last holds reference to the previous node.\
+This structure lets a linked list to be travarsed from backwards.\
+![Doubly Linked List](Codes_and_Assets/doublyLinkedList.png) 
