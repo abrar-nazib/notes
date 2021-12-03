@@ -1,10 +1,27 @@
 # Javascript Notes
 
-## Strings and String functions
+## String and String functions
 
 ```javascript
 const string = 'value'
 string.charCodeAt(0); //returns v's ASCII/UTF-16 code in decimal
+```
+## String and Array
+
+```javascript
+const array = string.split("");     //splits the string characterwise and creates an array
+const string = array.join("");    //creates a string from the array elements
+// if used like join(), commas are converted into string
+```
+
+## Array and Array functions
+
+```javascript
+const arr = [1,2,3,4,5];
+arr.forEach((element)=>{console.log(element)}); //will print all the element
+const newArr = arr.forEach((element)=>element); //newArr will be undefined
+const newArr = arr.filter((element)=>element); //all the elements inside arr is now inside newArr
+const foundElement = arr.find((element)=>element === match); //returns the element which matches to the "match"
 ```
 
 ## Classes and Objects
@@ -58,10 +75,123 @@ class Wizard extends Player {       // Class instantiation
 const wizard1 = new Wizard('Abrar', 'Programmer');
 ```
 
-## String and Array
+### Object Propery shorthand
+
+New in JavaScript with ES6/ES2015, if you want to define an object who's keys have the same name as the variables passed-in as properties, you can use the shorthand and simply pass the key name.
 
 ```javascript
-const array = string.split("");     //splits the string characterwise and creates an array
-const string = array.join("");    //creates a string from the array elements
-// if used like join(), commas are converted into string
+let cat = 'Miaow';
+let dog = 'Woof';
+let bird = 'Peet peet';
+
+let someObject = {
+  cat,  //instead of cat:cat
+  dog,
+  bird
+}
+```
+
+### Object and Array Destructuring
+
+The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+
+```javascript
+let [a, b] = [10, 20];
+// a = 10, b = 20
+let [a, b, ...rest] = [10, 20, 30, 40, 50];
+
+console.log(rest); // rest = [30,40,50]
+
+const x = [1, 2, 3, 4, 5];
+const [y, z] = x;   // y=1, z=2 -> const [firstElement, secondElement] = list;
+
+const user = {
+    id: 42,
+    isVerified: true
+};
+
+const {id, isVerified} = user;
+// id = 42, isVerified = true
+```    
+
+
+## Arrow functions
+
+```javascript
+const object = {
+    property1: "value",
+    property2: function(){
+        console.log(this.property1); //returns "value"
+    },
+    property3: () => {
+        console.log(this.property1); //returns undefined
+    },
+        console.log(this.property1); //returns "value"
+    },
+    arrayProp:["mairala", "kaittala", "uraiala"],
+    iterator1:function(){
+        this.arrayProp.forEach(function(element){
+            console.log(element); //prints undefined
+            //because "this" inside a general function has its own scope
+        });
+    },
+    iterator2:function(){
+        this.arrayProp.forEach((element)=>{
+            console.log(element); //prints every element
+            //because "this" inside an array function does not have it's own scope
+        });
+    }
+}
+```
+
+Arrow functions act differently inside objects while acting as a property
+
+## Error Handling
+
+```javascript
+try {
+        //code to run
+}
+catch(error){
+        //the error from the try block will be used as parameter in this catch block 
+}
+```
+
+## JSON
+
+```javascript
+JSON.stringify(object); // converts the object into json string
+JSON.parse(JSONstring); // converts json string into JS object
+```
+
+## Other Uncategorized functions
+
+```javascript
+setTimeout(()={}, s) 
+//execute the first function after s milliseconds
+//here first parameter is a function
+// time is in milliseconds
+```
+
+## Fetch
+
+```javascript
+fetch(url).then((response)=>{
+    response.json().then(()={
+        //this function will be called when json data will get parsed
+    })
+})
+```
+
+## DOM and events
+
+```javascript
+const classElement = document.querySelector('.className');  // select element by class
+const idElement = document.querySelector('#idName');    // select element by id
+const form = document.querySelector('form');    // select element by tag
+form.addEventListener('submit',(e)={    // e is the event which occures while submit is pushed
+    e.preventDefault(); // submit's default behavior is to refresh the browser. Preventing this default behavior
+})
+
+element.textContent = 'modifiedContent' // modifying the text content of the element
 ```

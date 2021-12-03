@@ -1,6 +1,28 @@
 # All ssh commands I used so far
 
+## SCP
+
 ```bash
 scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt # Copying from local to remote
 scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt       # Downloading from remote to local
+```
+
+
+## KEY
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "thunder"
+    # -t for type, rsa is the most popular protocol for key generation
+    # -b for bit size, how big the key should be
+    # -C for comment, optional stuff
+###### this command will generate and save ssh key inside ~/.ssh/id_rsa
+ssh-add id_rsa
+#### adds id_rsa as private key of the device
+```
+
+## SSH
+
+```bash
+eval "$(ssh-agent -s)" # will start ssh agent if not started yet
+ssh -T git@github.com   #-T for test connection
 ```

@@ -147,8 +147,27 @@ class LinkedList {
     return this.printList();
   }
 
-  reverse1() {
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, null];
+  reverse() {
+    //check the condition of the list
+    if (!this.head.next) {
+      return this.head;
+    }
+    // Strategy:
+    // 1. Take two of the elements
+    // 2. Reverse the arrow
+    // 3. Move forward to the next two element and repeat from 1 again
+
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null; // now the head does not point to anything as it's tail now
+    this.head = first;
   }
 }
 
@@ -161,4 +180,5 @@ const secondList = new LinkedList(1);
 // //secondList.insert(1, 1000);
 // secondList.remove(3);
 // console.log(secondList.printList());
-console.log(secondList.reverse1());
+// console.log(secondList.reverse1());
+secondList.reverse1(0);

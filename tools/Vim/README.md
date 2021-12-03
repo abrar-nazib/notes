@@ -301,3 +301,8 @@ There are three versions of visual mode.
 * ```:on / ctrl+w o``` removes all the other windows except the current window 
 * ```ctrl+w [+-><=_|]``` for resizing the windows 
 * ```ctrl+w [rR]``` rotates the position of the windows 
+
+## Commenting Code
+
+* ```<leader>c<space>``` For toggling comment -> here leader is '\'
+* ```<leader>cc``` for commenting
