@@ -20,17 +20,19 @@ Good code could be described in two points:
 Big o complexity chart:\
 ![Big o complexity chart](Codes_and_Assets/big_o.png)\
 Simply put: When we grow big and big with our input, How much does our function/algorithm slow down.\
-Runtime: How much time something takes to run.
+**Runtime**: How much time something takes to run.
 
 ### Different types of Big 0 notations
 
-[Big O challanges](Codes_and_Assets/BigOchallange.js)\
-[Big O Rules](Codes_and_Assets/BigORules.js)\
+***Code Examples:***
+* [Big O challanges](Codes_and_Assets/BigOchallange.js)
+* [Big O Rules](Codes_and_Assets/BigORules.js)
+
 **Rules:**
 1. Worst Case
    * Big O only cares about the worst case scenerio. 
 2. Remove constants
-   * Constants play an insignificant role while n gets largers. So we don't count them
+   * Constants play an insignificant role while n gets larger. So we don't count them
 3. Different terms for input{Trickiest part}
    * Different inputs will have different numbers
    * The thing with O(a+b) and O(a*b)
@@ -79,7 +81,7 @@ Companies are looking for:
 1. Analytics Skills {How can you think through the problems and analyze them}
 2. Coding skills  {Do you code well by writing simple, clean, organized, readable code}
 3. Technical Skills  {Do you know the fundamentals of the job you are applying to}
-4. Communication skills {Does your personality matches the company culture}
+4. Communication skills {Does your personality match the company culture}
 
 ### **Needed Knowledge**
 
@@ -170,7 +172,7 @@ finishing it fast. Every part of the interview matters.
 2. 
 
 Data structure: A collection of values having or not having relationships between them and functions applied to them.\
-Variables are stored in RAM.\
+Variables are stored in RAM.
 
 ### Operations on Data structures
 
@@ -285,4 +287,32 @@ The node pointing to null is called the tail.\
 A Doubly linked list has three parts.\
 One holds value, other one holds reference to the next node, and the last holds reference to the previous node.\
 This structure lets a linked list to be travarsed from backwards.\
-![Doubly Linked List](Codes_and_Assets/doublyLinkedList.png) 
+![Doubly Linked List](Codes_and_Assets/doublyLinkedList.png)
+
+## **Stacks and Queues**
+
+* Linear data structures -> Go through data elements sequentially one by one while only one data element could be directly reached.
+* Main difference in only how things get removed
+* No random access operation
+
+### **Stacks**
+
+* One data stacked on top of anoter data vertically.
+* Only can access the top data
+* ***LIFO:*** **L**ast **I**n **F**irst **O**ut
+
+**Time Complexity:**
+* Lookup -> O(n)
+* pop -> O(1)
+* push -> O(1)
+* peek -> O(1) {peek means lookup the top element }
+
+### **Queues**
+
+* ***FIFO:*** **F**irst **I**n **F**irst **O**ut
+
+**Time Complexity:**
+* Lookup -> O(n)
+* Enqueue -> O(1) {Enqueue is similar to push}
+* Dequeue -> O(1) {Dequeue is similar to pop but from the top}
+* Peek -> O(1)

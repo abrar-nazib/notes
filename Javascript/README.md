@@ -1,5 +1,17 @@
 # Javascript Notes
 
+## Threading, Asynchronus, Synchronus, Non-blocking
+
+V8 Engine has two parts
+1. Memory Heap
+   * Memory Allocation is done here
+2. Call Stack
+   * Code is read and executed here
+
+**Memory Leak:** When the memory heap gets full by global variables(if not cleaned), it's called a memory leak.\
+**Single Threaded:** Javascript has got only one call stack. It can execute only one task at a time.
+
+
 ## String and String functions
 
 ```javascript
