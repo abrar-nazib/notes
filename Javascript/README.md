@@ -207,3 +207,40 @@ form.addEventListener('submit',(e)={    // e is the event which occures while su
 
 element.textContent = 'modifiedContent' // modifying the text content of the element
 ```
+
+## Promises and Callbacks
+
+```javascript
+//------------- Callback Pattern ----------------------------------------------------
+const callbackFunction = (callback)={
+    // Some time consuming task
+    callback(param1, param2); // The convension is callback(error, result)
+}
+
+callbackFunction((param1, param2)=>{
+    //do what to be done with param 1 and 2
+})
+
+//--------------- Promise Pattern ---------------------------------------------------
+const promiseFunction = new Promise((resolve, reject)=>{
+    //some thime consuming stuffs
+    if(positive_criteria){
+        resolve("things to be returned if things went well");
+    }else{
+        reject("things to be returned if things did not went well");
+    }
+})
+promiseFunction.then((result)=>{// registers a function when things go well
+    // things to do with result
+});
+promiseFunction.catch((error)=>{// registers a function when things goes wrong
+    //things to do with the error message
+})
+// then() and catch() both could be used together
+
+//----------- Vocabulary Related to Promises -----------------------------------
+//                              ___ Fulfilled
+//                             /
+// Promise   ---------> pending
+//                             \___ Rejected
+```

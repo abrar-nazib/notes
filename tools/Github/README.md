@@ -17,6 +17,7 @@
 * ```git add * ``` adds every untracked/unstaged file to the staged area.
 * ```git commit -m "commit message"``` commit a change
 * ```git push origin branch_name``` push branch to the github
+* ```git remote``` shows all the remote repos available to a repository
 
 ## GIT Ignore
 

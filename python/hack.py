@@ -55,11 +55,11 @@ for permutedNumbers in numberPermutations:
                 expression.append(xblankarr[3])
                 for i in range(len(ocp)):
                     expression.append(ocp[i])
-                    expression.append(xblankarr[i*4+4])
-                    expression.append(xblankarr[i*4+5])
-                    expression.append(permutedNumbers[i+1])
-                    expression.append(xblankarr[i*4+6])
-                    expression.append(xblankarr[i*4+7])
+                    expression.append(xblankarr[i * 4 + 4])
+                    expression.append(xblankarr[i * 4 + 5])
+                    expression.append(permutedNumbers[i + 1])
+                    expression.append(xblankarr[i * 4 + 6])
+                    expression.append(xblankarr[i * 4 + 7])
                 try:
                     exp = ''.join(expression)
                     exp = exp.replace(' ', '')
@@ -67,7 +67,7 @@ for permutedNumbers in numberPermutations:
                     if(value == 24 and len(re.findall(r'\((\d*?)\)', exp)) == 0):
                         print(f'{exp} = {value}')
                         # exit()
-                except:
+                except(error):
                     pass
 
 

@@ -1,5 +1,124 @@
 # Learning on python
 
+## List
+
+```python
+my_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+#Index  =   0,  1,  2,  3,  4,  5,  6,  7,  8,  9
+#Index  = -10, -9, -8, -7, -6, -5, -4, -3, -2, -1
+
+## Extract certain range of elements form list
+
+print(my_list[startIndex:endIndex:step])    
+# if the endIndex is 7, the last element it will print is of the 6th index. It's called non-inclusive behavior
+#[startIndex:endIndex] ->   default step is 1
+#[startIndex:] ->   will print to the end of the list including the last element from the start Index
+#[:endIndex]    ->  will print to the endIndex from the beginning
+#[:]    ->  will print the whole array
+#[::-1]     ->  reverse the whole list    
+```
+
+## String and list Operations
+
+* ```r"string"``` Python treats this type of strings as raw strings. ```\t``` is not interpreted as tab if ```r``` is used
+* ```string[::-1]``` reverses the whole string
+* ```len(string)``` shows the stirng size. Applicable for list as well
+## File Objects
+
+```python
+f = open(filename, 'x') # x=r/w/a, default is r. Read and write to a file -> r+. rb, wb for read and write binary files
+f.close()   # Must close file otherwise cause security leaks and might run out of file descriptiors
+```
+
+Files are best handled with context managers. Context managers close files autometically after code block ends.\
+Will close the file even the file throws an exception as well.
+
+```python
+with open(filename, 'r', encoding='enctype') as f: # f is the file variable, the encoding option is optional
+    # Load the whole file at once
+    f_content = f.read()    # f_content contains all the elements of the file f
+                            # read could take integer input. Passing 100 to it loads first 100 characters
+    # Load the whole file's lines in a list
+    f_lines = f.readlines()
+    # Load a line of the file
+    f_line = f.readline()   # each time readline() is called, next line is read
+    f.seek(characterPosition)   # sets the character position to read from
+#--------Standard Procedure------------------------------------
+with open(filename, 'r') as f:
+    for line in f:
+        print(line)
+#---------Write Operations--------------------------------------
+with open (filename, 'w') as f:
+    # Basic File Writing
+    f.write('content to write')
+```
+
+
+## Regular Expression
+
+* MetaCharacters (Need to be escaped with a "\" ): ```.[{()\^$|?*+```
+* ```.       -``` Any Character Except New Line
+* ```\d      -``` Digit (0-9)
+* ```\D      -``` Not a Digit (0-9)
+* ```\w      -``` Word Character (a-z, A-Z, 0-9, _)
+* ```\W      -``` Not a Word Character
+* ```\s      -``` Whitespace (space, tab, newline)
+* ```\S      -``` Not Whitespace (space, tab, newline)
+* ```\b      -``` Word Boundary
+* ```\B      -``` Not a Word Boundary
+* ```^       -``` Beginning of a String
+* ```$       -``` End of a String
+* ```[]      -``` Matches Characters in brackets {No backslash escaping escaping inside this brackets}
+* ```[a-z]``` ```[1-9]``` Range based matc
+* ```[^ ]    -``` Matches Characters NOT in brackets {Matches everything out of the set}
+* ```|       -``` Either Or
+* ```( )     -``` Group -> ```M(r|s|rs)``` matches Ms, Mrs, Ms
+* ```() () ()-``` $1, $2, $3 will hold the matches of the brackets sequentially
+**Quantifiers**:
+* ```*       -``` 0 or More
+* ```+       -``` 1 or More
+* ```?       -``` 0 or One
+* ```{3}     -``` Exact Number -> ```\d{3}``` will look for three occurances of digits
+* ```{3,4}   -``` Range of Numbers (Minimum, Maximum)
+
+```python
+pattern = re.compile(r'pattern', re.FLAG)  #Will seperate the pattern as a variable
+    # FLAG = I[GNORECASE] ; for ignoring cases
+match = pattern.match(searchText) # will search for only one match. Case sensitive
+match = pattern.search(searchText) # will print the first instance of the match
+matches = pattern.findall(searchText)   # will return according to the groups
+matches = pattern.finditer(searchText)  #Will store all the matches inside a list
+for match in matches:
+    print(match)
+
+specific_match = match.group(group_number) #will show the group numbers
+                # group 0 stores the entire matc
+# ------------- Substitute
+pattern.sub(r'\2\3', textToSub)
+```
+
+
+#### Sample Regexs ####
+
+```[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+```  -> matches email addresses
+
+## Error Handling
+
+```python
+try
+    pass
+    #code block
+except ExceptionOrErrorName:
+    #specific errorHandlerCode
+except ExceptionName as e:
+    print(e)
+    #Grab the error message
+except Exception:   # could use 'as e' here as well
+    #Generalized error handling
+else:
+    #Things to do if try block does not raise exception
+```
+
 ## Threading Library
 
 * Not multi processing(for CPU)
@@ -200,3 +319,11 @@ bytes(string, "string-type:utf-8")
 dict.has_key(keyname)
     #returns bool
 ```
+
+## Sublime Text configs and stuffs
+
+[Themes Customization doc](https://www.sublimetext.com/docs/themes.html)
+
+* ```ctrl+b``` build project
+* ```ctrl+shift+p``` terminal/command pallete
+* ```ctrl+shift+k

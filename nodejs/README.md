@@ -40,8 +40,11 @@ module.exports = 'variable/function';
 
 ## Package-json file
 
-```json
-json string
+```javascript
+"scripts":{
+        "start": "node src/app.js",
+        "dev": "nodemon src/app.js -e js,hbs"
+}
 ```
 
 ## NPM and NPM modules
@@ -61,8 +64,12 @@ npm install     # installs all the required packages according to the package fi
 npm i[nstall] package_name  # installs the latest version of the package
                     # creates a node_modules directory to keep the downloaded packages
                     # creates a package-lock.json for security purposes
+npm i[nstall] package_name --save-dev   # install the package locally and list it as a dev dependency
+                # Locally installed dependencies could not be accessed from terminals
+                # They could be accessed from package.json scripts though
 npm i package_name@version # installs the specific package
 sudo npm -g i package_name       # installs the package in global scope
+
 ```
 
 ### fs

