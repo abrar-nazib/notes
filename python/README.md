@@ -1,5 +1,23 @@
 # Learning on python
 
+## Hacks
+
+```python
+dir(object) # shows all the methods and attributes available to the object
+help(object) # shows in detail documentation of the methods and attributes
+```
+
+### Ternary
+
+```python
+x=1 if condition else 0
+# is equivalent to
+if condition:
+    x=1
+else:
+    x=0
+```
+
 ## List
 
 ```python
@@ -18,11 +36,23 @@ print(my_list[startIndex:endIndex:step])
 #[::-1]     ->  reverse the whole list    
 ```
 
+## Dictionaries
+
+```python
+dictionary = {"key":"value"}
+# Assignment
+dictionary["key"] = "value"
+
+```
+
 ## String and list Operations
 
 * ```r"string"``` Python treats this type of strings as raw strings. ```\t``` is not interpreted as tab if ```r``` is used
 * ```string[::-1]``` reverses the whole string
 * ```len(string)``` shows the stirng size. Applicable for list as well
+* ```string.split(xx)``` xx = character on which the string to split
+* ```f'formatted string with {variable} inside'``` 
+
 ## File Objects
 
 ```python
@@ -51,6 +81,18 @@ with open(filename, 'r') as f:
 with open (filename, 'w') as f:
     # Basic File Writing
     f.write('content to write')
+```
+
+## CSV module
+
+```python
+import csv
+
+csv_file = open('file.csv', 'w')
+csv_writer = csv.writer(csv_file)
+csv_writer.writerow(['headline1', 'headline2', 'headline3'])
+csv_writer.writerow(['data1', 'data2', 'data3'])
+csv_file.close()
 ```
 
 
@@ -117,6 +159,8 @@ except Exception:   # could use 'as e' here as well
     #Generalized error handling
 else:
     #Things to do if try block does not raise exception
+finally:
+    #this block will run regardless of the error or exception
 ```
 
 ## Threading Library
@@ -288,14 +332,6 @@ ImageFilter.GussianBlur(int)
     #ads gussianblur filter
 ```
 
-## Joining Two Lists
-
-```Python
-list1 = [1,2,3]
-list2 = [4,5,6]
-list = list1+list2
-```
-
 ## HEX encoding
 
 ### codecs.encode()
@@ -326,4 +362,113 @@ dict.has_key(keyname)
 
 * ```ctrl+b``` build project
 * ```ctrl+shift+p``` terminal/command pallete
-* ```ctrl+shift+k
+* ```ctrl+shift+k``` toggle side directory tree
+
+## Requests
+
+[Python Request Module Doc](https://docs.python-requests.org/en/master/index.html)
+[Http Request Bin](https://httpbin.org/)
+
+```python
+import requests
+# Get and Post request basic and others
+response = requests.get(url)
+response = requests.post(url)
+response = response.get(url, params = params)   # params has to be a key-value pair (dictionary). They are URL parameters
+response = response.post(url, data = data)  # Data to send to the server. Key-value pair
+    # timeout = second stops waiting for the response to come
+    # headers = headers adds custom headers to the request
+    # auth = ('username', 'password') For basic http authentication
+# Response object has got some important methods and attributes
+byte_response = response.content # Response content in bytes. Good for image files
+text_response = responese.text  # Response content in unicode text
+response_status_code = response.status_code # Response status code
+# 200+ -> success
+# 300+ -> redirects
+# 400+ -> client errors
+# 500+ -> server errors
+response_ok = response.ok # Anything less than 400 will return true
+response_headers = response.headers # Response headers
+requested_url = response.url # The state of the request when it was done
+response_json = response.json() # This method creates python dictionary from json string returned from response
+```
+
+## Requests-html
+
+[Requests-html docs](https://docs.python-requests.org/projects/requests-html/en/stable/)
+
+```python
+from requests_html import HTML # For html parsing
+
+source_text = response.text # might come from a .html file or a response
+htmlobj = HTML(html=source_text)   # html is an HTML object
+html_with_tags = htmlobj.html  # Will return the whole html with html tags
+html_without_tags = htmlobj.text    # will return the whole html without html tags
+
+# Selecting Tags
+tag = html.find('tag_name') # THis will return a list.
+    # tag[0].html returns the element with tag. tag[0].text returns only the element.
+tag = html.find('tag_name', first=True) # will only return the first match. Not a list as default
+
+# Selecting according to class and id
+
+tag = html.find('tag_name.class_name')
+tag = html.find('tag_name#id_name')
+
+# Hiararcical selection
+tag_inside_tag = html.find('parent_tag_name.class child_tag_name#id')
+
+# Accessing Attributes
+tag = obj.find('tag_name')
+tag.attrs['attributename']
+```
+
+```python
+from requests_html import HTMLSession # For getting data from url
+
+session = HTMLSession()  # session is a HTMLSesssion object
+response = session.get('http://coreyms.com')    # Similar to requests library
+html_object = response.html     # returns an object
+all_links_of_webpage = html_object.links # will gather all links of the website
+all_absolute_links_of_webpate = html_object.absolute_links # Will gather all absolute links
+```
+
+**Grabbing Javascript Generated Text**
+
+```python
+html_object.render() # renders the javascript code
+```
+
+**Asynchronus Requests**
+
+```python
+
+```
+
+## BeautifulSoup
+
+```python
+from bs4 import BeautifulSoup
+
+soup = BeautifulSoup(htmlfile, 'parser')    # parser ex: lxml
+    # Soup is a BeautifulSoup object of parsed html
+prettied_html = soup.prettify() # Indent the html file correctly
+
+# Accessing html tags
+grab_tag = soup.tag_name    # will grab everything between the specified tag including the tag itself
+grab_tag_element = soup.tag_name.text # will grab everything between the specified tag
+
+# Accessing html tags by id, class, name
+grabTag = soup.find("tag_name", class_="class_name") 
+        # Only class requires an _ (underscore) because it's reserved in pytohon      
+grabTag = soup.find("tag_name", id="id_name")
+
+## Accessing all the tags
+for element in find_all("tag_name", class_="class_name"):
+    # Do whatever needed to do with each element
+    # find_all() looks for all the matching tags
+
+# Accessing tag attributes
+    # Tag attributes could be accessed like dictionary elements
+attribute = soup.find("tag_name", id="id_name")["attribute_name"]
+```

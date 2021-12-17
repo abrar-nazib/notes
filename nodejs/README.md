@@ -88,8 +88,10 @@ const dataJSON = dataBuffer.toString();
 
 ### validator
 
+[Validator Doc](https://www.npmjs.com/package/validator)
+
 ```javascript
-npm i validator     // installs the validator package
+//npm i validator     // installs the validator package
 const validator = require('validator');
                     // returns a validator object
 validator.isEmail('mail@email.ext');    // returns boolean
@@ -268,8 +270,16 @@ app.set(name, value)
 app.set("view engine", "template_engine_name"); //template_engine_name = hbs
 
                 // for specifying which templating engine to use 
+
+
+//------------- Espress options----------------------------------------
 app.use(express.static(full_path_to_web_content_directory))
         // for setting up the root directory of the server
+app.use(express.json())
+        // Parse the incoming json as javascript object
+
+
+//----------Get Requests---------------------------------------------
 app.get('',(req, res)=>{
         res.render('filename_without_extension_inside_views_folder', {object_with_key_value_pair});
         //for rendering dynamic html file from any templating engine
@@ -281,6 +291,15 @@ app.get('/route', (req, res)=>{
         console.log(req.query); // req.query contains the get-request objects
 })
 
+
+//----------Post Requests-----------------
+app.post('/route', (req, res)=>{
+        data = req.body;      // Grab the incoming data with the post request
+        res.send('ResponseText');
+});
+
+
+//--------------Server listen to specific port for incoming requests-----------------
 app.listen(port_number, ()=>{
         console.log("Instructing the server to listen to port X for incoming");
 });
@@ -323,3 +342,20 @@ hbs.registerPartials(partialsPath);
 // how to use partials in hbs files
 {{>partialfilename}} 
 ```
+
+## Rest API
+
+* **REST:** Representational State Transfer
+* **API:** Application Programming Interface
+
+REST API allows clients to manipulate and access resources using a set of predefined operations.
+* GET: Fetch Data
+* POST: Write Data
+* PATCH: Update Data
+* DELETE: Delete Data
+
+![REST API Structure](Assets/restapistruct.png)
+
+## Postman
+
+* POST data to be inputted inside body tab of postman.
