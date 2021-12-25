@@ -35,8 +35,14 @@ const string = array.join("");    //creates a string from the array elements
 const arr = [1,2,3,4,5];
 arr.forEach((element)=>{console.log(element)}); //will print all the element
 const newArr = arr.forEach((element)=>element); //newArr will be undefined
+
 const newArr = arr.filter((element)=>element); //all the elements inside arr is now inside newArr
+
 const foundElement = arr.find((element)=>element === match); //returns the element which matches to the "match"
+
+const testAll = arr.every((param)=>{/*testFunctionCriteria*/})
+// The every() method tests whether all elements in the array pass the test implemented by the provided function.
+// It returns a Boolean value. True if every element follows criteria. False if any of them do not
 ```
 
 ## Classes and Objects
@@ -49,8 +55,14 @@ const foundElement = arr.find((element)=>element === match); //returns the eleme
 Jacascript objects are reference types.
 
 ```javascript
-var object1 = {name: 'value'}; //here the 'object1' stores the reference to the object. Not the object itself.
+var objectX = {
+    key1: 'value1',
+    key2: 'value2',
+    key3: 'value3'
+}; //here the 'object1' stores the reference to the object. Not the object itself.
 // Much like pointers
+objectX.keys()   // returns an array containing keys of the object
+Object.keys(objectX)    // same
 ```
 
 **Context:**\
@@ -189,7 +201,8 @@ JSON.parse(JSONstring); // converts json string into JS object
 
 ```javascript
 setTimeout(()={}, s) 
-//execute the first function after s milliseconds
+// Wait x miliseconds. After x miliseconds is over,
+//execute the first parameter's function.
 //here first parameter is a function
 // time is in milliseconds
 ```
@@ -260,7 +273,7 @@ promiseFunction.catch((error)=>{// registers a function when things goes wrong
 add(1, 1)
   .then((sum) => {
     console.log(sum);
-    return add(sum, 4); // Returned value goes to the second then() block
+    return add(sum, 4); // Returned promise goes to the second then() block to handle
   })
   .then((sum2) => {
     console.log(sum2);
@@ -268,4 +281,21 @@ add(1, 1)
   .catch((e) => {
     console.log(e);
   });
+```
+
+## Async Await
+
+* Async functions always return promise
+* Return in async function is equivalent to resolve in promise
+* Throw error in async function is equivalent to reject in promise
+
+```javascript
+const asyncFuncton = async (params) => {
+    const data = await anotherAsyncfunction();  // awaits could be used inside only async funcitons
+}
+
+const anotherAsyncfunction = async () => {
+    //some time intensive task
+    return data;
+}
 ```

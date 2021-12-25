@@ -151,7 +151,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/database-name", { optionkey : value 
   // optionkey : useNewUrlParser
 
 // Modeling a mongoose model
-const User = mongoose.model("User", {   
+const Model = mongoose.model("ModelName", {   
   //Model's name's convention is Uppercase. This will be considered as collection Name but in lower case
   name:{
     type: String,
@@ -174,21 +174,27 @@ const Hacker = new User({
   name: "Abrar",
   age: 21
 });
-
 // Save instance to the database
 Hacker.save().then(()=>{/* Success handler code */}).catch((error)=>{/* error handler code */})
 
 // Find instance in the database
 Model.findOne({}).then((result)=>{/* result handler */}).catch((error)=>{/* error handler */})
     // Will return all elements
+
 Model.find({key:"value"}).then((result)=>{/* result handler */}).catch((error)=>{/* error handler */})
     // Will return matching elements
+
 Model.findById(_id).then((result)=>{/* result handler */}).catch((error)=>{/* error handler */})
     // Will return matching element searching by id
-Model.findByIdAndUpdate(_id, {key: updatedValue}).then((result)=>{/* result handler */}).catch((error)=>{/* error handler */})
+
+Model.findByIdAndUpdate(_id, {key: updatedValue}, {/*opt*/new:true, runValidators:true}).then((result)=>{/* result handler */}).catch((error)=>{/* error handler */})
     // Find by id and update accordingly
+    // The optional parameter "new: true" will return the updated model instance.
+    // "runValidators: true" runs the necessary validators 
+
 Model.findByIdAndDelete(_id).then((result)=>{/* result handler */}).catch((error)=>{/* error handler */})
-    // Find by id and update accordingly
+
+    // Find by id and delete
 
 Model.countDocuments({key: value}).then((result)=>{/* result handler */}).catch((error)=>{/* error handler */})
     // Counts number of documents matching filter in a database collection.

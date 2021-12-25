@@ -272,37 +272,60 @@ app.set("view engine", "template_engine_name"); //template_engine_name = hbs
                 // for specifying which templating engine to use 
 
 
-//------------- Espress options----------------------------------------
+//------------- Express options----------------------------------------
 app.use(express.static(full_path_to_web_content_directory))
         // for setting up the root directory of the server
 app.use(express.json())
         // Parse the incoming json as javascript object
 
-
 //----------Get Requests---------------------------------------------
-app.get('',(req, res)=>{
+app.get('/route/:routeParameter',async (req, res)=>{
+        res.status(statusCode); // For setting up response status code
+        // Have to send status code before sending response
+
         res.render('filename_without_extension_inside_views_folder', {object_with_key_value_pair});
         //for rendering dynamic html file from any templating engine
         //need to use some variables inside the template. The object passed stores the needed variables
-})
-app.get('/route', (req, res)=>{
-        //callback-function
-        res.send("Things to pass as response to the request")
-        console.log(req.query); // req.query contains the get-request objects
+        res.send("Things to pass as response to the request")   // For sending text as response
+        
+        const request_query = req.query; // req.query contains the get-request objects
+        const request_parameters = req.params; // req.params contain route parameters
 })
 
 
 //----------Post Requests-----------------
-app.post('/route', (req, res)=>{
+app.post('/route',async (req, res)=>{
         data = req.body;      // Grab the incoming data with the post request
+        
+        res.status(statusCode)  // Status Code to send
+        
         res.send('ResponseText');
 });
 
+
+//-----------Patch Requests---------------------------------
+app.patch('route', async (req, res)=> {      
+        //Patch requests are used to update existing data
+});
+
+//---------- Delete Requests ------------------------------------
+app.delete('route', async (req, res)=>{
+        //Delete requests are used to delete database entries
+})
 
 //--------------Server listen to specific port for incoming requests-----------------
 app.listen(port_number, ()=>{
         console.log("Instructing the server to listen to port X for incoming");
 });
+
+
+//----------------- Express Routers -----------------------------------------
+const router = express.Router()
+
+router.get(route,(req, res)=>{  // Other http request types
+        //route handler
+})
+
 ```
 
 ## Templating
@@ -343,14 +366,14 @@ hbs.registerPartials(partialsPath);
 {{>partialfilename}} 
 ```
 
-## Rest API
+## Rest API and Status codes
 
 * **REST:** Representational State Transfer
 * **API:** Application Programming Interface
 
 REST API allows clients to manipulate and access resources using a set of predefined operations.
 * GET: Fetch Data
-* POST: Write Data
+* POST: Write Data. Success: 201, Failed: 400(due to invalid input)
 * PATCH: Update Data
 * DELETE: Delete Data
 
