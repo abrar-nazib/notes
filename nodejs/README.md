@@ -320,11 +320,13 @@ app.listen(port_number, ()=>{
 
 
 //----------------- Express Routers -----------------------------------------
-const router = express.Router()
+const router = new express.Router()
 
 router.get(route,(req, res)=>{  // Other http request types
         //route handler
 })
+
+app.use(router) // mandatory otherwise route files won't work
 
 ```
 
