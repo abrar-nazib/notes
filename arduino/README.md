@@ -74,3 +74,45 @@ Four Color Resistors
 
 - **ex:** Red--Red--Black--Orange--Brown Striped resistor's resistance is 2--2--0--000--1%
 - **ex:** Blue--Grey--Black--Brown--Brown Striped resistor's resistance is 6--8--0--1--1%
+
+
+## Basic Coding Syntaxes
+
+```c++
+#include <Arduino.h>    // For including the arduino library in PlatformIO
+
+void setup(){
+   // Setup codes go here
+}
+void loop(){
+   // Will execute code over and over 
+}
+```
+
+### ```pinMode```
+
+Determines how the pin should behave
+
+```c++
+pinMode(PIN_NUMBER, PIN_TYPE); //Pin type is either INPUT or OUTPUT
+```
+
+### ```digitalWrite```
+
+Controls digital signal to a pin
+
+```c++
+digitalWrite(PIN_NUMBER, SIGNAL_TYPE); //Signal Type is either high or low
+```
+
+## Serial Monitor
+
+```c++
+Serial.begin(9600); // Need to put this inside setup. Starts Serial monitor
+Serial.print("Things to print");  // Prints to serial monitor. Not new line at the end
+Serial.println("Things to print"); // Prints to serial monitor. A new line is inserted afterwards
+```
+
+## PlatformIO.ini specific stuffs
+
+* ```monitor_speed = 9600``` will set the serial monitor speed
