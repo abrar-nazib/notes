@@ -111,6 +111,9 @@ digitalWrite(PIN_NUMBER, SIGNAL_TYPE); //Signal Type is either high or low
 Serial.begin(9600); // Need to put this inside setup. Starts Serial monitor
 Serial.print("Things to print");  // Prints to serial monitor. Not new line at the end
 Serial.println("Things to print"); // Prints to serial monitor. A new line is inserted afterwards
+if(Serial.available() > 0){
+   variable = Serial.read(); // will read data from the serial monitor
+}
 ```
 
 ## PlatformIO.ini specific stuffs
