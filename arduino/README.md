@@ -75,7 +75,6 @@ Four Color Resistors
 - **ex:** Red--Red--Black--Orange--Brown Striped resistor's resistance is 2--2--0--000--1%
 - **ex:** Blue--Grey--Black--Brown--Brown Striped resistor's resistance is 6--8--0--1--1%
 
-
 ## Basic Coding Syntaxes
 
 ```c++
@@ -85,11 +84,11 @@ void setup(){
    // Setup codes go here
 }
 void loop(){
-   // Will execute code over and over 
+   // Will execute code over and over
 }
 ```
 
-### ```pinMode```
+### `pinMode`
 
 Determines how the pin should behave
 
@@ -97,7 +96,7 @@ Determines how the pin should behave
 pinMode(PIN_NUMBER, PIN_TYPE); //Pin type is either INPUT or OUTPUT
 ```
 
-### ```digitalWrite```
+### `digitalWrite`
 
 Controls digital signal to a pin
 
@@ -118,4 +117,11 @@ if(Serial.available() > 0){
 
 ## PlatformIO.ini specific stuffs
 
-* ```monitor_speed = 9600``` will set the serial monitor speed
+- `monitor_speed = 9600` will set the serial monitor speed
+
+## Circuit Debugging Checklist
+
+1. Power and Ground connection
+2. Correct orientation of the components
+3. Checking the resistors
+4. Check the breadboard tie points to find out connection errors. Circuit continuity is the main word to say here.
