@@ -1,25 +1,31 @@
 # Nmap commands used so far
 
+[Tryhackme Room](https://tryhackme.com/room/furthernmap)
+
 ## Basics to know
 
 - Total 65535 ports are available in a computer
 - 1024 ports are common ones
+- If a syn request from nmap is dropped by firewall, nmap considers the port to be filtered
 
 ## Options
 
-- -A For Aggressive mode, So noisy
-- -F For faster scan
-- -T<1-5> For specifying how faster the scan should be performed, the higher the number the speedier the scan
-- -p <port/port-range> For specifying the port number to scan
-- -P- For scanning all the ports
-- -sn For performing ping scan, testing the host is up or not
-- -sS For syn/Synchoronus scan
-- -sU For UDP only scan
-- -sV For guessing the version number of the service
-- -O For os detection
-- -oN <path> For storing the output in normal formatting scheme
-- -oA <path> For storing the output in all the major formats
-- --script=<name> For performing scan with specified script
+- `-A` For Aggressive mode, So noisy
+- `-F` For faster scan
+- `-T<1-5>` For specifying how faster the scan should be performed, the higher the number the speedier the scan
+- `-p` <port/port-range> For specifying the port number to scan
+- `-P-` For scanning all the ports
+- `-sn` For performing ping scan, testing the host is up or not
+- `-sS` For syn/Synchoronus scan
+- `-sU` For UDP only scan
+- `-sV` For guessing the version number of the service
+- `-O` For os detection
+- `-oN <path>` For storing the output in normal formatting scheme
+- `-oA <path>` For storing the output in all the major formats
+- `--script=<name>` For performing scan with specified script
+- `--top-ports <number>` Will scan for top `<number>` pots only
+
+
 
 ## Raw commands
 

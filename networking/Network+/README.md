@@ -1,5 +1,7 @@
 # Networking notes from CompTIA network+
 
+CompTIA(Computing Technology Industry Association)
+
 ## 3.1.1 OSI Model
 
 - **Full Form:** Open System Interconnect Model
@@ -74,6 +76,22 @@
 - Network layer is called internet layer in tcpip model
 - IP(Internet Protocol) and ICMP(Internet Control Message Protocol) protocols are described in Network/Internet leayer.
 - Hardware in this layer: router. Routers can make desicions based on ip addresses
+
+### Data-Link Layer
+
+### Physical Layer
+
+- Defines the method of moving data between computers.
+- 
+- **Devices:** UTP(Unshielded Twisted Pair cable) and all other cabling, Switches
+
+## NIC and MAC
+
+- Networking Interface Card
+- 48 bit mac(Media Access Control) address is burnt into a rom chip in NIC. MAC is 12 hex characters long. 1 Hex = 4 bit.
+- Mac Addresses are represented like XX:XX:XX:XX:XX:XX. The first 6 digits are company specific. The last 6 is device speicfic.
+- MAC-48, EUI-48, MAC are all the same thing
+- NICs send and recieve data as pulses of electricity 
 
 ## TCP
 
