@@ -2,6 +2,8 @@
 
 ## Hash identification
 
+[List of hashes in hashcat website](https://hashcat.net/wiki/doku.php?id=example_hashes)
+
 ```bash
 hashid -m <hash>    # returns the hash type of the given hash
 ```

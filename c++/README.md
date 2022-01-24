@@ -3,11 +3,11 @@
 ## Memory
 
 Memory is devided into three sections:
-|                      |
+| |
 | -------------------- |
 | Heap(actually Stack) |
 | Stack(actually Heap) |
-| Code                 |
+| Code |
 
 Programs can directly access code and stack portion of the memory. Can't access heap portion of the memory.
 
@@ -24,7 +24,7 @@ int arrayName[size] = {el1, el2, el3, elN}; //Declaration and initialization syn
 
 Collection of data members that are related and is under one name. Data members could be of similar type or dissimilar type.\
 Usually defined as collection of dissimilar data members under one name. It means grouping of the data items\
-C++ does not need to specify ```struct``` keyword everytime in the main code as c\
+C++ does not need to specify `struct` keyword everytime in the main code as c\
 
 ```c++
 struct Rectangle{
@@ -130,3 +130,86 @@ swap(a,b) //call by reference
 // is calling them as  x,y. Nothing so complicated
 // may be it could be defined as &x = a, &y = b then used as it is
 ```
+
+## Header files
+
+- Header files are used to declare certain kind of functions to be used by the program.
+- Header files only contain declarations, not definitions.
+
+**Header file include guard:**
+
+```c++
+#ifndef HEADERFILENAME
+#define HEADERFILENAME
+
+#endif//HEADERFILENAME
+```
+
+## Error Handling
+
+**Basic Block:**
+
+```c++
+try{
+    if(error_occured){
+        throw "Error message";
+    }catch(const char* e){
+        cout << e << endl;
+    }
+}
+```
+
+**Standard Exceptions**
+
+The main two exception classes are:
+
+1. Logic Error
+2. Runtime Error
+
+These are defined in `stdexcept`
+
+1. `std::bad_alloc`
+2. `std::bad_cast`
+3. `std::logic_failure`
+   1. `std::domain_error`
+   2. `std::invalid_argument`
+   3. `std::length_error`
+   4. `std::out_of_range`
+4. `std::bad_typeid`
+5. `std::bad_exception`
+6. `std::runtime_error`
+   1. `std::overflow_error`
+   2. `std::range_error`
+   3. `std::underflow_error`
+
+```c++
+#include <stdexception>    // Need this headerfile to use standard exception
+
+try{
+    if(something_wrong){
+        throw runtime_error("custom string to pass with error");
+    }
+}catch(runtime_error &error){
+    cout << error.what();
+}
+```
+
+**Catch all exception at once:**
+
+```c++
+catch(...){
+    cout << "Some undefined error occured" << endl;
+    // Should put this code block after all the catch blocks
+}
+```
+
+**Throwing exception from functions**
+
+```c++
+void functionName(parameters){
+    // this function only can throw specified types of exceptions
+    throw errortype("custom string to pass with error");
+}
+```
+
+## Libraries

@@ -1,6 +1,7 @@
 # Nmap commands used so far
 
 [Tryhackme Room](https://tryhackme.com/room/furthernmap)
+[Cheat Sheet](https://www.stationx.net/nmap-cheat-sheet/)
 
 ## Basics to know
 
@@ -14,18 +15,18 @@
 - `-F` For faster scan
 - `-T<1-5>` For specifying how faster the scan should be performed, the higher the number the speedier the scan
 - `-p` <port/port-range> For specifying the port number to scan
-- `-P-` For scanning all the ports
+- `-p-` For scanning all the ports
+  - `-p-100` For scanning till port 100
 - `-sn` For performing ping scan, testing the host is up or not
 - `-sS` For syn/Synchoronus scan
 - `-sU` For UDP only scan
 - `-sV` For guessing the version number of the service
+- `-sC` Will also check the default nmap scripts on the target
 - `-O` For os detection
 - `-oN <path>` For storing the output in normal formatting scheme
 - `-oA <path>` For storing the output in all the major formats
 - `--script=<name>` For performing scan with specified script
 - `--top-ports <number>` Will scan for top `<number>` pots only
-
-
 
 ## Raw commands
 
@@ -43,4 +44,12 @@
 - `nmap 0.0.0.0 -sV` tries to guess the version number of the service on the open port
 -
 
-## Basic Intro to Networking
+## Basic commands to copy-paste
+
+- `nmap -sC -sV -v -oN nmap.txt $(cat ip)`
+
+## Nmap scripts
+
+[Doc](https://nmap.org/book/man-nse.html)
+
+- `nmap --script=smb*` will use all scripts starting with the keyword `smb`

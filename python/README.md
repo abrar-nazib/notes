@@ -1,5 +1,11 @@
 # Learning Notes on python
 
+## Script starting
+
+```python
+#!/usr/bin/env python3
+```
+
 ## Variable type conversion
 
 ```python
@@ -401,26 +407,62 @@ dict.has_key(keyname)
 
 ```python
 import requests
-# Get and Post request basic and others
+```
+
+### Get Requests
+
+```python
 response = requests.get(url)
+response = response.get(url, params = params)
+    # params has to be a key-value pair (dictionary). They are URL parameters
+```
+
+### Post Requests
+
+```python
 response = requests.post(url)
-response = response.get(url, params = params)   # params has to be a key-value pair (dictionary). They are URL parameters
-response = response.post(url, data = data)  # Data to send to the server. Key-value pair
+response = response.post(url, data = data, headers=headers, timeout=timeout, auth=('username', 'password'))
+    # data = data to send to the server. Key-value pair
     # timeout = second stops waiting for the response to come
     # headers = headers adds custom headers to the request
     # auth = ('username', 'password') For basic http authentication
-# Response object has got some important methods and attributes
-byte_response = response.content # Response content in bytes. Good for image files
-text_response = responese.text  # Response content in unicode text
+```
+
+### Multipart-Encoded File Post
+
+```python
+files = {'file':('filename.ext', open('filename', 'rb'), 'application/filetype')}
+    # application/filetype defines the file type
+    # rb is for reading the file as binary object
+response = requests.post(url, files=files)
+```
+
+### Response object
+
+```python
+byte_response = response.content
+    # Response content in bytes. Good for image files
+
+text_response = responese.text
+    # Response content in unicode text
+
 response_status_code = response.status_code # Response status code
-# 200+ -> success
-# 300+ -> redirects
-# 400+ -> client errors
-# 500+ -> server errors
-response_ok = response.ok # Anything less than 400 will return true
-response_headers = response.headers # Response headers
-requested_url = response.url # The state of the request when it was done
-response_json = response.json() # This method creates python dictionary from json string returned from response
+    # 200+ -> success
+    # 300+ -> redirects
+    # 400+ -> client errors
+    # 500+ -> server errors
+
+response_ok = response.ok
+    # Anything less than 400 will return true
+
+response_headers = response.headers
+    # Response headers
+
+requested_url = response.url
+    # The state of the request when it was done
+
+response_json = response.json()
+    # This method creates python dictionary from json string returned from response
 ```
 
 ## Requests-html

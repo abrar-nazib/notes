@@ -1,5 +1,12 @@
 # All ssh commands I used so far
 
+
+## SSH 
+
+- `eval "$(ssh-agent -s)"` will start ssh agent if not started yet
+- `ssh -T git@github.com`   -T for test connection
+- `ssh username@ip` for connecting to a specific ip address
+
 ## SCP
 
 ```bash
@@ -8,7 +15,7 @@ scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt       # Downloading
 ```
 
 
-## KEY
+## KEY Generation
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "thunder"
@@ -20,9 +27,3 @@ ssh-add id_rsa
 #### adds id_rsa as private key of the device
 ```
 
-## SSH
-
-```bash
-eval "$(ssh-agent -s)" # will start ssh agent if not started yet
-ssh -T git@github.com   #-T for test connection
-```
