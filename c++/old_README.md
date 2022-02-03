@@ -6,18 +6,18 @@
 
 ### Keyboard Shortcuts
 
-* ctrl f7 -> Individual file compilation
-* f5 -> Build and run Project
-* f9 -> creates a breakpoint on the line(cursor's line)
+- ctrl f7 -> Individual file compilation
+- f5 -> Build and run Project
+- f9 -> creates a breakpoint on the line(cursor's line)
 
 ### Configuration settings
 
-* All configurations <-> All platforms
-  * Output directory : $(SolutionDir)bin\$(Platform)\$(Configuration)\
-    * Intermediate directory: $(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\
-* C++ -> Optimization -> maximize speed //not necessary
+- All configurations <-> All platforms
+  - Output directory : $(SolutionDir)bin\$(Platform)\$(Configuration)\
+    - Intermediate directory: $(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\
+- C++ -> Optimization -> maximize speed //not necessary
 
-*
+-
 
 ## Compilation Process
 
@@ -27,57 +27,23 @@ every translation unit gets compiled into an object file.
 
 ## Debugging
 
-* Breakpoints
-  * f9 puts a breakpoint in the cursor's line in VS.
-    * Step over button(f10) lets go over another line.
-    * step into button lets lookup into function code upon call
-    * continue button runs the program until it hits the next break point
+- Breakpoints
 
-* Memory Lookup
-  * Debug > Windows > Memory for memory view ```&variablename``` shows the variable in the memory 
+  - f9 puts a breakpoint in the cursor's line in VS.
+    - Step over button(f10) lets go over another line.
+    - step into button lets lookup into function code upon call
+    - continue button runs the program until it hits the next break point
 
-## Important Commands for linux
-
-```bash
-g++ file.cpp #compiles the file.cpp and creates a *.out file -> executable
-g++ file1.cpp file2.cpp #compiles the files to a single *.out file
-g++ -c file1.cpp file2.cpp #creates  object files file1.o file2.o
-g++ file1.o file2.o #compiles the object files
-g++ -std=c++11 -02 -Wall test.cpp -o test #follows c++ 11 standards -02 optimizes the code -Wall shows the errors
-
-```
-
-## GDB commands
-
-```bash
-g++ -g file_mame.cpp # must compile with -g for debugging
-gdb executable_file #starts a debugger session
-b function_name #setting a breaking point on a function
-b line_number #setting a breakpoint on line
-n #goes to next line -> next
-s #goes inside the function call -> step
-f # where the fuck am I?
-backtrace #on which function you are now and the pathway to this function
-info b #shows the numbers of breakpoints in your code
-info locals #shows the state of all local variables
-delete 1 #delets the breakpoint 1
-f frame_number #frame number is the function number from backtrace
-```
-
-## Makefiles
-
-```makefile
-file_to_be_made: from_which_file1 from_which_file2
-    command to create file_to_be_made
-```
+- Memory Lookup
+  - Debug > Windows > Memory for memory view `&variablename` shows the variable in the memory
 
 ## Pointers
 
-* pointers are actually integers storing memory addresses
+- pointers are actually integers storing memory addresses
 
 ## Referencing
 
-* disguised pointers
+- disguised pointers
 
 ## Enums
 
@@ -95,7 +61,7 @@ enum Enumeration : unsigned int{
 An array is really just a pointer to a memory address\
 Can create some serius problem if tried to access index out of the scope of the array length
 Array indexing in memory -> 0 index: don't add anything with the memory address\
-                         -> n index: add (n * size_of_variable_type) with the memory address
+ -> n index: add (n \* size_of_variable_type) with the memory address
 Multi dimensional arrays are arrays of arrays\
 Basic syntax:\
 
@@ -107,13 +73,13 @@ int* arr = new int[n]; //heap array -> have to destroy with delete[] arr keyword
 std::array<int, 5> array_name; //array.size() makes life good :)
 //two dimentional arrays
 int arr[m][n]; //creating m 1 dimentional arrays having n elements
-               // arr returns a pointer for 1 dimentional array having n elements 
+               // arr returns a pointer for 1 dimentional array having n elements
 int arr[0];    // is an array having n elements
 int *(ptr)[3] = arr; //ptr points to a one dimentional array of three elements
-                    // pointer type is array of three elements 
+                    // pointer type is array of three elements
 ```
 
-array element retreival technique ``` sizeof(array) / sizeof(data_type) ``` sizeof() returns memory allocation of the variable\
+array element retreival technique `sizeof(array) / sizeof(data_type)` sizeof() returns memory allocation of the variable\
 but can only be retreived from stack arrays. not heap arrays are available in this method
 
 ## Strings
@@ -123,12 +89,12 @@ string declaration returns a char pointer.
 ```c++
 const char* string_name = "staring";
 char* srting_name = "string"; //doesn't work in my pc :| -> gets stored as constant cannot change any character
-char string_name[] = "string"; 
+char string_name[] = "string";
 #include <string> //for c++ standard library -> will be using this one
 std::string string_name = "string value "; //creates a const char pointer. can change elements
 ```
 
-const is used because strings are basically fixed allocated memory like arrays 
+const is used because strings are basically fixed allocated memory like arrays
 Null Termination character : determines where the string ends 0x00 for 1 or multiple bytes (ascii value 0)
 
 ### About std::string s
@@ -136,14 +102,14 @@ Null Termination character : determines where the string ends 0x00 for 1 or mult
 by calling std::string string_name I might be calling instanciating an object from a string class\
 iostream header file does have a definition for strings though it can no cout strings if string header is not included(reason not clear yet)\
 using string class -> some methods can be accessed as well\
-Appending strings: ```std::string string = "nazib" + "abrar";``` doesn't work cz can not add const char arrays. cannot glue two pointers together\
-not sure what is happening here(class overloading) 
+Appending strings: `std::string string = "nazib" + "abrar";` doesn't work cz can not add const char arrays. cannot glue two pointers together\
+not sure what is happening here(class overloading)
 
 ```c++
  std::string string_name;
  string_name += "string_extension";
  std::string string_name = std::string("prefix") + "const char";
- ```
+```
 
 copying an array means dynamically allocating memory to heap to store that same string
 passing strings in functions:
@@ -181,7 +147,7 @@ const int* const a = 11; //none of them can be modified
 
 ```
 
-* Const keyword in Class methods
+- Const keyword in Class methods
 
 ```c++
 
@@ -253,7 +219,7 @@ cin.tie(0);
 
 newline "\n" works faster than std::endl cz endl causes a flush operation
 
-```getline(cin, s);``` takes a full line inside the string s
+`getline(cin, s);` takes a full line inside the string s
 
 If the amount of data is unknown, the following loop is useful:
 

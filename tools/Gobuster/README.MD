@@ -14,3 +14,5 @@
 - `/opt/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt`
 
 ## Example Command to copy-paste
+
+- `gobuster dir -u $(cat ip) -w /opt/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt`

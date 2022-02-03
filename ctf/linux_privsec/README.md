@@ -3,10 +3,11 @@
 ## Links
 
 - [GTFOBins](https://gtfobins.github.io/) Lists all linux binaries which could be used to bypass local security
--
+- [HACKTRICKS](https://book.hacktricks.xyz/linux-unix/privilege-escalation)
 
 ## Checklist
 
+- [Checklist](https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation-checklist)
 - [ ] Weak file permisions
   - Check for weak file permissions in /etc/shadow or /etc/passwd
     - `root:x:0:0:root:/root:/bin/bash` just replace the x with an openssl generated password

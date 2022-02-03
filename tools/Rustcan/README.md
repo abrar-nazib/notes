@@ -14,3 +14,8 @@
   - `-q` is for quiet scan
 - `rustscan -a <IP> -b 100`
   - `-b` for selecting the batch size. Batch means how many scans per second
+
+## Example command to copy
+
+- `rustscan -a $(cat ip) -- -A -vv -sV -sC -oN nmap.txt`
+

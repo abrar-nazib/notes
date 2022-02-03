@@ -1,4 +1,8 @@
-# Binary Explpoitation 
+# Binary Explpoitation
+
+## Links
+
+[Basics](http://phrack.org/issues/49/14.html)
 
 ## GDB commands
 
@@ -11,3 +15,7 @@ disassemble function_name
 set disassemble-flavor intel
     # makes the dis assembled code a little bit pretty(? will know much later)
 ```
+
+## Exploitation technique
+
+- `python -c 'import struct;print "A"*44 + struct.pack("<I",target-address)'`

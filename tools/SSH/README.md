@@ -1,11 +1,11 @@
 # All ssh commands I used so far
 
-
-## SSH 
+## SSH
 
 - `eval "$(ssh-agent -s)"` will start ssh agent if not started yet
-- `ssh -T git@github.com`   -T for test connection
+- `ssh -T git@github.com` -T for test connection
 - `ssh username@ip` for connecting to a specific ip address
+- `ssh john@$(cat ip) -i id_rsa` for connecting with private key
 
 ## SCP
 
@@ -13,7 +13,6 @@
 scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt # Copying from local to remote
 scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt       # Downloading from remote to local
 ```
-
 
 ## KEY Generation
 
@@ -27,3 +26,5 @@ ssh-add id_rsa
 #### adds id_rsa as private key of the device
 ```
 
+- `ssh-keygen`
+  - Normally requires a password while using

@@ -1,11 +1,17 @@
 # Tools and commands related to cryptography
 
+## Encoding Links
+
+- `cyberchef`
+
 ## Hash identification
 
 [List of hashes in hashcat website](https://hashcat.net/wiki/doku.php?id=example_hashes)
+[Hash Analyzer](https://www.tunnelsup.com/hash-analyzer/)
 
 ```bash
-hashid -m <hash>    # returns the hash type of the given hash
+hashid -m <hash>    # returns the hashcat hash type of the given hash
+hashid -j <hash>    # returns the johntheripper hash type of the given hash
 ```
 
 Windows hash type : NTLM\

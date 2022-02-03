@@ -47,6 +47,15 @@
 ## Basic commands to copy-paste
 
 - `nmap -sC -sV -v -oN nmap.txt $(cat ip)`
+- `nmap -T5 -p- -vv -sV -oN nmap.txt $(cat ip)` Just for checking whether the port is open or not.
+  - `-T5` for speed
+  - `-p-` For scanning all the ports
+  - `sV` For detecting service version
+- `nmap -T5 -p- -vv -sV -Pn -oN nmap.txt $(cat ip)` Just for checking whether the port is open or not.
+  - `-Pn` for bypassing icmp block
+- `nmap -T5 -p21,22,80 -A -sC $(cat ip)` For specific aggressive scan
+  - `-A` for aggressive
+  - `-sC` for running default scripts on the target
 
 ## Nmap scripts
 

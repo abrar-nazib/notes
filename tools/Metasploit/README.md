@@ -12,6 +12,7 @@
 - `msfconsole` in bash starts the metasploit framework.
 - `?/help` for starting help menu.
 - `sessions` lists all the current sessions.
+  - `sessions -i session_number` to interact with specified session
 - `search <modulename>` searches module names and descriptions.
 - `use <path_to_exploit_module/number_fromSearchResult>` select the module specified with the module path.
 - `info` displys the module specified with the name.
@@ -33,6 +34,7 @@
 ## Rough listing Meterpreter
 
 - `getuid` will return the username of the victim machine.
+- `sysinfo` shows the information about the system
 - `background` sends the meterpreter shell into the background and starts msf shell again.
 - `clearev` Will clear application, system and security logs on a windows system.
 - `download <filename>` downloads the specified file in the attacker machine.
@@ -84,6 +86,8 @@
 
 - `ps` lists all the processes running
 - `migrate` tries to migrate to another process
+  - `migrate process_id` to migrate to certain process
+  - `migrate -N process_name` to migrate to a certain process.
 - `getuid` gets the uid of the current user privilage we have
 - `sysinfo` gets more information about the system. eg: OS, version, etc
 - `getprivs` gets the privilages of the current user
@@ -92,3 +96,9 @@
 - `ipconfig` Shows the networking information
 - `shell` will spawn a normal system shell in victim machine
 -
+
+### Mimikatz -> Kiwi
+
+Used for looting password files
+
+- `load kiwi`
