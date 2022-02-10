@@ -21,3 +21,7 @@
     - `find / -perm -4000 2>/dev/null` simpler version of the above command
 
 ## id
+
+## Listing
+
+[find](../../tools/Find/README.md)

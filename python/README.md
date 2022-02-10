@@ -135,6 +135,8 @@ csv_dict_reader = csv.DictReader(fileObject)    # Will read the contents of the 
 
 ## Regular Expression
 
+[DebugRegex](https://www.debuggex.com/)
+
 - MetaCharacters (Need to be escaped with a "\" ): `.[{()\^$|?*+`
 - `. -` Any Character Except New Line
 - `\d -` Digit (0-9)
@@ -421,7 +423,7 @@ response = response.get(url, params = params)
 
 ```python
 response = requests.post(url)
-response = response.post(url, data = data, headers=headers, timeout=timeout, auth=('username', 'password'))
+response = requests.post(url, data = data, headers=headers, timeout=timeout, auth=('username', 'password'))
     # data = data to send to the server. Key-value pair
     # timeout = second stops waiting for the response to come
     # headers = headers adds custom headers to the request

@@ -1,5 +1,7 @@
 # Notes on the tool nikto
 
+## Useful Links
+
 [Nikto wiki](https://github.com/sullo/nikto/wiki)\
 **Basic options**
 
@@ -13,3 +15,7 @@
   - `outdated` plugin tries to find out outdated softwares used in the web server
   - `tests` plugin runs standard tests on the target host
 - `-dbcheck` to check for syntax errors and stuffs in database
+
+## Basic Commands to copy
+
+- `nikto -h <ip> | tee nikto.log`

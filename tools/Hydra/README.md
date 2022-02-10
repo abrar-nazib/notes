@@ -18,7 +18,7 @@
 
 **Examples:**
 
-- `hydra -l molly -P /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt $(cat ip) ssh -V`
+- `hydra -l molly -P /Passwords/Leaked-Databases/rockyou.txt $(cat ip) ssh -V`
 
 ## POST login form
 

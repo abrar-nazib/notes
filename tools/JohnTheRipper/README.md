@@ -14,6 +14,7 @@
 ## Commands to copy
 
 - `john --wordlist=/opt/SecLists/Passwords/Leaked-Databases/rockyou.txt id_rsa.hash `
+- `john --wordlist=../../wordlists/rockyou.txt --format=format hashfile`
 
 ## Hash Formats
 
