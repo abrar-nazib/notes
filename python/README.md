@@ -786,3 +786,12 @@ class ChildClass:
   - Returned from a function
   - Assigned to a variable
 - Means, we should be able to treat functions like any other object or variable.9
+
+## Subprocess
+
+```python
+subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None, **other_popen_kwargs)
+```
+
+## Async Await
+

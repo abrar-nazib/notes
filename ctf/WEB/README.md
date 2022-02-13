@@ -55,3 +55,8 @@ stty raw -echo               # after backgrounding the nc shell
 after `fg` type `reset` in the new shell
 
 export TERM=xterm
+
+## File transfer and stuffs
+
+- `python -m SimpleHTTPServer`
+- `python3 -m http.server`

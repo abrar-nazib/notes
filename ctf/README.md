@@ -70,3 +70,13 @@ Enumeration is done for understanding the attack surface of the target
 ## Brute-force and Hash cracking
 
 [Hydra](../tools/Hydra/README.md)
+
+## Cron jobs
+
+![Cron jobs](cron-job-format-1.webp)
+
+- `crontab -l` shows the current cron jobs
+- `crontab -e` edits the current user's cron jobs file
+- `crontab -u username -e` shows the cron jobs for specified user
+
+/etc/crontab check for cron files

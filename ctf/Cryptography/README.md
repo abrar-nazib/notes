@@ -18,3 +18,7 @@ Windows hash type : NTLM\
 Unix hashes used to have identifiers for understanding the hash type.\
 
 ## Salting
+
+## List of tools related to crypto
+
+[Hydra](../../tools/Hydra/README.md)
