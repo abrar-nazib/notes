@@ -13,19 +13,49 @@
 
 ## Terminal Commands
 
-- `path/to/bin/mongod --dbpath=/path/to/db/folder` to start mongodb server
+- `path/to/bin/mongod --dbpath=/path/to/db/folder` to start mongodb server in port 27017
 - `db.version()` in robo3t terminal, shows mongodb version
 
 ## Mongodb Drivers
 
 - [Mongodb Nodejs Drivers](https://mongodb.github.io/node-mongodb-native/4.2/)
+- [Documentation](https://www.mongodb.com/docs/drivers/node/current/)
 - Drivers are those libraries which allow mongodb to interact with other programming languages.
+
+## Connecting and setup mongodb server
+
+[Connection guide](https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/)\
+
+```javascript
+const mongodb = require('mongodb');   // Could be replaced with const {MongoClient} = require('mongodb') }}} usage of destructuring
+const MongoClient = mongodb.MongoClient;
+  // Mongoclient will provide function necessary to connect to database.
+const connectionURL = 'mongodb://127.0.0.1:27017';
+const databaseName = 'databaseName'
+
+MongoClient.connect(connectionUrl, {useNewUrlParser: ture}, (error, client)=>{
+  /*callback function*/
+  // The callback function will get called when the database connection is successful.
+    // The callback function gets called with either an error or an client.
+  // The option useNewUrlParser is there to instruct the parser to parse the url correctly
+    if(error)//If error is not Null
+    {
+      //do whatever needed to be done with the error
+      return logger("error message");
+    }
+    db = client.db(databaseName); 
+      // Will create a database if database not create already. If created will get a reference to the database.
+});
+
+```
+
+Whenever mongodb is connected, it connects via connection pool. So more than one connection is going on in the behind.
 
 ## CRUD
 
 - **C**reate, **R**ead, **U**pdate, **D**elete
 
-### `find, findOne`
+## `find, findOne`
 
 Finds a document according to the key-value pair match.
 
@@ -53,23 +83,30 @@ db.collection(collectionName)
   });
 ```
 
-### `insert, insertOne`
+## Insertion of data: `insertOne, insertMany`
 
-Inserts values into specified collection.
+[Doc](https://www.mongodb.com/docs/drivers/node/v4.0/usage-examples/insert-operations/)
 
 ```javascript
 db.collection(collectionName).insertOne({ key: "value" }, (error, result) => {
   /*callback handler*/
-});
+  // error contains error messagae if things went wrong
+  // result will return the operation result: data that has been inserted and the unique ID associated with it.
+  console.log(result);
+    // result returns insertId(ObjectId) and acknowledged(bool)
+}); 
+  // Inserts one document in the specified collection. Creates the collection if already not created.
+
 db.collection(collectionName).insertMany(
   [{ key: "value" }, { key: "value" }],
   (error, result) => {
     /*callback handler*/
+    // result will contain a document with 3 keys: acknowledged(bool), insertedCount(number), insertedIds({})
   }
 );
 ```
 
-### `updateOne, updateMany`
+## `updateOne, updateMany`
 
 Used for updating database fields.\
 Mongodb Update Operators:
@@ -126,7 +163,7 @@ db.collection(collectionName)
   });
 ```
 
-### `deleteOne, deleteMany`
+## `deleteOne, deleteMany`
 
 ```javascript
 //definition--------
@@ -141,30 +178,6 @@ db.collection.deleteMany(filter) : document
 db.collection(collectionName).deleteMany({key:value /*leaving it empty will delete the first document*/})
 .then((result)=>{/*result handler*/})
 .catch((error)=>{/*error handler*/})
-```
-
-## Nodejs commands
-
-```javascript
-const mongodb = require("mongodb"); // Loads mongodb npm librarys return object
-const MongoClient = mongodb.MongoClient; //MongoClient gives access to functions necessary to connect to the mongodb server
-
-const connectionURL = "mongodb://127.0.0.1:27017"; // localhost causes trouble for some reason
-const databaseName = "task-manager"; // Name of the database
-
-MongoClient.connect(
-  // This is an asynchronus function
-  connectionURL,
-  { useNewUrlParser: true },
-  // useNewUrlParser: true for not using the old url parser. Rather instructing to use the new one
-  (error, client) => {
-    // this is a callback function handler
-    if (error) {
-      return console.log(`Unable to connect to Database! ${error}`);
-    }
-    const db = client.db(databaseName); //Database to manipulate -> returns reference to database
-  }
-);
 ```
 
 ## Unique Id generation

@@ -184,11 +184,11 @@ setTimeout(()={}, s)
 For asynchronus function, a funcion call doesn't wait for the task to be completed.\
 Rather it registers an event-callback pair in NodeJS API. Callback is the function to be run.\
 Thus the call stack gets to run other functions while the callback is being processed.\
-_Asynchronus functions could not be pushed in the call stack by the event loop if it's not empty._\
-_Even the main function has to be removed from the stack._\
-_Meaning: Asynchronus functions run after all the synchronus functions has run_
+Asynchronus functions could not be pushed in the call stack by the event loop if it's not empty.\
+Even the main function has to be removed from the stack.\
+Meaning: Asynchronus functions run after all the synchronus functions has run
 
-### Callbacks
+## Callbacks
 
 A function which is provided inside another function as an argument with an intention of calling it later on.
 
@@ -202,6 +202,22 @@ const asynchronusFunction = (parameter1, parmeter2, parmeterN, callback) => {
 asynchronusFunction(paramter, parmeter2, parmeterN, (dataReturned) => {
   //thing to do with the data returned from callback
 });
+```
+
+## Promises
+
+```javascript
+const promiseExample = new Promise((resolve, reject)=>{
+  //some time consuming function
+  if(successful)
+    resolve(dataToBePassedIfOperationSuccessful);
+  else
+    reject(rejectionMessage);
+})
+
+promiseExample.then((result)=>{}).catch((error)=>{}) 
+  // Then allows us to register a function when things went smoothly
+  // Catch allows us to hancle errors correctly
 ```
 
 ## HTTP Related methods
