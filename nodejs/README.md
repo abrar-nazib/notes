@@ -12,7 +12,7 @@
 - Chrome's V8 javascript engine is used in creating node's javascript engine.
 - V8 engine is written in c++
 
-## Variables
+## Special Variables
 
 - `__dirname` stores the full path of current directory
 - `__filename` stores the full path of the current file
@@ -40,11 +40,17 @@ module.exports = "variable/function";
 
 ## Package-json file
 
+### Node Scripts
+
 ```javascript
 "scripts":{
         "start": "node src/app.js",
-        "dev": "nodemon src/app.js -e js,hbs"
+        "dev": "nodemon src/index.js"
 }
+```
+
+```bash
+npm run dev # will run dev script on the server
 ```
 
 ## NPM and NPM modules
@@ -218,6 +224,12 @@ const promiseExample = new Promise((resolve, reject)=>{
 promiseExample.then((result)=>{}).catch((error)=>{}) 
   // Then allows us to register a function when things went smoothly
   // Catch allows us to hancle errors correctly
+
+//                          Fulfilled
+//                        /
+// Promise -- pending -->
+//                        \
+//                          Rejected
 ```
 
 ## HTTP Related methods
@@ -271,80 +283,6 @@ firstparamObject = { url: url, json: true };
 encodeURIComponent(data); //URL encodes the passed data
 ```
 
-## Express
-
-[expressjs.com](https://expressjs.com/)
-
-```javascript
-const express = require("express");
-
-const app = express(); // express returns this object with all the work to be done
-
-//------------- General app syntax -----------------
-app.set(name, value);
-//-----------------
-
-app.set("view engine", "template_engine_name"); //template_engine_name = hbs
-
-// for specifying which templating engine to use
-
-//------------- Express options----------------------------------------
-app.use(express.static(full_path_to_web_content_directory));
-// for setting up the root directory of the server
-app.use(express.json());
-// Parse the incoming json as javascript object
-
-//----------Get Requests---------------------------------------------
-app.get("/route/:routeParameter", async (req, res) => {
-  res.status(statusCode); // For setting up response status code
-  // Have to send status code before sending response
-
-  res.render("filename_without_extension_inside_views_folder", {
-    object_with_key_value_pair,
-  });
-  //for rendering dynamic html file from any templating engine
-  //need to use some variables inside the template. The object passed stores the needed variables
-  res.send("Things to pass as response to the request"); // For sending text as response
-
-  const request_query = req.query; // req.query contains the get-request objects
-  const request_parameters = req.params; // req.params contain route parameters
-});
-
-//----------Post Requests-----------------
-app.post("/route", async (req, res) => {
-  data = req.body; // Grab the incoming data with the post request
-
-  res.status(statusCode); // Status Code to send
-
-  res.send("ResponseText");
-});
-
-//-----------Patch Requests---------------------------------
-app.patch("route", async (req, res) => {
-  //Patch requests are used to update existing data
-});
-
-//---------- Delete Requests ------------------------------------
-app.delete("route", async (req, res) => {
-  //Delete requests are used to delete database entries
-});
-
-//--------------Server listen to specific port for incoming requests-----------------
-app.listen(port_number, () => {
-  console.log("Instructing the server to listen to port X for incoming");
-});
-
-//----------------- Express Routers -----------------------------------------
-const router = new express.Router();
-
-router.get(route, (req, res) => {
-  // Other http request types
-  //route handler
-});
-
-app.use(router); // mandatory otherwise route files won't work
-```
-
 ## Templating
 
 ### `handlebars for express -> hbs`
@@ -395,11 +333,16 @@ REST API allows clients to manipulate and access resources using a set of predef
 - PATCH: Update Data
 - DELETE: Delete Data
 
-![REST API Structure](Assets/restapistruct.png)
+**Status Codes:**
+
+- 200 OK
+- 201 Created
+
+![REST API Structure](assets/restapistruct.png)
 
 ## Postman
 
-- POST data to be inputted inside body tab of postman.
+- POST data to be inputted inside body tab of postman. Body -> Raw -> JSON
 
 ## Hashing
 
@@ -414,4 +357,15 @@ const asyncFunction = async () => {
   const hashedPassword = await bcrypt.hash(plainTextPassword, n); // n = how many times to hash the text. Ideal is 8
   const isMatch = await bcrypt.compare(plainTextPassword, hashedPassword); // Returns boolean value
 };
+```
+
+## Port related stuffs
+
+```javascript
+const port = process.env.PORT || 3000; // Check for environment variable to decide port otherwise use 3000 for dev
+
+app.listen(port, ()=>{
+  console.log("Server is up on port ", port);
+})
+  // Here app is express app object
 ```

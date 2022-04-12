@@ -25,7 +25,7 @@ git remote set-url origin https://scuzzlebuzzle:<MYTOKEN>@github.com/scuzzlebuzz
 
 - `git init` initialize git repository.
 - `git status` show the currently untracked files
-- `git add * ` adds every untracked/unstaged file to the staged area.
+- `git add *` adds every untracked/unstaged file to the staged area.
 - `git commit -m "commit message"` commit a change
 - `git push origin branch_name` push branch to the github
 - `git remote` shows all the remote repos available to a repository
