@@ -77,6 +77,13 @@ dictionary["key"] = "value"
 
 ```
 
+### Iteration through dictionaries
+
+```python
+for key in dictionary:
+    print(f'key: {key}, value: {dictionary[key]}')
+```
+
 ## String and list Operations
 
 - `r"string"` Python treats this type of strings as raw strings. `\t` is not interpreted as tab if `r` is used
@@ -85,6 +92,10 @@ dictionary["key"] = "value"
 - `string.split(xx)` xx = character on which the string to split
 - `f'formatted string with {variable} inside'`
 - `'whattoputwhenseperated'.join(list)` will convert the list into a string
+
+```python
+str(python-dat-structure) # converts any python data structure into string
+```
 
 ## File Objects
 
@@ -795,3 +806,25 @@ subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, captur
 
 ## Async Await
 
+## Virtual Environments
+
+### `virtualenv`
+
+- `pip install virtualenv` to install virtual environment
+- `virtualenv environment_name` to create a new virtual environment.
+  - `virtualenv -p /path/to/python environment_name` to create a virtualenv with custom python version
+- `pip list` lists all the packages installed.
+- `pip freeze --local > requirements.txt` creates a requirements file that helps recreating projects in new environments.
+  - `pip install -r requirements.txt` to install required packages in a virtual environment.
+- `project_env/Scripts/activate` executing activate binary activates virtual environment.
+- `deactivate` inside virtual environment deactivates virtual environment and brings back to normal environment.
+
+### `venv`
+
+- It's default package. No installation needed.
+- `python -m venv environment_name` to create a new virtual environment.
+  - `-m` python will search sys.path and execute the module specified as main module.
+  - `python -m venv environment_name/venv` is better practice.
+- `project_env/Scripts/activate` executing activate binary activates virtual environment.
+- `deactivate` inside environment deactivates the virtual environment.
+- `pip freeze > requirements.txt` stores all the required package names in correct format to reproduce the project.

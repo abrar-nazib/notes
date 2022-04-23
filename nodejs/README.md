@@ -213,23 +213,71 @@ asynchronusFunction(paramter, parmeter2, parmeterN, (dataReturned) => {
 ## Promises
 
 ```javascript
-const promiseExample = new Promise((resolve, reject)=>{
+const promiseExample = new Promise((resolve, reject) => {
   //some time consuming function
-  if(successful)
-    resolve(dataToBePassedIfOperationSuccessful);
-  else
-    reject(rejectionMessage);
-})
+  if (successful) resolve(dataToBePassedIfOperationSuccessful);
+  else reject(rejectionMessage);
+});
 
-promiseExample.then((result)=>{}).catch((error)=>{}) 
-  // Then allows us to register a function when things went smoothly
-  // Catch allows us to hancle errors correctly
+promiseExample.then((result) => {}).catch((error) => {});
+// Then allows us to register a function when things went smoothly
+// Catch allows us to hancle errors correctly
 
 //                          Fulfilled
 //                        /
 // Promise -- pending -->
 //                        \
 //                          Rejected
+```
+
+### Promise Chaining
+
+```javascript
+const add = (a, b) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(a + b);
+    }, 2000);
+  });
+}; // Function add returns a promise
+
+add(4, 5)
+  .then((sum) => {
+    console.log(sum);
+    return add(sum, 9); // returning another promise
+  })
+  .then((sum) => {
+    // Handling the returned promise outside (syntactical suger)
+    console.log(sum);
+  })
+  .catch((error) => {
+    console.log(error); // Handling two errors with only one block
+  });
+```
+
+## Async-Await
+
+- `async` Allows us to create an async function and in that function we can use `await` feature.
+- To create an async function we have to put `async` before that function.
+- Async functions always returns a promise
+- Can not use `await` outside of an `asysnc` function.
+
+```javascript
+const add = (a, b) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(a + b);
+    }, 2000);
+  });
+}; // Function add returns a promise
+
+const doAdd = async () => {
+  const sum1 = await add(1, 2);
+  const sum2 = await add(sum1, 3);
+  const sum3 = await add(sum2, 4);
+  return sum3;
+  // Equivalent to promise chaining, Just syntactical sugar
+};
 ```
 
 ## HTTP Related methods
@@ -337,12 +385,39 @@ REST API allows clients to manipulate and access resources using a set of predef
 
 - 200 OK
 - 201 Created
+- 400 Bad request
+- 401 Unauthorized
+- 500 Internal Server Error
 
 ![REST API Structure](assets/restapistruct.png)
 
 ## Postman
 
 - POST data to be inputted inside body tab of postman. Body -> Raw -> JSON
+
+**Postman Environments:**
+
+- Create environment to store environment variables such as url
+- Set variable name and value
+- Usage: `{{variablename}}` in the requests
+
+**Postman Authorization:**
+
+- Project name burger -> Edit -> Authorizatoin.
+- In Single request: Inherit from parent.
+
+**Postman Scripts:**
+
+- Pre-request scripts: Can write some javascript code before sending request.
+- Test: Javascript code to be written after the response is received.
+
+```javascript
+// Authentication script
+
+pm.response.code  // contains the response code
+pm.environment.set("variablename") = value; // Setting an environment variable of postman.
+pm.response.json()  // grabs json object of the response and converts it into a javascript object.
+```
 
 ## Hashing
 
@@ -359,13 +434,100 @@ const asyncFunction = async () => {
 };
 ```
 
+See mongoose middlewares notes for utilization example of bcrypt
+
 ## Port related stuffs
 
 ```javascript
 const port = process.env.PORT || 3000; // Check for environment variable to decide port otherwise use 3000 for dev
 
-app.listen(port, ()=>{
+app.listen(port, () => {
   console.log("Server is up on port ", port);
-})
-  // Here app is express app object
+});
+// Here app is express app object
+```
+
+## JSON Web Tokens
+
+- `npm i jsonwebtoken` to install
+- `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJhYmMxMjMiLCJpYXQiOjE2NTAxODE1NDl9.DjW8q1UJreiWpfiBAZAYCwRX9xwPI6HHxwWQPireEBo` example json web token
+- Json web tokens has 3 parts
+  - Header: base64 encoded json string. Contains what type of token it is, the algorithm used to generate it.
+  - Payload/Body: Second portion where data is stored.
+  - Signature: For checking integrity.
+
+```javascript
+const jwt = require("jsonwebtoken");
+
+const token = jwt.sign({ dataToStore }, "secretString", {
+  expiresIn: "7 days",
+}); // Creates a json web token.
+// expiresIn = select the time after which the jwt will expire. {seconds, minutes, weeks, years, months could be used}
+
+const data = jwt.verify(token, "secretString"); // returns the payload section if verified otherwise returns error
+```
+
+## Useful other functions needed to work with nodejs and servers
+
+**`parseInt()`:**
+
+```javascript
+const stringValue = "1";
+const intValue = parseInt(stringValue); // parses string into integer
+```
+
+**`split()`:**
+
+```javascript
+const testString = "hello-there";
+const splittedStrings = testString.split("-"); // splittedStrings = ['hello', 'there']
+```
+
+**`foreach()`:**
+
+- The `forEach()` method executes a provided function once for each array element.
+
+```javascript
+const array1 = ["a", "b", "c"];
+
+array1.forEach((element) => console.log(element)); // will print all the elements in the console
+```
+
+**`endsWith()`:**
+
+- Used for getting the extension of a file
+
+```javascript
+const fileName = "file.ext";
+const fileExtension = fileName.endsWith(".ext"); // returns true if file ends with .ext
+```
+
+## File uplaods
+
+**`multer`:**
+
+- Multer is for multipart/form-data
+- `npm i multer` for installation
+
+```javascript
+const multer = require("multer");
+const upload = multer({
+  dest: "destinationFolder",  // will save the file inside this specific directory
+  limits:{
+    fileSize: 1000000, // Restricting file size to one million bytes -> one megabyte( 1*10^6 byte)
+  },
+  fileFilter(req, file, cb){  // function to be run when new file attempted to be uploaded
+    // req: information about request being made
+    // file: information about the file being uploaded
+    // cb: callback function to be called when we're done. Used for delivering error messages
+
+    cb(new Error("error message"));   // to be called if anything goes wrong
+    cb(undefined, true); // If everything's allright, Second argument to indicate the file upload process should continue.
+    cb(undefined, false); // For silently rejecting file. {bad practice}
+  }
+});
+
+app.post("/route", upload.single("parameterName"), (req, res) => {  // upload.single() returns a middleware
+  //route-handler
+});
 ```

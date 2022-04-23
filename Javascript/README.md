@@ -3,44 +3,48 @@
 ## Threading, Asynchronus, Synchronus, Non-blocking
 
 V8 Engine has two parts
+
 1. Memory Heap
-   * Memory Allocation is done here
+   - Memory Allocation is done here
 2. Call Stack
-   * Code is read and executed here
+   - Code is read and executed here
 
 **Memory Leak:** When the memory heap gets full by global variables(if not cleaned), it's called a memory leak.\
 **Single Threaded:** Javascript has got only one call stack. It can execute only one task at a time.
 
-
 ## String and String functions
 
 ```javascript
-const string = 'value' // declaration
+const string = "value"; // declaration
 
 string.charCodeAt(0); //returns v's ASCII/UTF-16 code in decimal
 
-string.includes('searchvalue', start); // returns true if the string contains searchvalue. The start is default to 0
+string.includes("searchvalue", start); // returns true if the string contains searchvalue. The start is default to 0
 
 string.toUpperCase(); // returns uppercased string
 string.toLowerCase(); // returns lowercased string
 
-const array = string.split("");     //splits the string characterwise and creates an array
-const string = array.join("");    //creates a string from the array elements
+const array = string.split(""); //splits the string characterwise and creates an array
+const string = array.join(""); //creates a string from the array elements
 // if used like join(), commas are converted into string
 ```
 
 ## Array and Array functions
 
 ```javascript
-const arr = [1,2,3,4,5];
-arr.forEach((element)=>{console.log(element)}); //will print all the element
-const newArr = arr.forEach((element)=>element); //newArr will be undefined
+const arr = [1, 2, 3, 4, 5];
+arr.forEach((element) => {
+  console.log(element);
+}); //will print all the element
+const newArr = arr.forEach((element) => element); //newArr will be undefined
 
-const newArr = arr.filter((element)=>element); //all the elements inside arr is now inside newArr
+const newArr = arr.filter((element) => element); //all the elements inside arr is now inside newArr
 
-const foundElement = arr.find((element)=>element === match); //returns the element which matches to the "match"
+const foundElement = arr.find((element) => element === match); //returns the element which matches to the "match"
 
-const testAll = arr.every((param)=>{/*testFunctionCriteria*/})
+const testAll = arr.every((param) => {
+  /*testFunctionCriteria*/
+});
 // The every() method tests whether all elements in the array pass the test implemented by the provided function.
 // It returns a Boolean value. True if every element follows criteria. False if any of them do not
 ```
@@ -56,13 +60,13 @@ Jacascript objects are reference types.
 
 ```javascript
 var objectX = {
-    key1: 'value1',
-    key2: 'value2',
-    key3: 'value3'
+  key1: "value1",
+  key2: "value2",
+  key3: "value3",
 }; //here the 'object1' stores the reference to the object. Not the object itself.
 // Much like pointers
-objectX.keys()   // returns an array containing keys of the object
-Object.keys(objectX)    // same
+objectX.keys(); // returns an array containing keys of the object
+Object.keys(objectX); // same
 ```
 
 **Context:**\
@@ -76,30 +80,32 @@ this.method(); // here this is the current context/current object we are inside 
 When we make a copy of the object to reuse the code.
 
 ```javascript
-class Player{
-    constructor(name, type){    // constructor is the function which is run first everytime a new object is created.
-        this.name = name;
-        this.type = type;
-        this.deltable = 'mairala'
-    }
-    introduce(){
-        console.log(`Hi`);
-    }
-    delete(){
-        delete this.deletable; // for deleting a preperty from the object
-    }
+class Player {
+  constructor(name, type) {
+    // constructor is the function which is run first everytime a new object is created.
+    this.name = name;
+    this.type = type;
+    this.deltable = "mairala";
+  }
+  introduce() {
+    console.log(`Hi`);
+  }
+  delete() {
+    delete this.deletable; // for deleting a preperty from the object
+  }
 }
 
-class Wizard extends Player {       // Class instantiation
-    constructor(name, type){
-        super(name, type);
-    }
-    play(){
-        console.log('Playing');
-    }
+class Wizard extends Player {
+  // Class instantiation
+  constructor(name, type) {
+    super(name, type);
+  }
+  play() {
+    console.log("Playing");
+  }
 }
 
-const wizard1 = new Wizard('Abrar', 'Programmer');
+const wizard1 = new Wizard("Abrar", "Programmer");
 ```
 
 ### Object Propery shorthand
@@ -107,15 +113,15 @@ const wizard1 = new Wizard('Abrar', 'Programmer');
 New in JavaScript with ES6/ES2015, if you want to define an object who's keys have the same name as the variables passed-in as properties, you can use the shorthand and simply pass the key name.
 
 ```javascript
-let cat = 'Miaow';
-let dog = 'Woof';
-let bird = 'Peet peet';
+let cat = "Miaow";
+let dog = "Woof";
+let bird = "Peet peet";
 
 let someObject = {
-  cat,  //instead of cat:cat
+  cat, //instead of cat:cat
   dog,
-  bird
-}
+  bird,
+};
 ```
 
 ### Object and Array Destructuring
@@ -130,17 +136,16 @@ let [a, b, ...rest] = [10, 20, 30, 40, 50];
 console.log(rest); // rest = [30,40,50]
 
 const x = [1, 2, 3, 4, 5];
-const [y, z] = x;   // y=1, z=2 -> const [firstElement, secondElement] = list;
+const [y, z] = x; // y=1, z=2 -> const [firstElement, secondElement] = list;
 
 const user = {
-    id: 42,
-    isVerified: true
+  id: 42,
+  isVerified: true,
 };
 
-const {id, isVerified} = user;
+const { id, isVerified } = user;
 // id = 42, isVerified = true
-```    
-
+```
 
 ## Arrow functions
 
@@ -177,17 +182,16 @@ Arrow functions act differently inside objects while acting as a property
 
 ```javascript
 try {
-        //code to run
-}
-catch(error){
-        //the error from the try block will be used as parameter in this catch block 
+  //code to run
+} catch (error) {
+  //the error from the try block will be used as parameter in this catch block
 }
 ```
 
 ### Error Throwing
 
 ```javascript
-throw new Error('error message');
+throw new Error("error message");
 ```
 
 ## JSON
@@ -200,7 +204,7 @@ JSON.parse(JSONstring); // converts json string into JS object
 ## Other Uncategorized functions
 
 ```javascript
-setTimeout(()={}, s) 
+setTimeout(()={}, s)
 // Wait x miliseconds. After x miliseconds is over,
 //execute the first parameter's function.
 //here first parameter is a function
@@ -209,13 +213,36 @@ setTimeout(()={}, s)
 
 ## Fetch
 
+- Fetch is an asynchronus function which returns a promise.
+
+**Getting text files:**
+
 ```javascript
-fetch(url).then((response)=>{
-    response.json().then(()={
-        //this function will be called when json data will get parsed
-    })
+fetch("filename.txt").then(function (res) {
+  console.log(res);
+});
+```
+
+**Post requests with fetch:**
+
+```javascript
+fetch("url"{
+    method: "POST",
+    headers:{
+        //headers to send
+    },
+    body:{
+        // body to send
+        // if the body needs to be json data, send like:
+        // JSON.stringify({ /* body data */ })
+    }
 })
 ```
+
+**The Response(`res`) Interface:**
+
+- `text()` parses text and returns string.
+- `json()` parses json data and returns javascript object.
 
 ## DOM and events
 
@@ -228,6 +255,15 @@ form.addEventListener('submit',(e)={    // e is the event which occures while su
 })
 
 element.textContent = 'modifiedContent' // modifying the text content of the element
+```
+
+**Adding event-listeners to an element:**
+
+```javascript
+document
+  .getElementById("elementId")
+  .addEventListener("eventType", functionToRunWhenEventIsTriggered);
+// eventType examples: click, submit
 ```
 
 ## Promises and Callbacks
@@ -285,17 +321,17 @@ add(1, 1)
 
 ## Async Await
 
-* Async functions always return promise
-* Return in async function is equivalent to resolve in promise
-* Throw error in async function is equivalent to reject in promise
+- Async functions always return promise
+- Return in async function is equivalent to resolve in promise
+- Throw error in async function is equivalent to reject in promise
 
 ```javascript
 const asyncFuncton = async (params) => {
-    const data = await anotherAsyncfunction();  // awaits could be used inside only async funcitons
-}
+  const data = await anotherAsyncfunction(); // awaits could be used inside only async funcitons
+};
 
 const anotherAsyncfunction = async () => {
-    //some time intensive task
-    return data;
-}
+  //some time intensive task
+  return data;
+};
 ```
