@@ -3,30 +3,44 @@
 [Git documentation](https://git-scm.com/)
 [Pro Git Book](https://git-scm.com/book/en/v2)
 
+## Basics
+
+- **Untracked files:** Every newly added or modified file is untracked file.
+- **Unstaged Changes:** If we make changes to a file git is already tracking, it is categorized as unstaged changes.
+- **Staged Changes:** `git add file` command adds the files to staged changed files category.
+- **Commit:** `git commit` each commit has a unique identifier
+
 ## Config
 
+Initial setup after git installation.
+
 ```bash
-git config --global user.name "username"
-git config --global user.email "email@email.com"
+git config --global user.name "username"    # Needs to be in double quote
+git config --global user.email "email@email.com"    # Needs to be in double quote
 git config -l # Shows all the configured data
 git config --global credential.helper cache # Caches the credentials
 git config --global --unset credential.helper # Delete the cache
 git remote set-url origin https://scuzzlebuzzle:<MYTOKEN>@github.com/scuzzlebuzzle/ol3-1.git
 ```
 
-## Basics
+### SSH
 
-**Untracked files:** Every newly added or modified file is untracked file.\
-**Unstaged Changes:** If we make changes to a file git is already tracking, it is categorized as unstaged changes.\
-**Staged Changes:** `git add file` command adds the files to staged changed files category.\
-**Commit:** `git commit` each commit has a unique identifier
+```bash
+ssh-keygen -t rsa -b 4096 -C "email@example.com"
+    # Generates a public-private key pair for git repository
+git remote set-url origin git@github.com:username/repository.git
+    # For setting up remote of a repository
+```
 
 ## GIT Basic commands
 
-- `git init` initialize git repository.
-- `git status` show the currently untracked files
-- `git add *` adds every untracked/unstaged file to the staged area.
+- `git init` initialize git repository in local machine.
+- `git status` show the current status of the files. {Red-colr->Untracked}
+- `git add *` adds every untracked/unstaged file to the staged area {the process is called staging}.
 - `git commit -m "commit message"` commit a change
+  - `git commit -a -m "commit message"` to skip the staging process. Will stage all the unstaged changes and commit.
+- `git log` shows the commit history
+  - `git log --oneline` will show the commit history in one line versions.
 - `git push origin branch_name` push branch to the github
 - `git remote` shows all the remote repos available to a repository
 
@@ -36,11 +50,32 @@ git remote set-url origin https://scuzzlebuzzle:<MYTOKEN>@github.com/scuzzlebuzz
 
 - `node_modules/` ignores everything inside node modules folder
 
-## SSH
+## Inspecting previous commits
+
+- `git show <commit-id>` shows the details about the specified commit.
+  - `git log` will help to get the commit id.
+
+_Demo git show:_
 
 ```bash
-ssh-keygen -t rsa -b 4096 -C "email@example.com"
-    # Generates a public-private key pair for git repository
-git remote set-url origin git@github.com:username/repository.git
-    # For setting up remote of a repository
+commit 2a1cdbe50c3630273653da3ca64ff822c2bd167a
+Author: abrar-nazib <abrarnazib@gmail.com>
+Date:   Sat Apr 30 12:30:33 2022 +0600
+
+    second commit
+
+diff --git a/first.txt b/first.txt
+index 9ea38a9..43d4268 100644
+--- a/first.txt
++++ b/first.txt
+@@ -1 +1,3 @@
+ First text file. Initial Text.
++   # this plus sign means things added after previous commit
+    # minus sign means things deleted from the previous commit
++Line after first commit.
 ```
+
+### `diff`
+
+- Shows the so-far difference from the previous version of the commit. `+` means added stuffs, `-` means deleted stuffs.
+- Shows the differences only when in unstaged condition. If staged difference is needed to be shown, `--staged` flag needs to be used.

@@ -502,6 +502,13 @@ const fileName = "file.ext";
 const fileExtension = fileName.endsWith(".ext"); // returns true if file ends with .ext
 ```
 
+### Regular expressions
+
+```javascript
+const exString = "string.ext";
+const isCorrectExtension = exString.match(/\.ext$/); // The / / are needed for regular expressions
+```
+
 ## File uplaods
 
 **`multer`:**
@@ -512,22 +519,39 @@ const fileExtension = fileName.endsWith(".ext"); // returns true if file ends wi
 ```javascript
 const multer = require("multer");
 const upload = multer({
-  dest: "destinationFolder",  // will save the file inside this specific directory
-  limits:{
+  dest: "destinationFolder", // will save the file inside this specific directory
+  // Don't put the dest property if don't want to save it inside any folder. EG. saving in database.
+  limits: {
     fileSize: 1000000, // Restricting file size to one million bytes -> one megabyte( 1*10^6 byte)
   },
-  fileFilter(req, file, cb){  // function to be run when new file attempted to be uploaded
+  fileFilter(req, file, cb) {
+    // function to be run when new file attempted to be uploaded
     // req: information about request being made
     // file: information about the file being uploaded
     // cb: callback function to be called when we're done. Used for delivering error messages
 
-    cb(new Error("error message"));   // to be called if anything goes wrong
+    cb(new Error("error message")); // to be called if anything goes wrong
     cb(undefined, true); // If everything's allright, Second argument to indicate the file upload process should continue.
     cb(undefined, false); // For silently rejecting file. {bad practice}
-  }
+  },
 });
 
-app.post("/route", upload.single("parameterName"), (req, res) => {  // upload.single() returns a middleware
-  //route-handler
-});
+app.post(
+  "/route",
+  upload.single("parameterName"),
+  (req, res) => {
+    // upload.single() returns a middleware
+    // route-handler
+  },
+  (error, req, res, next) => {
+    // Error handling code for error thrown by multer middleware
+  }
+);
+```
+
+## Showing binary image data in browser
+
+```html
+<img src="data:image/jpg;base64,[binaryBase64EncodedData]" />
+<!-- image/jpg means which type of image to parse. Normally binary data comes from base64 -->
 ```

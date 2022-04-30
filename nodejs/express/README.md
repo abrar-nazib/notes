@@ -9,9 +9,9 @@ const express = require("express");
 
 const app = express(); // express returns this object with which all the work to be done
 
-app.set("view engine", "template_engine_name"); 
-  // for specifying which templating engine to use
-  //template_engine_name = hbs
+app.set("view engine", "template_engine_name");
+// for specifying which templating engine to use
+//template_engine_name = hbs
 ```
 
 ## Customizing express server
@@ -19,9 +19,9 @@ app.set("view engine", "template_engine_name");
 ```javascript
 //------------- Express options----------------------------------------
 app.use(express.static(full_path_to_web_content_directory));
-    // for setting up the root directory of the server
+// for setting up the root directory of the server
 app.use(express.json());
-    // Parses the incoming json as javascript object
+// Parses the incoming json as javascript object
 ```
 
 ## GET requests
@@ -30,27 +30,26 @@ app.use(express.json());
 //----------Basic Version---------------------------------------------
 app.get("/route/:routeParameter", async (req, res) => {
   res.status(statusCode).send(thingsToBeSent); // For setting up response status code
-    // Have to send status code before sending response
+  // Have to send status code before sending response
 
   const parameter = req.params.routeParameter;
-    // req.params holds all the parameters sent with the request
+  // req.params holds all the parameters sent with the request
   const queryParameters = req.query; // holds the query parameters of a request
 });
-
 ```
 
 ## POST Requests
 
 ```javascript
 //-----------Normal Version -------------------
-app.post("/route", (req, res)=>{
-    res.status(statusCode); // Important to set status code before sending
-    res.send("Data to be sent");
-})
+app.post("/route", (req, res) => {
+  res.status(statusCode); // Important to set status code before sending
+  res.send("Data to be sent");
+});
 //-----------Efficient version-----------------------
-app.post("/route", (req, res)=>{
-    res.status(statusCode).send("Things to be sent");
-})
+app.post("/route", (req, res) => {
+  res.status(statusCode).send("Things to be sent");
+});
 //-----------Async-Await version --------------
 ```
 
@@ -78,20 +77,20 @@ app.listen(port_number, () => {
 ```javascript
 //----------------- Express Routers -----------------------------------------
 const router = new express.Router();
-  // Creates a new router object
+// Creates a new router object
 router.get(route, (req, res) => {
   // Other http request types
   //route handler
 });
 
-app.use(router); 
-  // registering router with express
-  // mandatory otherwise route files won't work
+app.use(router);
+// registering router with express
+// mandatory otherwise route files won't work
 ```
 
 ## Express middleware
 
-Middleware for authentication handling
+**Middleware for authentication handling:**
 
 ```javascript
 // Request header to be set like:
@@ -103,19 +102,35 @@ const auth = async (req, res, next)=>{ // This function will always execute befo
 })
 ```
 
-Adding middlewares to individual route
+**Adding middlewares to individual route:**
 
 ```javascript
 const middleware = require("middlewareFile.js");
-route.get("/path", middleware, async (req, res)=>{
+route.get("/path", middleware, async (req, res) => {
   // Route handling code
 });
+```
+
+**Handling errors thrown by middlewares:**
+
+```javascript
+route.get(
+  "/path",
+  middleware,
+  async (req, res) => {
+    // Route handling code
+  },
+  (error, req, res, next) => {
+    // Must have four parameters. Otherwise won't be able to handle error messages
+    // Handles errors thrown by middlewares
+  }
+);
 ```
 
 ## `req`
 
 ```javascript
-req.method // The method in which the request was sent
-req.path   // request path
-req.header // has access to request headers
+req.method; // The method in which the request was sent
+req.path; // request path
+req.header; // has access to request headers
 ```
