@@ -36,13 +36,17 @@ git remote set-url origin git@github.com:username/repository.git
 
 - `git init` initialize git repository in local machine.
 - `git status` show the current status of the files. {Red-colr->Untracked}
-- `git add *` adds every untracked/unstaged file to the staged area {the process is called staging}.
 - `git commit -m "commit message"` commit a change
   - `git commit -a -m "commit message"` to skip the staging process. Will stage all the unstaged changes and commit.
 - `git log` shows the commit history
   - `git log --oneline` will show the commit history in one line versions.
 - `git push origin branch_name` push branch to the github
 - `git remote` shows all the remote repos available to a repository
+
+## Staging
+
+- `git add filename` adds the specified file in the staging area.
+- `git add *` adds every untracked/unstaged file to the staged area {the process is called staging}.
 
 ## GIT Ignore
 
@@ -79,3 +83,12 @@ index 9ea38a9..43d4268 100644
 
 - Shows the so-far difference from the previous version of the commit. `+` means added stuffs, `-` means deleted stuffs.
 - Shows the differences only when in unstaged condition. If staged difference is needed to be shown, `--staged` flag needs to be used.
+- `git diff <commit-id-1> <commit-id-2>` shows the difference between two specified commits.
+
+## Deleting files
+
+- `git rm filename` deletes file from both the folder and git's tracking system.
+
+## Reverting back
+
+- `git checkout <commit-id> <filename>` will revert the specified file back to the specified commit version.
