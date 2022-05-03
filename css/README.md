@@ -177,3 +177,71 @@ otherElement {
   clear: both;
 }
 ```
+
+## Flexbox
+
+```css
+container {
+  display: flex; /* to give superpowers to the html document */
+  /* the container becomes flex container and the elements inside it becomes flex content */
+}
+```
+
+**Axis:**
+
+![axis](assets/flexbox.PNG)
+
+**Flex direction:**
+
+- `flex-directoin: row` by default row. Left to right
+  - Contents follow the main axis
+- `flex-direction: row-reverse` reverses the direction of the flex elements. Right to left
+- `flex-direction: column` swaps the main axis with the cross axis. Up to down.
+- `flex-direction: column-reverse` for reversing column alignment. Down to up.
+
+**Flex wrap:**
+
+Wrapping: Starting from beginning without overflowing.
+
+- `flex-wrap: nowrap` Will overflow. Won't wrap.
+- `flex-wrap: wrap` will wrap the internal components.
+- `flex-wrap: wrap-reverse` will wrap from the bottom->left-to-right then one line up left-to-right
+
+**Flex flow:**
+
+- `flex-flow: [flex-direction] [flex-wrap]` Third bracket not needed.
+
+**Justify-content:**
+
+- by default justify content is sticking to the left margin.
+- it's `justify-content: flex-start`
+  - ![Flex-Start](./assets/justify-flex-start.PNG)
+- `justify-content: flex-end` uses the right margin to stick.
+  - ![Flex-End](./Assets/justify-flex-end.PNG)
+- `justify-content: center` centers the content by x axis.
+- `justify-content: space-around` In the main axis, elemnts equally take up the space to themselves.
+  - ![justify-space-around](Assets/justify-space-around.png)
+- `justify-content: space-between` Gives them uniform space between two elements.
+  - ![justify-space-between](Assets/justify-space-between.png)
+- `justify-content: space-evenly` The value of the space will be equal between elements.
+  - ![justify-space-evenly](Assets/justify-space-evenly.png)
+
+**Align-items:**
+
+Justify content but movement in cross axis. Unlike content, modification behavior is item centric
+![align-items](assets/align-items.PNG)
+
+- `align-items: strech` default behavior. Stretches the elements in the cross axis if fixed height is not given.
+  - ![align-items-stretch](assets/align-items-stretch.PNG)
+- `align-itmes: flex-start` Won't stretch. Will have the value needed. Sticky to main axis{top one}.
+  - ![align-item-flex-start](assets/align-items-flex-start.PNG)
+- `align-items: flex-end` opposite of flex-start. Sticky to main axis{bottom one}
+  - ![align-item-flex-end](assets/align-items-flex-end.PNG)
+- `aligh-items: center` Center by the y axis.
+  - ![align-item-center](assets/align-items-center.PNG)
+
+**Aligh-items when flex-direction Column:**
+
+- ![align-item-stretch-column](assets/align-items-stretch-column.PNG)
+- ![align-items-center-column](assets/align-items-center-column.PNG)
+- ![align-items-flex-start-column](assets/align-items-flex-start-column.PNG)

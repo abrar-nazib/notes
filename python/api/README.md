@@ -31,3 +31,7 @@ with open("data_file.json", "r") as read_file:
 
 python_data = json.loads(json_string)
 ```
+
+## Parsing complex json data
+
+[Helpful link](https://hackersandslackers.com/extract-data-from-complex-json-python/)

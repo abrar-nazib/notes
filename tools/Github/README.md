@@ -40,8 +40,6 @@ git remote set-url origin git@github.com:username/repository.git
   - `git commit -a -m "commit message"` to skip the staging process. Will stage all the unstaged changes and commit.
 - `git log` shows the commit history
   - `git log --oneline` will show the commit history in one line versions.
-- `git push origin branch_name` push branch to the github
-- `git remote` shows all the remote repos available to a repository
 
 ## Staging
 
@@ -92,3 +90,25 @@ index 9ea38a9..43d4268 100644
 ## Reverting back
 
 - `git checkout <commit-id> <filename>` will revert the specified file back to the specified commit version.
+- `git checkout <branchname>` to switch branches.
+
+## Related to github
+
+- `git clone <repo link>` to clone repository from online
+  - `git clone <repo link> <custom-foldername>` to clone into custom folder if the default name isn't needed.
+- `git remote add <remote-repo-name> <remote-repo-url>` To add a remote repo.
+  - `git remote add origin <remote-repo-url>` for example
+- `git push -u origin master` Git push to the remote repo named "origin". Push the master branch.
+
+## Branching
+
+- `git branch` to show the branches.
+- `git branch <branchName>` to create a new branch in the git repo.
+  - `git checkout -b <branchName>` Create the branch and checkout to it.
+- `gir branch -d <branchName>` to delete a created branch.
+- `git checkout <branchname>` to switch to specified branch.
+
+## Merging
+
+- `git merge <branchName>` will merge specified branch to corrent branch.
+- 

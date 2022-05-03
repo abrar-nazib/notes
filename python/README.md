@@ -189,7 +189,7 @@ specific_match = match.group(group_number) #will show the group numbers
 pattern.sub(r'\2\3', textToSub)
 ```
 
-#### Sample Regexs
+### Sample Regexs
 
 `[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+` -> matches email addresses
 
@@ -797,6 +797,19 @@ class ChildClass:
   - Returned from a function
   - Assigned to a variable
 - Means, we should be able to treat functions like any other object or variable.9
+
+## Inner functions
+
+```python
+ def outer_func():
+     def inner_func():
+         print("Hello, World!")
+     inner_func()   ## Have to call the inner function to execute it
+
+
+ outer_func()
+# Output: Hello, World!
+```
 
 ## Subprocess
 
