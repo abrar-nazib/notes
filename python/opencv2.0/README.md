@@ -1,6 +1,6 @@
 # opencv backup from nafis's computer
 
-## Functions
+## Opencv Functions
 
 **`cvtcolor`**
 
@@ -30,5 +30,26 @@ cv2.GaussianBlur(srcImage, kernel, sigmaX)
 
 ```python
 cv2.Canny(srcImage, T_lower, T_upper)
-    # Any line with more than intensity gradient of t_upper 
+    # Any line with more than intensity gradient of t_upper will get considered as edge 
 ```
+
+**`dilate`**
+
+- dilate converts the pixels of a kernel with the value of the brightest pixel of the image.
+- Thus the bright area of the picture gets brighter
+
+```python
+
+```
+
+**`erode`**
+
+- Erosion makes the bright areas of the picture thinner and the dark areas become bigger
+
+```python
+
+```
+
+## Numpy functions
+
+**`ones`**
