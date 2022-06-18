@@ -12,7 +12,7 @@
 
 ## Config
 
-Initial setup after git installation.
+Initial setup after git installation.git
 
 ```bash
 git config --global user.name "username"    # Needs to be in double quote
