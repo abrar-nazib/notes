@@ -772,7 +772,7 @@ class ChildClass(ParentClass):
         self.param4 = param4
 ```
 
-### Magic Methods
+### Magic **Methods**
 
 **`__class__.__name__`**
 
@@ -842,86 +842,5 @@ subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, captur
 - `project_env/Scripts/activate` executing activate binary activates virtual environment.
 - `deactivate` inside environment deactivates the virtual environment.
 - `pip freeze > requirements.txt` stores all the required package names in correct format to reproduce the project.
-
-## Tkinter
-
-```python
-import tkinter as tk
-```
-
-- Widgets: GUI elements such as buttons, textboxes, labels, images
-- Windows: Serves as a container to hold or contain widgets
-
-**Creating window:**
-
-```python
-window = tk.Tk() # instantiate an instant of window
-
-window.geometry("420x420")  # set the window resolution
-
-window.title("Title For the Window") # sets the window title
-
-# Changing the icon of the window title
-icon = tk.PhotoImage(file="filename.png")
-window.iconphoto(true, icon)
-
-window.config(background="#639cf7") # changes the window background
-
-window.mainloop() # shows the window and places on computer screen, listens for events
-```
-
-**Labels:**
-
-An area widget that holds text or image in a window
-
-```python
-label = tk.Label(window,
-                text="Hello",
-                font=('Arial', 40, 'bold'),
-                fg="green",
-                bg="black",
-                relief=tk.RAISED,
-                bd=10,
-                padx=20,
-                pady=20,
-                image= photo,
-                compound = "bottom")
-    # instantiate a instance of label
-    # here the parameter window is the container for the label
-    # the text element is the text to be showed
-    # the font element's Arial is the font family, 40 is the font size, bold is the font property
-    # the fg, foreground is the text color. Hex values are also allowed
-    # the bg, background is the background of the label.
-    # the relief means the border of the label
-    # the bd means the border width of the label
-    # the padx means padding between the label and border in X direction
-    # the pady means padding between the label and border in Y direction
-    # the image has to be a photo object
-    # the compound parameter says the image will appear in the bottom of the text
-label.place(x=xCoordinate, y=yCoordinate)
-    # placement of the label
-    # if place is used, pack doesn't need to be mentioned
-
-label.pack()
-    # attach the label with the master. Just instantiating does not attach it by default
-    # if label.place() is used, pack does not need to be used
-
-photo = tk.PhotoImage(file="file.png")
-    # creates a photo object suitable to handle for tkinter
-```
-
-**Button:**
-
-You click them, they do stuff
-
-```python
-button = tk.Button(window,
-        text="click me",
-        command=click)
-        # the window is the master/parent/container of the window
-        # the command holds the callback function which will be executed while the function is called. The function has to be declared elsewhere
-        #
-button.pack()   # to attach the button to the window
-```
 
 ## PyFirmata

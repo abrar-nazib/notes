@@ -70,7 +70,6 @@ Four Color Resistors
 3. Third color: third number
 4. Fourth color: number of zeros
 5. Fifth color: percentange of tolerance. 20% if not mentioned.
-6.
 
 - **ex:** Red--Red--Black--Orange--Brown Striped resistor's resistance is 2--2--0--000--1%
 - **ex:** Blue--Grey--Black--Brown--Brown Striped resistor's resistance is 6--8--0--1--1%
@@ -125,3 +124,7 @@ if(Serial.available() > 0){
 2. Correct orientation of the components
 3. Checking the resistors
 4. Check the breadboard tie points to find out connection errors. Circuit continuity is the main word to say here.
+
+## Stepper Motors
+
+- **Main Components:** 1) Stator, 2) Rotor

@@ -1,5 +1,69 @@
 # Problem Solving Notes
 
+## Basics
+
+**For making iostream, vector, algorithm and other libraries available in the code.:**
+
+```c++
+#include <bits/stdc++.h>
+using namespace std; // classes and functions of the standard library can be directly used inside code
+```
+
+**Getting input:**
+
+```bash
+a b c
+```
+
+```bash
+a b
+c
+```
+
+```c++
+char aa, bb, cc;
+std::cin >> aa >> bb >> cc; // aa='a', bb='b', cc='c'
+```
+
+```c++
+ios::sync_with_stdio(0);
+cin.tie(0);
+// These two lines of code at the beginning of the program makes input and output more efficient
+```
+
+- `"\n"` works faster than `endl` because `std::endl` does a flush operation everytime used.
+- `scanf` and `printf` are a bit faster but has complexity in their use case.
+
+**Getting a full line input containing spaces:**
+
+```c++
+string s;
+getline(cin, s); // from stdin, get one line and put it in string s
+```
+
+**Continuously get input:**
+
+```c++
+while (cin >> x){
+    // do whatever needed to do with x
+}
+// This loop reads elements from the input one after another, until there is no more data available in the input.
+```
+
+**Reading from file:**
+
+```c++
+freopen("input.txt", "r", stdin);
+```
+
+## Working with numbers
+
+- `long long` 64 bit variable
+
+```c++
+long long x = 123456789123456789LL;
+```
+
 ## Helpful functions
 
 ```c++
@@ -13,7 +77,7 @@ find(array, array+array_size, value_searching_for); //returns the pointer of the
 binary_search(sorted_array, sorted_array+size, value_searching_for); // returns a boolean value
 count(array, array+array_size, value_repeated) // returns the repetation in the array
 sort(array, array+array_size); //sorts the array
-             
+
 ```
 
 ## Vector[1D]
@@ -35,14 +99,14 @@ vector<int> vect_data2 = vect_data // vector to vector value assignment
 
 ```c++
 vect_data.push_back(value); // adds value at the end
-    vect_data.begin(); //beginning of the vector data array
-    vect_data.end(); //ending position of vector data
+vect_data.begin(); //beginning of the vector data array
+vect_data.end(); //ending position of vector data
 vect_data.insert(vect_data.begin(), value); //inserts value in the beginning
-    vect_data.insert(vect_data.begin(), n, value); //inserts n values in the beginning
+vect_data.insert(vect_data.begin(), n, value); //inserts n values in the beginning
 vect_data.insert(vect_data.begin()+2, value); //inserts value in the [2] index from the beginning
 vect_data.insert(vect_data.end(), value); //inserts value at the end
-    vect_data.insert(vect_data.end(), n, value); //inserts n values at the end
-vect_data.insert(vect_data.end()-1, value); //inserts value at the [end-1] position 
+vect_data.insert(vect_data.end(), n, value); //inserts n values at the end
+vect_data.insert(vect_data.end()-1, value); //inserts value at the [end-1] position
 
 ```
 
@@ -83,7 +147,7 @@ vect_data.erase(vect_data.begin()+2, vect_data.begin()+3); //deletes the element
 ```c++
 vector<type> name; //is the base syntax
 vector<int> data // data is an integer type vector -> vector containing integer type data
-vector<vector <int>> data // data is a VECTOR type vector where VECTOR contains integer type data and vector contains vector type data 
+vector<vector <int>> data // data is a VECTOR type vector where VECTOR contains integer type data and vector contains vector type data
 ```
 
 ### Data Accessing in 2D vector
