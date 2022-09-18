@@ -30,6 +30,16 @@ for i in numpy.linespace(5, 1, 1):
                 # Intelligent enough to understand increment and decrement
 ```
 
+**For iterating through objects:**
+
+```python
+for key, value in object:   # for normal objects
+    print(f'{key} => {value}')
+
+for key, value in enumerate(list): # for enumerated object from list
+    print(f'{key} => {value}')
+```
+
 ## Hacks
 
 ```python
@@ -67,6 +77,8 @@ print(my_list[startIndex:endIndex:step])
 #[startIndexOfHeight:endIndexOfHeight, startIndexOfWidth, endIndexOfWidth] for multi dimentional images
 
 list.remove(element)    # will remove the element fromt the list
+
+obj = enumerate(list) # converts an list to an enumerated array
 ```
 
 ## Dictionaries
@@ -76,6 +88,13 @@ dictionary = {"key":"value"}
 # Assignment
 dictionary["key"] = "value"
 
+```
+
+**Related Functions/Methods:**
+
+```python
+dict.get("key", value)
+    # The value part is optional. This part returns the value if the key does not exist in the dictionary
 ```
 
 ### Iteration through dictionaries
@@ -519,13 +538,13 @@ all_links_of_webpage = html_object.links # will gather all links of the website
 all_absolute_links_of_webpate = html_object.absolute_links # Will gather all absolute links
 ```
 
-**Grabbing Javascript Generated Text**
+**Grabbing Javascript Generated Text:**
 
 ```python
 html_object.render() # renders the javascript code
 ```
 
-**Asynchronus Requests**
+**Asynchronus Requests:**
 
 ```python
 

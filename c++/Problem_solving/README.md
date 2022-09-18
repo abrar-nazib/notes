@@ -98,6 +98,7 @@ vector<int> vect_data2 = vect_data // vector to vector value assignment
 ### Vector element Insertion
 
 ```c++
+vect_data.size();   // Returns the element count of the vector
 vect_data.push_back(value); // adds value at the end
 vect_data.begin(); //beginning of the vector data array
 vect_data.end(); //ending position of vector data
