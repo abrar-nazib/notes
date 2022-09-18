@@ -28,6 +28,8 @@ git remote set-url origin https://scuzzlebuzzle:<MYTOKEN>@github.com/scuzzlebuzz
 ```bash
 ssh-keygen -t rsa -b 4096 -C "email@example.com"
     # Generates a public-private key pair for git repository
+ssh-add ~/.ssh/id_name 
+    # sets the id name as ssh key
 git remote set-url origin git@github.com:username/repository.git
     # For setting up remote of a repository
 ```
