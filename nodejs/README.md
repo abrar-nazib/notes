@@ -389,7 +389,7 @@ REST API allows clients to manipulate and access resources using a set of predef
 - 401 Unauthorized
 - 500 Internal Server Error
 
-![REST API Structure](assets/restapistruct.png)
+![REST API Structure](Assets/restapistruct.png)
 
 ## Postman
 
